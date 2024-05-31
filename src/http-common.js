@@ -1,13 +1,14 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://localhost:8080",
+  // baseURL: "http://localhost:8080",
   // baseURL: "https://northone-fp6p0zqmv-79sphelps-projects.vercel.app/",
   // baseURL: "https://northone-79sphelps-projects.vercel.app/",
   // baseURL: 'https://northone-backend.vercel.app',
   // baseURL: '',
   // baseURL: 'https://northone.onrender.com/',
   // baseURL: 'https://real-estate-rentals-frontend.onrender.com/',
+  baseURL: 'https://real-estate-rentals-backend.onrender.com',
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Credentials": "true",
