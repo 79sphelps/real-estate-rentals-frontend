@@ -31,7 +31,7 @@ const providerConfig = {
   // redirectUri: window.location.origin,
   // redirectUri: window.location.origin + '/callback',
   authorizationParams: {
-    redirect_uri: window.location.origin + '/callback'
+    redirect_uri: window.location.origin
   },
   onRedirectCallback,
 };

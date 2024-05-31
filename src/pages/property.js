@@ -31,6 +31,7 @@ const Listing = () => {
   const { isAuthenticated } = useAuth0();
   const { id } = useParams();
 
+  const [propertyDescriptions, setPropertyDescriptions] = useState([]);
   const [formData, setFormData] = useState({
     address: '',
     city: '',
@@ -55,6 +56,17 @@ const Listing = () => {
 
   useEffect(() => {
     dispatch(getRental(id));
+    setTimeout(() => {
+      let tDescrip = []
+      Object.entries(formData).forEach(([key, value]) => {
+          if (key.includes('description_')) {
+            // let idx = key.split("_").pop();
+            // formData[key] = value ? value : property.images[idx-1]
+            tDescrip.push(value)
+          }
+      })
+      setPropertyDescriptions(tDescrip);
+    }, 2000)
   }, [dispatch, id]);
 
   const updateProperty = (e) => {
@@ -161,6 +173,15 @@ const Listing = () => {
                       property.description_4
                     }
                   />
+
+                {/* { propertyDescriptions.map((prop, idx) => {
+                  <PropertyDescription
+                  description={
+                    property.description_1
+                  }
+                /> 
+                })} */}
+
                 </Property.Left>
                 <Property.Right>
                   <ContactAgentContainer property={property} />
