@@ -47,14 +47,14 @@ const Listing = () => {
         <Section bgColor="--bs-fade-info">
           <Section.InnerContainer>
             <Section.Flex>
-
               <Section.FlexItem width="30%" relative flexStart>
-              <Section.Shadow>
-                {/* <AdvancedSearchContainer /> */}
-              </Section.Shadow>
-            </Section.FlexItem>
+                <Section.Shadow>
+                  {/* <AdvancedSearchContainer /> */}
+                </Section.Shadow>
+              </Section.FlexItem>
 
-              <Section.FlexItem width="65%">
+              {/* <Section.FlexItem width="65%"> */}
+              <Section.FlexItem width="90%"> 
                 <Section.Title>Our Property List</Section.Title>
                 <Section.Content>
                   {properties &&
