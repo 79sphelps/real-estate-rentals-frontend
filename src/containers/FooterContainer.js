@@ -7,9 +7,9 @@ const FooterContainer = () => {
       <Footer.Container>
         <Footer.Content>
           <Footer.Item>
-            <Footer.Title>Real Home</Footer.Title>
+            <Footer.Title>Tessa Goldy - Real Estate Broker</Footer.Title>
             <Footer.Text>
-              1337 Tengecha Road,Nairobi.Imarisha Tower, Second Floor, Room 135
+              1337 82nd Ave, Trump Tower, Second Floor, Room 135
             </Footer.Text>
             <Footer.List>
               <Footer.ListItem>
@@ -22,7 +22,7 @@ const FooterContainer = () => {
               </Footer.ListItem>
               <Footer.ListItem>
                 <Footer.Icon name="far fa-envelope" social="true" />
-                <Footer.Text>realhome@gmail.com</Footer.Text>
+                <Footer.Text>tessagoldy@gmail.com</Footer.Text>
               </Footer.ListItem>
             </Footer.List>
           </Footer.Item>
@@ -35,15 +35,15 @@ const FooterContainer = () => {
               <Footer.ListItem>
                 <Footer.Anchor to="/listing">Properties</Footer.Anchor>
               </Footer.ListItem>
-              <Footer.ListItem>
+              {/* <Footer.ListItem>
                 <Footer.Anchor to="/agents">Agents</Footer.Anchor>
-              </Footer.ListItem>
+              </Footer.ListItem> */}
               <Footer.ListItem>
                 <Footer.Anchor to="/faqs">FAQs</Footer.Anchor>
               </Footer.ListItem>
-              <Footer.ListItem>
+              {/* <Footer.ListItem>
                 <Footer.Anchor to="/dashboard">Account</Footer.Anchor>
-              </Footer.ListItem>
+              </Footer.ListItem> */}
               <Footer.ListItem>
                 <Footer.Anchor to="/login">Login</Footer.Anchor>
               </Footer.ListItem>
@@ -99,7 +99,7 @@ const FooterContainer = () => {
       </Footer.Container>
       <Footer.Bottom>
         <Footer.Container>
-          <Footer.Text>&copy; Real Home. All Rights Reserved</Footer.Text>
+          <Footer.Text>&copy; Tessa Goldy - All Rights Reserved</Footer.Text>
         </Footer.Container>
       </Footer.Bottom>
     </Footer>

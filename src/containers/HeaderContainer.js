@@ -43,7 +43,7 @@ const HeaderContainer = ({ bg, source }) => {
         <HeaderWrapper.Container>
           <HeaderWrapper.Title bg={bg}>
             <HeaderWrapper.Link bg={bg} fixed={fixed} to="/">
-              Real Home
+              Tessa Goldy - Real Estate Broker
             </HeaderWrapper.Link>
           </HeaderWrapper.Title>
           <HeaderWrapper.LinksContainer>
@@ -114,15 +114,16 @@ const HeaderContainer = ({ bg, source }) => {
       {bg === "true" && (
         <Jumbotron>
           <Jumbotron.Left>
-            <Jumbotron.Title>Find The Home You Deserve With Us</Jumbotron.Title>
+            <Jumbotron.Title>Find Your Home Here</Jumbotron.Title>
             <Jumbotron.Text>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat,
-              exercitationem.
+            Fresh Ideas | Personal Service | Proven Results
+            
             </Jumbotron.Text>
           </Jumbotron.Left>
-          <Jumbotron.Right>
-            {/* <AdvancedSearchContainer /> */}
-          </Jumbotron.Right>
+          {/* <Jumbotron.Right>
+            <AdvancedSearchContainer />
+          </Jumbotron.Right> */}
+
         </Jumbotron>
       )}
       {/* <SideNavigationContainer

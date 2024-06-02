@@ -37,19 +37,27 @@ const ListingItemContainer = ({ featured, width }) => {
               Details
             </Listing.Anchor>
           </Listing.Button>
-          {/* <Listing.AgentContainer>
+
+
+          <Listing.AgentContainer>
             <Listing.AgentImageContainer>
               <Listing.Image
-                src={`/images/agents/${featured.agent.image}`}
+                // src={`/images/agents/${featured.agent.image}`}
+                src="https://jls-documents-prod.s3.amazonaws.com/public/users/300002725-3204b409/Tessa%20body%20shot_clipped_rev_2.png"
                 profile="true"
               />
             </Listing.AgentImageContainer>
             <Listing.AgentName>
-              <Listing.Anchor to={`/agents/${featured.agent.name}`}>
+              {/* <Listing.Anchor to={`/agents/${featured.agent.name}`}>
                 {featured.agent.name}
+              </Listing.Anchor> */}
+              <Listing.Anchor to={`/listings`}>
+                Tessa Goldy
               </Listing.Anchor>
             </Listing.AgentName>
-          </Listing.AgentContainer> */}
+          </Listing.AgentContainer>
+
+
         </Listing.BottomItem>
       </Listing.Bottom>
     </Listing>

@@ -46,12 +46,13 @@ const ContactAgentContainer = ({ property }) => {
             //   property.agent.image ? property.agent.image : property.agent.photo
             // }
             // https://www.pravatar.cc/
-            source="https://i.pravatar.cc/150?img=51"
+            // source="https://i.pravatar.cc/150?img=51"
+            source="https://assets.jlscloud.net/account/tessagold.png"
           />
         </Property.ContactItem>
         <Property.ContactItem>
           {/* <Property.Subtitle>{property.agent.name}</Property.Subtitle> */}
-          <Property.Subtitle>Steve Phelps</Property.Subtitle>
+          <Property.Subtitle>Tessa Goldy</Property.Subtitle>
           <Property.ContactList>
             <Property.ListItem>
               <Property.Icon name="fas fa-phone-alt"></Property.Icon>
@@ -111,9 +112,9 @@ const ContactAgentContainer = ({ property }) => {
               ) : (
               <Section.Flex>
                 <Section.FlexItem width="50%">
-                  <Section.SubTitle>We Will Get In Touch</Section.SubTitle>
+                  <Section.SubTitle>Thank you for submitting your contact message.</Section.SubTitle>
                   <Section.Text>
-                    Thank you for submitting your contact message.
+                    I will get in touch shortly.
                   </Section.Text>
                 </Section.FlexItem>
                 {/* <Section.FlexItem width="50%">

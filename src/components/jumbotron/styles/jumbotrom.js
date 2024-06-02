@@ -1,12 +1,24 @@
 import styled from "styled-components/macro";
 
+// export const Container = styled.div`
+//   width: 85%;
+//   margin: 0px auto;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   height: 100%;
+//   @media only screen and (max-width: 768px) {
+//     flex-direction: column;
+//   }
+// `;
+
 export const Container = styled.div`
   width: 85%;
   margin: 0px auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
+  height: 400px;
   @media only screen and (max-width: 768px) {
     flex-direction: column;
   }

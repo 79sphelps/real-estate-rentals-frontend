@@ -48,7 +48,7 @@ const FeaturedListingContainer = () => {
       {listProperties && Array.isArray(listProperties) ? (
         <Section.InnerContainer>
           <Section.Header>
-            <Section.Title>Our Featured Listings</Section.Title>
+            <Section.Title>My Featured Listings</Section.Title>
           </Section.Header>
           <Section.Content>
             {/* {featuredProperties.map((featured) => ( */}

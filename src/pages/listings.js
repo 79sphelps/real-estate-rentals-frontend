@@ -47,14 +47,14 @@ const Listing = () => {
         <Section bgColor="--bs-fade-info">
           <Section.InnerContainer>
             <Section.Flex>
-              <Section.FlexItem width="30%" relative flexStart>
+              {/* <Section.FlexItem width="30%" relative flexStart>
                 <Section.Shadow>
-                  {/* <AdvancedSearchContainer /> */}
+                  <AdvancedSearchContainer />
                 </Section.Shadow>
-              </Section.FlexItem>
+              </Section.FlexItem> */}
 
               {/* <Section.FlexItem width="65%"> */}
-              <Section.FlexItem width="90%"> 
+              <Section.FlexItem width="99%"> 
                 <Section.Title>Our Property List</Section.Title>
                 <Section.Content>
                   {properties &&
@@ -62,7 +62,8 @@ const Listing = () => {
                       <ListingItemContainer
                         key={featured._id}
                         featured={featured}
-                        width="49%"
+                        // width="49%"
+                        width="33%"
                       />
                     ))}
                 </Section.Content>
