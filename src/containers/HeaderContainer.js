@@ -7,6 +7,7 @@ import { HeaderWrapper, Banner, Jumbotron } from "../components";
 // } from "./index";
 import { useAuth0 } from "@auth0/auth0-react";
 
+
 const HeaderContainer = ({ bg, source }) => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
@@ -42,7 +43,7 @@ const HeaderContainer = ({ bg, source }) => {
       <HeaderWrapper bg={bg} fixed={fixed}>
         <HeaderWrapper.Container>
           <HeaderWrapper.Title bg={bg}>
-            <HeaderWrapper.Link bg={bg} fixed={fixed} to="/">
+            <HeaderWrapper.Link className="animate__animated animate__bounce" bg={bg} fixed={fixed} to="/">
               Tessa Goldy - Real Estate Broker
             </HeaderWrapper.Link>
           </HeaderWrapper.Title>

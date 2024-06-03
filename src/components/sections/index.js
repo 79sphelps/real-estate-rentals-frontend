@@ -15,6 +15,8 @@ import {
   Shadow,
 } from "./styles/sections";
 
+import "animate.css";
+
 const Section = ({ children, bgColor, ...restProps }) => {
   return (
     <Container {...restProps} bgColor={bgColor}>
@@ -26,12 +28,12 @@ Section.Header = ({ children, ...restProps }) => {
   return <Header {...restProps}>{children}</Header>;
 };
 Section.Title = ({ children, ...restProps }) => {
-  return <Title {...restProps}>{children}</Title>;
+  return <Title className="animate__animated animate__backInLeft" {...restProps}>{children}</Title>;
 };
 
 Section.SubTitle = ({ children, size, ...restProps }) => {
   return (
-    <SubTitle {...restProps} size={size}>
+    <SubTitle className="animate__animated animate__fadeInRight" {...restProps} size={size}>
       {children}
     </SubTitle>
   );

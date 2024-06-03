@@ -19,7 +19,7 @@ Jumbotron.Text = ({ children, ...restProps }) => {
 };
 
 Jumbotron.Title = ({ children, ...restProps }) => {
-  return <Title {...restProps}>{children}</Title>;
+  return <Title className="animate__animated animate__flash" {...restProps}>{children}</Title>;
 };
 
 export default Jumbotron;

@@ -12,6 +12,8 @@ import {
   Icon,
 } from "./styles/headerwrapper";
 
+import 'animate.css';
+
 const HeaderWrapper = ({ children, bg, fixed, ...restProps }) => {
   return (
     <Header {...restProps} bg={bg} fixed={fixed}>
