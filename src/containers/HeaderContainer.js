@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 // import links from "../constants/routes/nav-links";
 import { HeaderWrapper, Banner, Jumbotron } from "../components";
-// import { 
-//   AdvancedSearchContainer, 
-//   SideNavigationContainer 
+// import {
+//   AdvancedSearchContainer,
+//   SideNavigationContainer
 // } from "./index";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -80,23 +80,38 @@ const HeaderContainer = ({ bg, source }) => {
               </HeaderWrapper.Item>
             </HeaderWrapper.List>
 
-            { isAuthenticated ? ( 
-            <HeaderWrapper.List>
-              <HeaderWrapper.Item>
-                <HeaderWrapper.Anchor to="/addlisting" special="true">
-                  Add Listing
-                </HeaderWrapper.Anchor>
-              </HeaderWrapper.Item>
-            </HeaderWrapper.List> ) : null }
+            {isAuthenticated ? (
+              <HeaderWrapper.List>
+                <HeaderWrapper.Item>
+                  <HeaderWrapper.Anchor to="/addlisting" special="true">
+                    Add Listing
+                  </HeaderWrapper.Anchor>
+                </HeaderWrapper.Item>
+              </HeaderWrapper.List>
+            ) : null}
 
             <HeaderWrapper.List>
               <HeaderWrapper.Item>
                 {/* <HeaderWrapper.Anchor to="/login" special="true"> */}
-                  {/* Login */}
-                  {!isAuthenticated && <HeaderWrapper.Button onClick={() => loginWithRedirect({})} variant="default">Log in</HeaderWrapper.Button>}
-                  {isAuthenticated && <HeaderWrapper.Button onClick={() => logoutWithRedirect({})} variant="default">Log out</HeaderWrapper.Button>}
-                  {/* {isAuthenticated && <UserMenu/> } */}
-                  {/* {isAuthenticated && <Home/> }  */}
+                {/* Login */}
+                {!isAuthenticated && (
+                  <HeaderWrapper.Button
+                    onClick={() => loginWithRedirect({})}
+                    variant="default"
+                  >
+                    Log in
+                  </HeaderWrapper.Button>
+                )}
+                {isAuthenticated && (
+                  <HeaderWrapper.Button
+                    onClick={() => logoutWithRedirect({})}
+                    variant="default"
+                  >
+                    Log out
+                  </HeaderWrapper.Button>
+                )}
+                {/* {isAuthenticated && <UserMenu/> } */}
+                {/* {isAuthenticated && <Home/> }  */}
                 {/* </HeaderWrapper.Anchor> */}
               </HeaderWrapper.Item>
             </HeaderWrapper.List>
@@ -116,14 +131,12 @@ const HeaderContainer = ({ bg, source }) => {
           <Jumbotron.Left>
             <Jumbotron.Title>Find Your Home Here</Jumbotron.Title>
             <Jumbotron.Text>
-            Fresh Ideas | Personal Service | Proven Results
-            
+              Fresh Ideas | Personal Service | Proven Results
             </Jumbotron.Text>
           </Jumbotron.Left>
           {/* <Jumbotron.Right>
             <AdvancedSearchContainer />
           </Jumbotron.Right> */}
-
         </Jumbotron>
       )}
       {/* <SideNavigationContainer

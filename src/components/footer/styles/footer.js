@@ -85,6 +85,41 @@ export const Anchor = styled(Link)`
   }
 `;
 
+// export const Icon = styled.i`
+//   margin-right: 8px;
+//   ${({ app }) =>
+//     app &&
+//     `
+//   font-size: 3.5rem;
+//   color: var(--bs-blue);
+//   `}
+//   ${({ social }) =>
+//     social === "true" &&
+//     `
+//   display: flex;
+//   width: 40px;
+//   height: 40px;
+//   justify-content: center;
+//   align-items: center;
+//   background-color: var(--bs-blue);
+//   border-radius: 50%;
+
+//   &::before {
+
+//     width: 42px;
+//     height: 42px;
+
+//     background-color: #cccccc;
+//     border-radius: 50%;
+//     transform: scale(0);
+// 	  transition: 0.3s ease-in-out;
+//   };
+//   &:hover::before {
+//     transform: scale(1);
+//   }
+//   `}
+// `;
+
 export const Icon = styled.i`
   margin-right: 8px;
   ${({ app }) =>
@@ -103,8 +138,50 @@ export const Icon = styled.i`
   align-items: center;
   background-color: var(--bs-blue);
   border-radius: 50%;
+
+  &::before {
+	  transition: 0.3s ease-in-out;
+  };
+
+  &:hover::before {
+    transform: scale(2);
+  }
   `}
 `;
+
+/*
+  &::before {
+
+    width: 42px;
+    height: 42px;
+
+    background-color: #cccccc;
+    border-radius: 50%;
+    transform: scale(0);
+	  transition: 0.3s ease-in-out;
+  };
+  &:hover::before {
+    transform: scale(1);
+  }
+
+*/
+
+/*
+  &::before {
+    content: "";
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transform: scale(0);
+	  transition: 0.3s ease-in-out;
+  };
+  &:hover::before {
+    transform: scale(1);
+  }
+  */
+
 export const Bottom = styled.div`
   background-color: var(--bs-blue);
   padding: 16px 0px;

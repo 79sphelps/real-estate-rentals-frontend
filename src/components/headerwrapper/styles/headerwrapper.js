@@ -122,10 +122,16 @@ export const ListAnchor = styled(Link)`
   font-size: 1rem;
   text-transform: capitalize;
   transition: background-color var(--primary-transition-time);
+
+
   &:hover {
     background-color: var(--bs-blue);
     color: var(--bs-white);
+    transform: scale(1.2);
+    transition: 0.3s ease-in-out;
   }
+
+  
   ${({ bg }) =>
     bg !== "true" &&
     `
@@ -149,3 +155,16 @@ export const ListAnchor = styled(Link)`
       transition: background-color var(--primary-transition-time);
   `}
 `;
+
+/*
+  &:before {
+
+    transform: scale(0);
+    transition: 0.3s ease-in-out;
+  }
+
+  &:hover::before {
+
+    // transform: scale(2);
+  }
+*/

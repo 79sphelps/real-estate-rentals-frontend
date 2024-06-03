@@ -1,8 +1,7 @@
-import React, {useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Property, Form, Section } from "../components";
 import { createGeneralMessage } from "../redux/actions";
-
 
 const ContactAgentContainer = ({ property }) => {
   const dispatch = useDispatch();
@@ -15,10 +14,10 @@ const ContactAgentContainer = ({ property }) => {
 
   useEffect(() => {
     setSubmitted(false);
-    setName("")
-    setEmail("")
-    setPhone("")
-    setMessage("")
+    setName("");
+    setEmail("");
+    setPhone("");
+    setMessage("");
   }, []);
 
   const saveGeneralMessage = (e) => {
@@ -31,10 +30,10 @@ const ContactAgentContainer = ({ property }) => {
     };
     dispatch(createGeneralMessage(data));
     setSubmitted(true);
-    setName("")
-    setEmail("")
-    setPhone("")
-    setMessage("")
+    setName("");
+    setEmail("");
+    setPhone("");
+    setMessage("");
   };
 
   return (
@@ -86,16 +85,31 @@ const ContactAgentContainer = ({ property }) => {
               <Form.SubmitInput type="submit" value="Send Message" />
             </Form.FormGroup>
           </Form> */}
-          { !submitted ? (
-              <Form>
+          {!submitted ? (
+            <Form>
               <Form.FormGroup>
-                <Form.Input type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} />
+                <Form.Input
+                  type="text"
+                  placeholder="Your Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </Form.FormGroup>
               <Form.FormGroup>
-                <Form.Input type="text" placeholder="Your Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                <Form.Input
+                  type="text"
+                  placeholder="Your Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </Form.FormGroup>
               <Form.FormGroup>
-                <Form.Input type="text" placeholder="Your Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)}/>
+                <Form.Input
+                  type="text"
+                  placeholder="Your Phone Number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
               </Form.FormGroup>
               <Form.FormGroup>
                 <Form.TextArea
@@ -103,21 +117,28 @@ const ContactAgentContainer = ({ property }) => {
                   name=""
                   id=""
                   cols="30"
-                  rows="10" value={message} onChange={(e) => setMessage(e.target.value)}></Form.TextArea>
-              </Form.FormGroup> 
-              <Form.FormGroup>
-                <Form.SubmitInput type="submit" value="Send Message" onClick={(e) => saveGeneralMessage(e) }/>
+                  rows="10"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                ></Form.TextArea>
               </Form.FormGroup>
-            </Form> 
-              ) : (
-              <Section.Flex>
-                <Section.FlexItem width="50%">
-                  <Section.SubTitle>Thank you for submitting your contact message.</Section.SubTitle>
-                  <Section.Text>
-                    I will get in touch shortly.
-                  </Section.Text>
-                </Section.FlexItem>
-                {/* <Section.FlexItem width="50%">
+              <Form.FormGroup>
+                <Form.SubmitInput
+                  type="submit"
+                  value="Send Message"
+                  onClick={(e) => saveGeneralMessage(e)}
+                />
+              </Form.FormGroup>
+            </Form>
+          ) : (
+            <Section.Flex>
+              <Section.FlexItem width="50%">
+                <Section.SubTitle>
+                  Thank you for submitting your contact message.
+                </Section.SubTitle>
+                <Section.Text>I will get in touch shortly.</Section.Text>
+              </Section.FlexItem>
+              {/* <Section.FlexItem width="50%">
                   <Section.SubTitle>
                     Get Instant Support From Us
                   </Section.SubTitle>
@@ -126,8 +147,8 @@ const ContactAgentContainer = ({ property }) => {
                     Non,
                   </Section.Text>
                 </Section.FlexItem> */}
-              </Section.Flex>
-              )}
+            </Section.Flex>
+          )}
         </Property.ContactContainer>
       </Property.ContactContent>
     </Property.Contact>

@@ -18,18 +18,34 @@ export const Container = styled.div`
 `;
 export const Top = styled.div``;
 export const Bottom = styled.div``;
+
+
 export const Image = styled.img`
   width: 100%;
+
+  display: inline-block;
+	transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--bs-white);
+    color: var(--bs-blue);
+    border: 1px solid var(--bs-blue);
+    transform: scale(1.1);
+  }
+
   ${({ profile }) =>
     profile === "true" &&
     `
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  margin-left: -14px;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      margin-left: -14px;
   `}
 `;
+
+
 export const ImageContainer = styled.div``;
+
 export const TopItem = styled.div`
   position: relative;
 `;
