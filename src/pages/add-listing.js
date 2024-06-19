@@ -60,10 +60,6 @@ const AddListing = () => {
 
   const createProperty = (e) => {
     e.preventDefault();
-
-    console.log('--- creatProperty ---')
-    console.log(formData)
-
     let tImages = []
     Object.entries(formData).forEach(([key, value]) => {
         if (key.includes('image_')) {

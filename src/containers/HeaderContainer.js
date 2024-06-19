@@ -1,14 +1,38 @@
 import React, { useState, useEffect } from "react";
 // import links from "../constants/routes/nav-links";
 import { HeaderWrapper, Banner, Jumbotron } from "../components";
-// import {
-//   AdvancedSearchContainer,
-//   SideNavigationContainer
-// } from "./index";
+import {
+  // AdvancedSearchContainer,
+  SideNavigationContainer
+} from "./index";
 import { useAuth0 } from "@auth0/auth0-react";
 
 
+
 const HeaderContainer = ({ bg, source }) => {
+
+  const [activeLink, setActiveLink] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    }
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [])
+
+  const onUpdateActiveLink = (value) => {
+    setActiveLink(value);
+  }
+
+
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
   const logoutWithRedirect = () =>
@@ -42,28 +66,13 @@ const HeaderContainer = ({ bg, source }) => {
     <Banner bg={bg} source={source}>
       <HeaderWrapper bg={bg} fixed={fixed}>
         <HeaderWrapper.Container>
+
           <HeaderWrapper.Title bg={bg}>
             <HeaderWrapper.Link className="animate__animated animate__bounce" bg={bg} fixed={fixed} to="/">
               Tessa Goldy - Real Estate Broker
             </HeaderWrapper.Link>
           </HeaderWrapper.Title>
           <HeaderWrapper.LinksContainer>
-            {/* <HeaderWrapper.List links="links">
-              {links.map((link) => (
-                <HeaderWrapper.Item key={link.to}>
-                  <HeaderWrapper.Anchor bg={bg} fixed={fixed} to={`${link.to}`}>
-                    {link.name}
-                  </HeaderWrapper.Anchor>
-                </HeaderWrapper.Item>
-              ))}
-            </HeaderWrapper.List> */}
-            {/* <HeaderWrapper.List>
-              <HeaderWrapper.Item>
-                <HeaderWrapper.Anchor to="/add-listing" special="true">
-                  Add Listing
-                </HeaderWrapper.Anchor>
-              </HeaderWrapper.Item>
-            </HeaderWrapper.List> */}
 
             <HeaderWrapper.List>
               <HeaderWrapper.Item>
@@ -93,8 +102,6 @@ const HeaderContainer = ({ bg, source }) => {
 
             <HeaderWrapper.List>
               <HeaderWrapper.Item>
-                {/* <HeaderWrapper.Anchor to="/login" special="true"> */}
-                {/* Login */}
                 {!isAuthenticated && (
                   <HeaderWrapper.Button
                     onClick={() => loginWithRedirect({})}
@@ -111,9 +118,6 @@ const HeaderContainer = ({ bg, source }) => {
                     Log out
                   </HeaderWrapper.Button>
                 )}
-                {/* {isAuthenticated && <UserMenu/> } */}
-                {/* {isAuthenticated && <Home/> }  */}
-                {/* </HeaderWrapper.Anchor> */}
               </HeaderWrapper.Item>
             </HeaderWrapper.List>
 
@@ -125,8 +129,10 @@ const HeaderContainer = ({ bg, source }) => {
               </HeaderWrapper.Item>
             </HeaderWrapper.List>
           </HeaderWrapper.LinksContainer>
+
         </HeaderWrapper.Container>
       </HeaderWrapper>
+
       {bg === "true" && (
         <Jumbotron>
           <Jumbotron.Left>
@@ -140,12 +146,12 @@ const HeaderContainer = ({ bg, source }) => {
           </Jumbotron.Right> */}
         </Jumbotron>
       )}
-      {/* <SideNavigationContainer
+      <SideNavigationContainer
         sideNavShown={sideNavShown}
         sideNavHidden={sideNavHidden}
         setSideNavHidden={setSideNavHidden}
         setSideNavShown={setSideNavShown}
-      /> */}
+      />
     </Banner>
   );
 };
