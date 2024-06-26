@@ -4,12 +4,10 @@ import "./index.css";
 import App from "./App";
 import store from "./redux/store";
 import { Provider } from "react-redux";
-
-
 import {createBrowserHistory} from 'history';
 import { getConfig } from "./config";
 import { Auth0Provider } from "@auth0/auth0-react";
-
+import { BrowserRouter } from "react-router-dom";
 
 const history = createBrowserHistory();
 
@@ -39,7 +37,9 @@ const providerConfig = {
 ReactDOM.render(
   <Auth0Provider {...providerConfig}>
   <Provider store={store}>
+    <BrowserRouter>
     <App />
+    </BrowserRouter>
   </Provider>
   </Auth0Provider>,
   document.getElementById("root")

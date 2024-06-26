@@ -38,11 +38,17 @@ import {
   ItemRight,
   Anchor,
   FeaturedInfo,
+  Button,
+  PropertyDetailImage,
 } from "./styles/property";
 
 const Property = ({ children, ...restProps }) => {
   return <Container {...restProps}>{children}</Container>;
 };
+
+Property.Button = ({ children, ...restProps }) => {
+  return <Button { ...restProps}>{children}</Button>
+}
 
 Property.Header = ({ children, ...restProps }) => {
   return <Header {...restProps}>{children}</Header>;
@@ -92,6 +98,7 @@ Property.Image = ({ children, source, ...restProps }) => {
   // return <Image src={`/images/houses/${source}`} {...restProps} />;
   return <Image src={source} {...restProps} />;
 };
+
 Property.Info = function PropertyInfo({ children, ...restProps }) {
   return <Info {...restProps}>{children}</Info>;
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   HeaderContainer,
   FeaturedListingContainer,
@@ -8,11 +8,14 @@ import {
 } from "../containers";
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <HeaderContainer bg="true" source="/images/banners/banner4.jpg" />
       <FeaturedListingContainer />
-
       <HomeContactContainer />
       <FooterContainer />
     </>

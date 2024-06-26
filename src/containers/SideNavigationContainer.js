@@ -1,6 +1,5 @@
 import React from "react";
 import { SideNavigation } from "../components";
-
 // import links from "../constants/routes/nav-links";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -68,39 +67,32 @@ const SideNavigationContainer = ({
               </SideNavigation.Anchor>
             </SideNavigation.ListItem> */}
 
-
-{isAuthenticated ? (
-   
-                <SideNavigation.ListItem>
-                  <SideNavigation.Anchor to="/addlisting" special="true">
-                    Add Listing
-                  </SideNavigation.Anchor>
-                </SideNavigation.ListItem>
-
+            {isAuthenticated ? (
+              <SideNavigation.ListItem>
+                <SideNavigation.Anchor to="/addlisting" special="true">
+                  Add Listing
+                </SideNavigation.Anchor>
+              </SideNavigation.ListItem>
             ) : null}
 
-
-              <SideNavigation.ListItem>
-                {!isAuthenticated && (
-                  <SideNavigation.Anchor
-                    onClick={() => loginWithRedirect({})}
-                    variant="default"
-                  >
-                    Log in
-                  </SideNavigation.Anchor>
-                )}
-                {isAuthenticated && (
-                  <SideNavigation.Anchor
-                    onClick={() => logoutWithRedirect({})}
-                    variant="default"
-                  >
-                    Log out
-                  </SideNavigation.Anchor>
-                )}
-              </SideNavigation.ListItem>
- 
-
-
+            <SideNavigation.ListItem>
+              {!isAuthenticated && (
+                <SideNavigation.Anchor
+                  onClick={() => loginWithRedirect({})}
+                  variant="default"
+                >
+                  Log in
+                </SideNavigation.Anchor>
+              )}
+              {isAuthenticated && (
+                <SideNavigation.Anchor
+                  onClick={() => logoutWithRedirect({})}
+                  variant="default"
+                >
+                  Log out
+                </SideNavigation.Anchor>
+              )}
+            </SideNavigation.ListItem>
           </SideNavigation.List>
         </SideNavigation.Links>
       </SideNavigation.Container>

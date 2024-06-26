@@ -127,7 +127,7 @@ export function* updateRentalWorkerSaga(action) {
     // let todo = action.payload.todo;
     // yield put({ type: SET_CURRENT_RENTAL, payload: todo });
 
-    const message = "The todo was updated successfully!";
+    const message = "The property was updated successfully!";
     yield put({ type: SET_MESSAGE, payload: message });
   } catch (e) {
     yield put({ type: API_ERRORED, payload: e });
@@ -141,7 +141,7 @@ export function* deleteRentalWorkerSaga(action) {
     const payload = action.payload;
     yield put({ type: DELETE_RENTAL_SUCCESSFUL, payload });
 
-    const message = "The todo was deleted successfully!";
+    const message = "The property was deleted successfully!";
     yield put({ type: SET_MESSAGE, payload: message });
     yield put({ type: SET_CURRENT_RENTAL, payload: null });
     yield put({ type: SET_CURRENT_INDEX, payload: -1 });
@@ -152,8 +152,6 @@ export function* deleteRentalWorkerSaga(action) {
 }
 
 export function* addRentalWorkerSaga(action) {
-  console.log('---- saga ----')
-  console.log(action)
   try {
     yield put({ type: IS_ADDING });
     const payload = yield call(addRental, action.payload);

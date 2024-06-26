@@ -3,15 +3,12 @@ import React, { useState, useEffect } from "react";
 import { HeaderWrapper, Banner, Jumbotron } from "../components";
 import {
   // AdvancedSearchContainer,
-  SideNavigationContainer
+  SideNavigationContainer,
 } from "./index";
 import { useAuth0 } from "@auth0/auth0-react";
 
-
-
 const HeaderContainer = ({ bg, source }) => {
-
-  const [activeLink, setActiveLink] = useState('home');
+  const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -21,17 +18,16 @@ const HeaderContainer = ({ bg, source }) => {
       } else {
         setScrolled(false);
       }
-    }
+    };
 
     window.addEventListener("scroll", onScroll);
 
     return () => window.removeEventListener("scroll", onScroll);
-  }, [])
+  }, []);
 
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
-  }
-
+  };
 
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
@@ -66,14 +62,17 @@ const HeaderContainer = ({ bg, source }) => {
     <Banner bg={bg} source={source}>
       <HeaderWrapper bg={bg} fixed={fixed}>
         <HeaderWrapper.Container>
-
           <HeaderWrapper.Title bg={bg}>
-            <HeaderWrapper.Link className="animate__animated animate__bounce" bg={bg} fixed={fixed} to="/">
+            <HeaderWrapper.Link
+              className="animate__animated animate__bounce"
+              bg={bg}
+              fixed={fixed}
+              to="/"
+            >
               Tessa Goldy - Real Estate Broker
             </HeaderWrapper.Link>
           </HeaderWrapper.Title>
           <HeaderWrapper.LinksContainer>
-
             <HeaderWrapper.List>
               <HeaderWrapper.Item>
                 <HeaderWrapper.Anchor to="/" special="true">
@@ -129,7 +128,6 @@ const HeaderContainer = ({ bg, source }) => {
               </HeaderWrapper.Item>
             </HeaderWrapper.List>
           </HeaderWrapper.LinksContainer>
-
         </HeaderWrapper.Container>
       </HeaderWrapper>
 

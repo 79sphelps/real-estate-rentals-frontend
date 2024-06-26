@@ -1,6 +1,28 @@
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 
+export const Button = styled.button`
+  box-sizing: border-box;
+  padding: 16px 8px;
+  border: none;
+  color: white;
+  // position: absolute;
+  background-color: var(--bs-blue);
+  // width: 25%;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 2px;
+  // text-transform: capitalize;
+  cursor: pointer;
+  margin: 4px 0px;
+  // transition: border, background-color, color var(--primary-transition-time);
+  &:hover {
+    background-color: var(--bs-white);
+    color: var(--bs-blue);
+    border: 1px solid var(--bs-blue);
+  }
+`;
+
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
@@ -116,6 +138,7 @@ export const ImageContainer = styled.div`
     width: 100%;
   }
 `;
+
 export const Image = styled.img`
   width: 100%;
   object-fit: contain;

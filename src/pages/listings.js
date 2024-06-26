@@ -40,6 +40,9 @@ const Listing = () => {
     dispatch(getRentals());
   }, [dispatch]);
 
+  console.log('--- properties ---');
+  console.log(properties)
+
   return (
     <>
       <HeaderContainer bg="false" />

@@ -37,21 +37,8 @@ const AddListing = () => {
     city: '',
     state: '',
     zip: '',
-    description_1: '',
-    description_2: '',
-    description_3: '',
-    description_4: '',
-    description_5: '',
-    description_6: '',
-    description_7: '',
-    image_1: '',
-    image_2: '',
-    image_3: '',
-    image_4: '',
-    image_5: '',
-    image_6: '',
-    image_7: '',
-    image_8: ''
+    description: '',
+    images: [],
   })
 
 //   useEffect(() => {
@@ -60,16 +47,16 @@ const AddListing = () => {
 
   const createProperty = (e) => {
     e.preventDefault();
-    let tImages = []
-    Object.entries(formData).forEach(([key, value]) => {
-        if (key.includes('image_')) {
-          let idx = key.split("_").pop();
-          formData[key] = value 
-          tImages.push(value)
-        } else {
-          formData[key] = value
-        }
-    })
+    // let tImages = []
+    // Object.entries(formData).forEach(([key, value]) => {
+    //     if (key.includes('image_')) {
+    //       let idx = key.split("_").pop();
+    //       formData[key] = value 
+    //       tImages.push(value)
+    //     } else {
+    //       formData[key] = value
+    //     }
+    // })
 
     var data = {
     //   id: id,
@@ -77,14 +64,9 @@ const AddListing = () => {
       city: formData.city,
       state: formData.state,
       zip: formData.zip,
-      images: tImages,
-      description_1: formData.description_1,
-      description_2: formData.description_2,
-      description_3: formData.description_3,
-      description_4: formData.description_4,
-      description_5: formData.description_5,
-      description_6: formData.description_6,
-      description_7: formData.description_7
+      // images: tImages,
+      images: formData.images,
+      description: formData.description,
     };
 
     dispatch(addRental(data));
@@ -117,7 +99,7 @@ const AddListing = () => {
 
               <Form>
 
-              <Form.FormGroup>
+              {/* <Form.FormGroup>
                 <Form.Input
                   type="text"
                   placeholder="image_1"
@@ -214,7 +196,9 @@ const AddListing = () => {
                     // onChange={(e) => setStreet(e.target.value)}
                     onChange={handleChange}
                   />
-                </Form.FormGroup>
+                </Form.FormGroup> */}
+
+
                 <Form.FormGroup>
                   <Form.Input
                     type="text"
@@ -249,17 +233,17 @@ const AddListing = () => {
 
                 <Form.FormGroup>
                   <Form.TextArea
-                    placeholder="description 1"
-                    name="description_1"
+                    placeholder="description"
+                    name="description"
                     id=""
                     cols="30"
                     rows="5"
-                    value={formData.description_1}
+                    value={formData.description}
                     onChange={handleChange}
                   ></Form.TextArea>
                 </Form.FormGroup>
 
-                <Form.FormGroup>
+                {/* <Form.FormGroup>
                   <Form.TextArea
                     placeholder="description 2"
                     name="description_2"
@@ -329,7 +313,7 @@ const AddListing = () => {
                     value={formData.description_7}
                     onChange={handleChange}
                   ></Form.TextArea>
-                </Form.FormGroup>
+                </Form.FormGroup> */}
 
                 <Form.FormGroup>
                   <Form.SubmitInput

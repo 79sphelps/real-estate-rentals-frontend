@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { 
+  // BrowserRouter as Router, 
+  Route, 
+  Routes 
+} from "react-router-dom";
 import {
   Home,
   // Agents,
@@ -18,13 +23,10 @@ import {
   // AdminAgentsList,
   // AgentListing,
 } from "./pages";
-
 import { CallbackPage } from "./pages/callback-page";
 import Loading from './components/loading';
 // import { Profile } from './components/profile';
-
 import { useAuth0 } from "@auth0/auth0-react";
-
 // import { createBrowserHistory } from "history";
 
 // const history = createBrowserHistory();
@@ -41,22 +43,19 @@ const App = () => {
   }
 
   return (
-    <Router>
-      <Switch>
+    // <Router>
+    //   <Switch>
+    <Routes>
         {/* <Route exact path="/" component={isAuthenticated ? CallbackPage : Home} /> */}
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" element={<Home />}/>
         {/* <Route exact path="/" component={Listings} /> */}
         {/* <Route exact path="/agents" component={Agents} /> */}
-
-        <Route exact path="/listings" component={Listings} />
+        <Route exact path="/listings" element={<Listings />} />
         {/* <Route exact path="/listing" component={ isAuthenticated ? Listings : Home} />  */}
-        <Route exact path="/addlisting" component={ isAuthenticated ? AddListing : Home} />
-
+        <Route exact path="/addlisting" element={ isAuthenticated ? <AddListing /> : <Home />} />
         {/* <Route exact path="/agent/:id" component={Agentt} /> */}
-
         {/* <Route exact path="/property/:id" component={Listing} /> */}
-        <Route exact path="/rentals/:id" component={Listing} />
-
+        <Route exact path="/rentals/:id" element={<Listing />} />
         {/* 
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
@@ -70,9 +69,11 @@ const App = () => {
         <Route exact path="/all-agents" component={AdminAgentsList} />
         <Route exact path="/mylisting" component={AgentListing} /> */}
 
-        <Route path="/callback" component={CallbackPage} />
-      </Switch>
-    </Router>
+        <Route path="/callback" element={<CallbackPage />} />
+        </Routes>
+      
+    //   </Switch>
+    // </Router> 
   );
 };
 
