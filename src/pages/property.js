@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import {
-//   getProperty,
-//   getFeaturedList,
-// } from "../redux/actions/propertiesAction";
 import { Section, Property, Form } from "../components";
 import {
   HeaderContainer,
   ContactAgentContainer,
-  //   PropertyRelatedContainer,
   FooterContainer,
 } from "../containers";
 import {
   PropertGallery,
   PropertyAddress,
-  // PropertyAmenities,
-  // PropertyFeatures,
   PropertyDescription,
 } from "../partials/property_features_partial.js";
 import { getRental, updateRental, deleteRental } from "../redux/actions";
@@ -57,7 +50,6 @@ const Listing = () => {
   useEffect(() => {
     dispatch(getRental(id));
   }, []);
-  // }, [dispatch, id, property]);
 
   const initializeFormData = () => {
     if (formData.address === "") {
@@ -78,11 +70,9 @@ const Listing = () => {
     };
 
     dispatch(updateRental(data));
-    // setSubmitted(true);
     setButtonText("Updating...");
     setTimeout(() => {
       setButtonText("Update Property");
-      // navigate("/");
     }, 2000);
   };
 
@@ -134,11 +124,9 @@ const Listing = () => {
             <Section.InnerContainer>
               <Property.Header>
                 <Property.HeaderLeft>
-                  {/* <Property.Title>{property.title}</Property.Title> */}
                   <Property.Title>{property.address}</Property.Title>
                   <Property.Location>
                     <Property.Icon name="fas fa-map-marker-alt"></Property.Icon>
-                    {/* <Property.Text>{property.location}</Property.Text> */}
                     <Property.Text>{property.city}</Property.Text>
                   </Property.Location>
                 </Property.HeaderLeft>
@@ -183,13 +171,11 @@ const Listing = () => {
             <Section.InnerContainer>
               <Property.Header>
                 <Property.HeaderLeft>
-                  {/* <Property.Title>{property.title}</Property.Title> */}
                   <Property.Title>
                     {(formData && formData.address) || property.address}
                   </Property.Title>
                   <Property.Location>
                     <Property.Icon name="fas fa-map-marker-alt"></Property.Icon>
-                    {/* <Property.Text>{property.location}</Property.Text> */}
                     <Property.Text>
                       {(formData && formData.city) || property.city}
                     </Property.Text>
@@ -246,7 +232,6 @@ const Listing = () => {
                         placeholder={formData.address}
                         name="address"
                         value={formData.address}
-                        // onChange={(e) => setStreet(e.target.value)}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -257,7 +242,6 @@ const Listing = () => {
                         placeholder={formData.city}
                         name="city"
                         value={formData.city}
-                        // onChange={(e) => setCity(e.target.value)}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -268,7 +252,6 @@ const Listing = () => {
                         placeholder={formData.state}
                         name="state"
                         value={formData.state}
-                        // onChange={(e) => setState(e.target.value)}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -278,9 +261,7 @@ const Listing = () => {
                         type="text"
                         placeholder={formData.zip}
                         name="zip"
-                        // value={formData && formData.zip ? formData.zip : ''}
                         value={formData.zip}
-                        // onChange={(e) => setZip(e.target.value)}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -301,11 +282,11 @@ const Listing = () => {
 
                     <Form.FormGroup>
                       {/* <Form.SubmitInput
-                    type="submit"
-                    value={btnText}
-                    disabled={btnText === "Updating..."}
-                    onClick={(e) => updateProperty(e)}
-                  /> */}
+                        type="submit"
+                        value={btnText}
+                        disabled={btnText === "Updating..."}
+                        onClick={(e) => updateProperty(e)}
+                      /> */}
                       <Property.Button
                         onClick={(e) => updateProperty(e)}
                         disabled={btnText === "Updating..."}

@@ -75,30 +75,6 @@ const HomeContactContainer = () => {
             </Section.FlexItem>
             <Section.FlexItem width="30%" bg="true">
               {!submitted ? (
-                //   <form onSubmit={saveGeneralMessage}>
-                //   <input
-                //     type="text"
-                //     value={name}
-                //     onChange={(e) => setName(e.target.value)}
-                //   />
-                //   <input
-                //     type="text"
-                //     value={email}
-                //     onChange={(e) => setEmail(e.target.value)}
-                //   />
-                //   <input
-                //     type="text"
-                //     value={phone}
-                //     onChange={(e) => setPhone(e.target.value)}
-                //   />
-                //   <input
-                //     type="text"
-                //     value={message}
-                //     onChange={(e) => setMessage(e.target.value)}
-                //   />
-                //   <button type="submit">Submit</button>
-                // </form>
-
                 <Form>
                   <Form.FormGroup>
                     <Form.Input

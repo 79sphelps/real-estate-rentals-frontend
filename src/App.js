@@ -1,6 +1,4 @@
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { 
-  // BrowserRouter as Router, 
   Route, 
   Routes 
 } from "react-router-dom";
@@ -27,9 +25,6 @@ import { CallbackPage } from "./pages/callback-page";
 import Loading from './components/loading';
 // import { Profile } from './components/profile';
 import { useAuth0 } from "@auth0/auth0-react";
-// import { createBrowserHistory } from "history";
-
-// const history = createBrowserHistory();
 
 const App = () => {
   const { isLoading, error, isAuthenticated } = useAuth0();
@@ -43,8 +38,6 @@ const App = () => {
   }
 
   return (
-    // <Router>
-    //   <Switch>
     <Routes>
         {/* <Route exact path="/" component={isAuthenticated ? CallbackPage : Home} /> */}
         <Route exact path="/" element={<Home />}/>
@@ -68,12 +61,8 @@ const App = () => {
         <Route exact path="/all-listing" component={AdminListingList} />
         <Route exact path="/all-agents" component={AdminAgentsList} />
         <Route exact path="/mylisting" component={AgentListing} /> */}
-
         <Route path="/callback" element={<CallbackPage />} />
         </Routes>
-      
-    //   </Switch>
-    // </Router> 
   );
 };
 

@@ -7,28 +7,16 @@ import {
   FooterContainer,
 } from "../containers";
 import { Section } from "../components";
-// import { getPropertyList } from "../redux/actions/propertiesAction";
 import {
   getRentals,
-  // deleteRentals,
-  // findByTitle,
-  // setSearchTitle,
-  // setCurrentIndex,
-  // setCurrentRental,
 } from "../redux/actions";
 import {
   selectRentals,
-  // selectCurrentRental,
-  // selectCurrentIndex,
-  // selectSearchTitle,
 } from "../redux/selectors";
 
 const Listing = () => {
   const dispatch = useDispatch();
-  // const listProperties = useSelector((state) => state.propertyList);
-  // const listProperties = useSelector(state => state.rentals)
   const listProperties = useSelector(selectRentals);
-  // const { properties } = listProperties;
   const properties = listProperties;
 
   useEffect(() => {
@@ -39,9 +27,6 @@ const Listing = () => {
     };
     dispatch(getRentals());
   }, [dispatch]);
-
-  console.log('--- properties ---');
-  console.log(properties)
 
   return (
     <>

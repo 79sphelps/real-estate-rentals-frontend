@@ -25,9 +25,9 @@ const HeaderContainer = ({ bg, source }) => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const onUpdateActiveLink = (value) => {
-    setActiveLink(value);
-  };
+  // const onUpdateActiveLink = (value) => {
+  //   setActiveLink(value);
+  // };
 
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
