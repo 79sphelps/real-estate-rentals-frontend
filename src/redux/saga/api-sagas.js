@@ -137,7 +137,7 @@ export function* updateRentalWorkerSaga(action) {
 export function* deleteRentalWorkerSaga(action) {
   try {
     yield put({ type: IS_DELETING });
-    yield call(deleteRental, action.payload.id);
+    yield call(deleteRental, action.payload);
     const payload = action.payload;
     yield put({ type: DELETE_RENTAL_SUCCESSFUL, payload });
 

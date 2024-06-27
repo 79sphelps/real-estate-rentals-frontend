@@ -22,28 +22,44 @@ import {
 import { getRental, addRental } from "../redux/actions";
 import { selectCurrentRental } from "../redux/selectors/index.js";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Image } from "../components/property/styles/property.js"
+import { Image } from "../components/property/styles/property.js";
+import { Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const AddListing = () => {
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-//   const property = useSelector(selectCurrentRental);
+  //   const property = useSelector(selectCurrentRental);
   // const [submitted, setSubmitted] = useState(false);
   const { isAuthenticated } = useAuth0();
-//   const { id } = useParams();
+  //   const { id } = useParams();
+
+  const [addPhotoFlag, setAddPhotoFlag] = useState(false);
+  const [currentImageToAdd, setCurrentImageToAdd] = useState("");
+  const [btnText, setButtonText] = useState("Add Listing");
 
   const [formData, setFormData] = useState({
-    address: '',
-    city: '',
-    state: '',
-    zip: '',
-    description: '',
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+    price: "",
+    description: "",
     images: [],
-  })
+    beds: "",
+    baths: "",
+    sqft: "",
+    type: "",
+    year: "",
+    heating: "",
+    cooling: "",
+    hoa: "",
+    parcelNumber: "",
+  });
 
-//   useEffect(() => {
-//     dispatch(getRental(id));
-//   }, [dispatch, id]);
+  //   useEffect(() => {
+  //     dispatch(getRental(id));
+  //   }, [dispatch, id]);
 
   const createProperty = (e) => {
     e.preventDefault();
@@ -51,7 +67,7 @@ const AddListing = () => {
     // Object.entries(formData).forEach(([key, value]) => {
     //     if (key.includes('image_')) {
     //       let idx = key.split("_").pop();
-    //       formData[key] = value 
+    //       formData[key] = value
     //       tImages.push(value)
     //     } else {
     //       formData[key] = value
@@ -59,7 +75,7 @@ const AddListing = () => {
     // })
 
     var data = {
-    //   id: id,
+      //   id: id,
       address: formData.address,
       city: formData.city,
       state: formData.state,
@@ -69,251 +85,365 @@ const AddListing = () => {
       description: formData.description,
     };
 
+    setButtonText("Creating Listing...");
     dispatch(addRental(data));
     // setSubmitted(true);
+    setTimeout(() => {
+      setButtonText("Creating Listing...");
+      navigate("/");
+    }, 2000);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
-  //   const singleProperty = useSelector((state) => state.property);
-  //   const featuredList = useSelector((state) => state.featuredProperty);
-  //   const { featured: featuredProperties } = featuredList;
-  //   const { property } = singleProperty;
+  const handleAddPhoto = (e) => {
+    e.preventDefault();
+    setAddPhotoFlag(true);
+  };
 
-  // To display featured properties except one with the id
-  //   const filteredFeatured = featuredProperties.filter(
-  //     (property) => property.id !== +id
-  //   );
+  const handleCancelAddPhoto = (e) => {
+    e.preventDefault();
+    setAddPhotoFlag(false);
+    setCurrentImageToAdd('');
+  };
+
+  const handleAddNewPhoto = (e) => {
+    e.preventDefault();
+    setCurrentImageToAdd(e.target.value);
+  };
+
+  const handleAddPhotoToNewListing = (e) => {
+    e.preventDefault();
+    let currentListingImages = formData.images;
+    currentListingImages.push(currentImageToAdd);
+    setFormData({ ...formData, images: currentListingImages });
+    setAddPhotoFlag(false);
+    setCurrentImageToAdd("");
+  };
 
   return (
     <>
       <HeaderContainer bg="false" />
-          <Section bgColor="--bs-fade-info">
-            <Section.InnerContainer>
+      <Section bgColor="--bs-fade-info">
+        <Section.InnerContainer>
+          <Form>
+            <Form.FormGroup>
+              <Form.Input
+                style={{
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                type="text"
+                placeholder="street"
+                name="address"
+                value={formData.address}
+                // onChange={(e) => setStreet(e.target.value)}
+                onChange={handleChange}
+              />
+            </Form.FormGroup>
 
-              <Form>
+            <Form.FormGroup>
+              <Form.Input
+                style={{
+                  width: "25%",
+                  display: "inline-block",
+                  marginRight: "20px",
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                type="text"
+                placeholder="city"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+              />
 
-              {/* <Form.FormGroup>
-                <Form.Input
-                  type="text"
-                  placeholder="image_1"
-                  name="image_1"
-                  value={formData.image_1}
-                  onChange={handleChange}
-                />
-                 <Image src={formData.image_1} height="100" />
-              </Form.FormGroup>
+              <Form.Input
+                style={{
+                  width: "10%",
+                  display: "inline-block",
+                  marginRight: "20px",
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                type="text"
+                placeholder="state"
+                name="state"
+                value={formData.state}
+                onChange={handleChange}
+              />
 
-              <Form.FormGroup>
-                <Form.Input
-                  type="text"
-                  placeholder="image_2"
-                  name="image_2"
-                  value={formData.image_2}
-                  onChange={handleChange}
-                />
-                 <Image src={formData.image_2} height="100" />
-              </Form.FormGroup>
+              <Form.Input
+                style={{
+                  width: "10%",
+                  display: "inline-block",
+                  marginRight: "20px",
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                type="text"
+                placeholder="zip"
+                name="zip"
+                value={formData.zip}
+                onChange={handleChange}
+              />
+            </Form.FormGroup>
 
-              <Form.FormGroup>
-                <Form.Input
-                  type="text"
-                  placeholder="image_3"
-                  name="image_3"
-                  value={formData.image_3}
-                  onChange={handleChange}
-                />
-                 <Image src={formData.image_3} height="100" />
-              </Form.FormGroup>
+            <Form.FormGroup>
+              <Form.Input
+                style={{
+                  width: "10%",
+                  display: "inline-block",
+                  marginRight: "20px",
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                type="text"
+                placeholder="price"
+                name="price"
+                value={formData.price}
+                onChange={handleChange}
+              />
+              <Form.Input
+                style={{
+                  width: "10%",
+                  display: "inline-block",
+                  marginRight: "20px",
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                type="text"
+                placeholder="beds"
+                name="beds"
+                value={formData.beds}
+                onChange={handleChange}
+              />
+              <Form.Input
+                style={{
+                  width: "10%",
+                  display: "inline-block",
+                  marginRight: "20px",
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                type="text"
+                placeholder="baths"
+                name="baths"
+                value={formData.baths}
+                onChange={handleChange}
+              />
 
-              <Form.FormGroup>
-                <Form.Input
-                  type="text"
-                  placeholder="image_4"
-                  name="image_4"
-                  value={formData.image_4}
-                  onChange={handleChange}
-                />
-                 <Image src={formData.image_4} height="100" />
-              </Form.FormGroup>
+              <Form.Input
+                style={{
+                  width: "10%",
+                  display: "inline-block",
+                  marginRight: "20px",
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                type="text"
+                placeholder="sqft"
+                name="sqft"
+                value={formData.sqft}
+                onChange={handleChange}
+              />
+              <Form.Input
+                style={{
+                  width: "10%",
+                  display: "inline-block",
+                  marginRight: "20px",
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                type="text"
+                placeholder="type"
+                name="type"
+                value={formData.type}
+                onChange={handleChange}
+              />
+              <Form.Input
+                style={{
+                  width: "10%",
+                  display: "inline-block",
+                  marginRight: "20px",
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                type="text"
+                placeholder="year"
+                name="year"
+                value={formData.year}
+                onChange={handleChange}
+              />
+            </Form.FormGroup>
 
-              <Form.FormGroup>
-                <Form.Input
-                  type="text"
-                  placeholder="image_5"
-                  name="image_5"
-                  value={formData.image_5}
-                  onChange={handleChange}
-                />
-                 <Image src={formData.image_5} height="100" />
-              </Form.FormGroup>
 
-              <Form.FormGroup>
-                <Form.Input
-                  type="text"
-                  placeholder="image_6"
-                  name="image_6"
-                  value={formData.image_6}
-                  onChange={handleChange}
-                />
-                 <Image src={formData.image_6} height="100" />
-              </Form.FormGroup>
+            <Form.FormGroup>
+              <Form.Input
+                style={{
+                  width: "10%",
+                  display: "inline-block",
+                  marginRight: "20px",
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                type="text"
+                placeholder="heating"
+                name="heating"
+                value={formData.heating}
+                onChange={handleChange}
+              />
+              <Form.Input
+                style={{
+                  width: "10%",
+                  display: "inline-block",
+                  marginRight: "20px",
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                type="text"
+                placeholder="cooling"
+                name="cooling"
+                value={formData.cooling}
+                onChange={handleChange}
+              />
 
-              <Form.FormGroup>
-                <Form.Input
-                  type="text"
-                  placeholder="image_7"
-                  name="image_7"
-                  value={formData.image_7}
-                  onChange={handleChange}
-                />
-                 <Image src={formData.image_7} height="100" />
-              </Form.FormGroup>
+              <Form.Input
+                style={{
+                  width: "10%",
+                  display: "inline-block",
+                  marginRight: "20px",
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                type="text"
+                placeholder="hoa"
+                name="hoa"
+                value={formData.hoa}
+                onChange={handleChange}
+              />
+              <Form.Input
+                style={{
+                  width: "10%",
+                  display: "inline-block",
+                  marginRight: "20px",
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                type="text"
+                placeholder="parcelNumber"
+                name="parcelNumber"
+                value={formData.parcelNumber}
+                onChange={handleChange}
+              />
+            </Form.FormGroup>
 
-              <Form.FormGroup>
-                <Form.Input
-                  type="text"
-                  placeholder="image_8"
-                  name="image_8"
-                  value={formData.image_8}
-                  onChange={handleChange}
-                />
-                 <Image src={formData.image_8} height="100" />
-              </Form.FormGroup>
+            <Form.FormGroup>
+              <Form.TextArea
+                style={{
+                  border: "1px solid var(--bs-blue)",
+                  borderRadius: "15px",
+                }}
+                placeholder="description"
+                name="description"
+                id=""
+                cols="30"
+                rows="5"
+                value={formData.description}
+                onChange={handleChange}
+              ></Form.TextArea>
+            </Form.FormGroup>
 
+            {formData &&
+              formData.images.map((image, idx) => {
+                return (
+                  <Row
+                    key={image + "." + idx}
+                    style={{
+                      marginBottom: "50px",
+                      border: "3px solid rgba(0, 0, 255, 0.5)",
+                      marginTop: "25px",
+                      borderRadius: "25px",
+                      padding: "20px",
+                    }}
+                  >
+                    <div>Image {idx} </div>
+                    <Form.FormGroup>
+                      <Form.Input
+                        type="text"
+                        name="image_"
+                        value={image}
+                        onChange={(e) => handleChange(e, idx)}
+                        // onClick={initializeFormData}
+                      />
+                      <Image
+                        src={image}
+                        height="200"
+                        style={{
+                          justifyContent: "left",
+                          marginTop: "20px",
+                        }}
+                      />
+                    </Form.FormGroup>
+                  </Row>
+                );
+              })}
+
+            {addPhotoFlag && (
+              <Row
+                style={{
+                  marginBottom: "50px",
+                  border: "3px solid rgba(0, 0, 255, 0.5)",
+                  marginTop: "25px",
+                  borderRadius: "25px",
+                  padding: "20px",
+                }}
+              >
+                <div>Image: </div>
                 <Form.FormGroup>
                   <Form.Input
+                    style={{ marginBottom: "20px" }}
                     type="text"
-                    placeholder="street"
-                    name="address"
-                    value={formData.address}
-                    // onChange={(e) => setStreet(e.target.value)}
-                    onChange={handleChange}
+                    name="image_"
+                    onChange={(e) => handleAddNewPhoto(e)}
                   />
-                </Form.FormGroup> */}
-
-
-                <Form.FormGroup>
-                  <Form.Input
-                    type="text"
-                    placeholder="city"
-                    name="city"
-                    value={formData.city}
-                    // onChange={(e) => setCity(e.target.value)}
-                    onChange={handleChange}
-                  />
+                  { currentImageToAdd ? ( 
+                    <Image
+                      src={currentImageToAdd}
+                      height="200"
+                      style={{
+                        justifyContent: "left",
+                      }
+                    }
+                    />
+                  ) : null }
+                  
+                  <Property.Button
+                    style={{ marginRight: "20px" }}
+                    onClick={(e) => handleAddPhotoToNewListing(e)}
+                  >
+                    Add
+                  </Property.Button>
+                  <Property.Button onClick={(e) => handleCancelAddPhoto(e)}>
+                    Cancel
+                  </Property.Button>
                 </Form.FormGroup>
-                <Form.FormGroup>
-                  <Form.Input
-                    type="text"
-                    placeholder="state"
-                    name="state"
-                    value={formData.state}
-                    // onChange={(e) => setState(e.target.value)}
-                    onChange={handleChange}
-                  />
-                </Form.FormGroup>
-                <Form.FormGroup>
-                  <Form.Input
-                    type="text"
-                    placeholder="zip"
-                    name="zip"
-                    // value={formData && formData.zip ? formData.zip : ''}
-                    value={formData.zip}
-                    // onChange={(e) => setZip(e.target.value)}
-                    onChange={handleChange}
-                  />
-                </Form.FormGroup>
+              </Row>
+            )}
 
+            {!addPhotoFlag ? (
+              <>
                 <Form.FormGroup>
-                  <Form.TextArea
-                    placeholder="description"
-                    name="description"
-                    id=""
-                    cols="30"
-                    rows="5"
-                    value={formData.description}
-                    onChange={handleChange}
-                  ></Form.TextArea>
+                  <Property.Button onClick={(e) => handleAddPhoto(e)}>
+                    Add Photo
+                  </Property.Button>
                 </Form.FormGroup>
-
-                {/* <Form.FormGroup>
-                  <Form.TextArea
-                    placeholder="description 2"
-                    name="description_2"
-                    id=""
-                    cols="30"
-                    rows="5"
-                    value={formData.description_2}
-                    onChange={handleChange}
-                  ></Form.TextArea>
-                </Form.FormGroup>
-
-                <Form.FormGroup>
-                  <Form.TextArea
-                    placeholder="description 3"
-                    name="description_3"
-                    id=""
-                    cols="30"
-                    rows="5"
-                    value={formData.description_3}
-                    onChange={handleChange}
-                  ></Form.TextArea>
-                </Form.FormGroup>
-
-                <Form.FormGroup>
-                  <Form.TextArea
-                    placeholder="description 4"
-                    name="description_4"
-                    id=""
-                    cols="30"
-                    rows="5"
-                    value={formData.description_4}
-                    onChange={handleChange}
-                  ></Form.TextArea>
-                </Form.FormGroup>
-
-                <Form.FormGroup>
-                  <Form.TextArea
-                    placeholder="description 5"
-                    name="description_5"
-                    id=""
-                    cols="30"
-                    rows="5"
-                    value={formData.description_5}
-                    onChange={handleChange}
-                  ></Form.TextArea>
-                </Form.FormGroup>
-
-                <Form.FormGroup>
-                  <Form.TextArea
-                    placeholder="description 6"
-                    name="description_6"
-                    id=""
-                    cols="30"
-                    rows="5"
-                    value={formData.description_6}
-                    onChange={handleChange}
-                  ></Form.TextArea>
-                </Form.FormGroup>
-
-                <Form.FormGroup>
-                  <Form.TextArea
-                    placeholder="description 7"
-                    name="description_7"
-                    id=""
-                    cols="30"
-                    rows="5"
-                    value={formData.description_7}
-                    onChange={handleChange}
-                  ></Form.TextArea>
-                </Form.FormGroup> */}
 
                 <Form.FormGroup>
                   <Form.SubmitInput
@@ -322,9 +452,11 @@ const AddListing = () => {
                     onClick={(e) => createProperty(e)}
                   />
                 </Form.FormGroup>
-              </Form>
-            </Section.InnerContainer>
-          </Section>
+              </>
+            ) : null}
+          </Form>
+        </Section.InnerContainer>
+      </Section>
       <FooterContainer />
     </>
   );
