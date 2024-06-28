@@ -12,12 +12,18 @@ import {
   PropertyAddress,
   PropertyDescription,
 } from "../partials/property_features_partial.js";
-import { getRentals, getRental, updateRental, deleteRental } from "../redux/actions";
+import {
+  getRentals,
+  getRental,
+  updateRental,
+  deleteRental,
+} from "../redux/actions";
 import { selectCurrentRental } from "../redux/selectors/index.js";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Image } from "../components/property/styles/property.js";
 import { Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
 
 const Listing = () => {
   const navigate = useNavigate();
@@ -116,6 +122,22 @@ const Listing = () => {
     }
   };
 
+  const [show, setShowDeleteModal] = useState(false);
+
+  const handleCloseDeleteModal = () => {
+    setShowDeleteModal(false);
+  };
+
+  const handleDeleteModal = (e, idx) => {
+    e.preventDefault();
+    setShowDeleteModal(true);
+  };
+
+  const handleCancelDeleteModal = (e) => {
+    e.preventDefault();
+    setShowDeleteModal(false);
+  };
+
   return (
     <>
       <HeaderContainer bg="false" />
@@ -192,7 +214,8 @@ const Listing = () => {
                         key={image + "." + idx}
                         style={{
                           marginBottom: "50px",
-                          border: "3px solid rgba(0, 0, 255, 0.5)",
+                          // border: "3px solid rgba(0, 0, 255, 0.5)",
+                          border: "3px solid #1b69dfed",
                           marginTop: "25px",
                           borderRadius: "25px",
                           padding: "20px",
@@ -216,7 +239,13 @@ const Listing = () => {
                             }}
                           />
                           <Property.Button
-                            onClick={(e) => handleDeletePhoto(e, idx)}
+                            // onClick={(e) => handleDeletePhoto(e, idx)}
+                            onClick={(e) => handleDeleteModal(e, idx)}
+                            style={{
+                              border: "1px solid var(--bs-blue)",
+                              borderRadius: "10px",
+                              width: "20%",
+                            }}
                           >
                             Delete
                           </Property.Button>
@@ -291,19 +320,103 @@ const Listing = () => {
                       <Property.Button
                         onClick={(e) => updateProperty(e)}
                         disabled={btnText === "Updating..."}
-                        style={{ marginRight: "20px" }}
+                        style={{
+                          marginRight: "20px",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "10px",
+                          width: "20%",
+                        }}
                       >
                         {btnText}
                       </Property.Button>
                       <Property.Button
-                        onClick={(e) => handleDelete(e)}
-                        style={{ marginRight: "20px" }}
+                        onClick={(e) => handleDeleteModal(e)}
+                        style={{
+                          marginRight: "20px",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "10px",
+                          width: "20%",
+                        }}
                       >
                         Delete Property
                       </Property.Button>
-                      <Property.Button onClick={handleCancel}>
+                      <Property.Button
+                        onClick={handleCancel}
+                        style={{
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "10px",
+                          width: "20%",
+                        }}
+                      >
                         Cancel
                       </Property.Button>
+                    </Form.FormGroup>
+
+                    <Form.FormGroup>
+                      <Modal
+                        show={show}
+                        onHide={handleCloseDeleteModal}
+                        centered="true"
+                        scrollable={true}
+                        style={{
+                          margin: "100px",
+                          padding: "100px",
+                          height: "90%",
+                          width: "90%",
+                          // border: "1px solid var(--bs-blue)",
+                          border: "1px solid #1b69dfed",
+                          borderRadius: "10px",
+                        }}
+                      >
+                        <Modal.Header closeButton>
+                          <Modal.Title
+                            style={{
+                              color: "black",
+                              fontSize: "1.5rem",
+                              marginLeft: "100px",
+                            }}
+                          >
+                            Do you really want to delete this property?
+                          </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body
+                          style={{
+                            color: "black",
+                            fontSize: "1.3rem",
+                            marginLeft: "100px",
+                          }}
+                        >
+                          <div>{formData && formData.address}</div>
+                        </Modal.Body>
+                        <Modal.Footer>
+                          <Property.Button
+                            variant="secondary"
+                            onClick={handleDelete}
+                            style={{
+                              marginLeft: "100px",
+                              marginTop: "20px",
+                              marginRight: "20px",
+                              border: "1px solid var(--bs-blue)",
+                              borderRadius: "10px",
+                              width: "20%",
+                            }}
+                          >
+                            Delete Property
+                          </Property.Button>
+                          <Property.Button
+                            variant="secondary"
+                            onClick={handleCancelDeleteModal}
+                            style={{
+                              // marginRight: "20px",
+                              border: "1px solid var(--bs-blue)",
+                              borderRadius: "10px",
+                              width: "20%",
+                            }}
+                          >
+                            Cancel
+                          </Property.Button>
+                        </Modal.Footer>
+                      </Modal>
                     </Form.FormGroup>
                   </>
                 )}

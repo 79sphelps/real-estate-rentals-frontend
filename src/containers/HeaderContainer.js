@@ -140,8 +140,8 @@ const HeaderContainer = ({ bg, source }) => {
             </Jumbotron.Text>
           </Jumbotron.Left>
           {/* <Jumbotron.Right> */}
-            {/* <AdvancedSearchContainer /> */}
-            {/* <img src='https://jls-documents-prod.s3.amazonaws.com/public/users/300002725-3204b409/Tessa%20body%20shot_clipped_rev_2.png' 
+          {/* <AdvancedSearchContainer /> */}
+          {/* <img src='https://jls-documents-prod.s3.amazonaws.com/public/users/300002725-3204b409/Tessa%20body%20shot_clipped_rev_2.png' 
               style={{ width: "72%", }}
             /> */}
           {/* </Jumbotron.Right> */}

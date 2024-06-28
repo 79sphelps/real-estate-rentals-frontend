@@ -110,7 +110,7 @@ const AddListing = () => {
   const handleCancelAddPhoto = (e) => {
     e.preventDefault();
     setAddPhotoFlag(false);
-    setCurrentImageToAdd('');
+    setCurrentImageToAdd("");
   };
 
   const handleAddNewPhoto = (e) => {
@@ -125,6 +125,10 @@ const AddListing = () => {
     setFormData({ ...formData, images: currentListingImages });
     setAddPhotoFlag(false);
     setCurrentImageToAdd("");
+  };
+
+  const handleCancel = () => {
+    navigate("/");
   };
 
   return (
@@ -283,7 +287,6 @@ const AddListing = () => {
               />
             </Form.FormGroup>
 
-
             <Form.FormGroup>
               <Form.Input
                 style={{
@@ -413,24 +416,36 @@ const AddListing = () => {
                     name="image_"
                     onChange={(e) => handleAddNewPhoto(e)}
                   />
-                  { currentImageToAdd ? ( 
+                  {currentImageToAdd ? (
                     <Image
                       src={currentImageToAdd}
                       height="200"
                       style={{
                         justifyContent: "left",
-                      }
-                    }
+                      }}
                     />
-                  ) : null }
-                  
+                  ) : null}
+
                   <Property.Button
-                    style={{ marginRight: "20px" }}
+                    style={{
+                      marginRight: "20px",
+                      border: "1px solid var(--bs-blue)",
+                      borderRadius: "10px",
+                      width: "10%",
+                    }}
                     onClick={(e) => handleAddPhotoToNewListing(e)}
                   >
                     Add
                   </Property.Button>
-                  <Property.Button onClick={(e) => handleCancelAddPhoto(e)}>
+                  <Property.Button
+                    onClick={(e) => handleCancelAddPhoto(e)}
+                    style={{
+                      marginRight: "20px",
+                      border: "1px solid var(--bs-blue)",
+                      borderRadius: "10px",
+                      width: "10%",
+                    }}
+                  >
                     Cancel
                   </Property.Button>
                 </Form.FormGroup>
@@ -440,17 +455,56 @@ const AddListing = () => {
             {!addPhotoFlag ? (
               <>
                 <Form.FormGroup>
-                  <Property.Button onClick={(e) => handleAddPhoto(e)}>
+                  <Property.Button
+                    onClick={(e) => handleAddPhoto(e)}
+                    style={{
+                      marginRight: "20px",
+                      border: "1px solid var(--bs-blue)",
+                      borderRadius: "10px",
+                      width: "10%",
+                      display: "inline-block",
+                    }}
+                  >
                     Add Photo
                   </Property.Button>
-                </Form.FormGroup>
 
-                <Form.FormGroup>
-                  <Form.SubmitInput
+                  <Property.Button
+                    onClick={(e) => createProperty(e)}
+                    style={{
+                      marginRight: "20px",
+                      border: "1px solid var(--bs-blue)",
+                      borderRadius: "10px",
+                      width: "20%",
+                      display: "inline-block",
+                    }}
+                  >
+                    Create Listing
+                  </Property.Button>
+
+                  <Property.Button
+                    onClick={(e) => handleCancel(e)}
+                    style={{
+                      marginRight: "20px",
+                      border: "1px solid var(--bs-blue)",
+                      borderRadius: "10px",
+                      width: "20%",
+                      display: "inline-block",
+                    }}
+                  >
+                    Cancel
+                  </Property.Button>
+
+                  {/* <Form.SubmitInput
                     type="submit"
                     value="Add Rental Property"
                     onClick={(e) => createProperty(e)}
-                  />
+                    style={{ 
+                      marginRight: "20px",   
+                      border: "1px solid var(--bs-blue)",
+                      borderRadius: "10px",
+                      width: "10%"
+                    }}
+                  /> */}
                 </Form.FormGroup>
               </>
             ) : null}
