@@ -20,7 +20,8 @@ import {
 } from "../redux/actions";
 import { selectCurrentRental } from "../redux/selectors/index.js";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Image } from "../components/property/styles/property.js";
+import { AdminEditPhotoCard, Image } from "../components/property/styles/property.js";
+
 import { Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
@@ -156,7 +157,7 @@ const Listing = () => {
                 <Property.HeaderRight>
                   <Property.Title>
                     Price {"   "}
-                    {property.rent}
+                    {property.price}
                     <Property.Span>
                       {property.type === "rental" ? "/ Month" : ""}
                     </Property.Span>
@@ -177,6 +178,11 @@ const Listing = () => {
                       zip: property.zip,
                     }}
                   />
+
+
+
+
+
                   <PropertyDescription description={property.description} />
                 </Property.Left>
                 <Property.Right>
@@ -214,7 +220,6 @@ const Listing = () => {
                         key={image + "." + idx}
                         style={{
                           marginBottom: "50px",
-                          // border: "3px solid rgba(0, 0, 255, 0.5)",
                           border: "3px solid #1b69dfed",
                           marginTop: "25px",
                           borderRadius: "25px",
@@ -238,17 +243,11 @@ const Listing = () => {
                               marginTop: "20px",
                             }}
                           />
-                          <Property.Button
-                            // onClick={(e) => handleDeletePhoto(e, idx)}
+                          <Property.AdminEditPhotoCardButton
                             onClick={(e) => handleDeleteModal(e, idx)}
-                            style={{
-                              border: "1px solid var(--bs-blue)",
-                              borderRadius: "10px",
-                              width: "20%",
-                            }}
                           >
                             Delete
-                          </Property.Button>
+                          </Property.AdminEditPhotoCardButton>
                         </Form.FormGroup>
                       </Row>
                     );
@@ -317,39 +316,28 @@ const Listing = () => {
                         disabled={btnText === "Updating..."}
                         onClick={(e) => updateProperty(e)}
                       /> */}
-                      <Property.Button
+
+                      <Property.AdminEditPhotoCardButton
                         onClick={(e) => updateProperty(e)}
                         disabled={btnText === "Updating..."}
-                        style={{
-                          marginRight: "20px",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "10px",
-                          width: "20%",
-                        }}
-                      >
-                        {btnText}
-                      </Property.Button>
-                      <Property.Button
+                        style={{ marginRight: "20px" }}
+                        >
+                          {btnText}
+                      </Property.AdminEditPhotoCardButton>
+
+                      <Property.AdminEditPhotoCardButton
                         onClick={(e) => handleDeleteModal(e)}
-                        style={{
-                          marginRight: "20px",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "10px",
-                          width: "20%",
-                        }}
-                      >
-                        Delete Property
-                      </Property.Button>
-                      <Property.Button
+                        style={{ marginRight: "20px" }}
+                        >
+                          Delete Property
+                      </Property.AdminEditPhotoCardButton>
+
+                      <Property.AdminEditPhotoCardButton
                         onClick={handleCancel}
-                        style={{
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "10px",
-                          width: "20%",
-                        }}
-                      >
-                        Cancel
-                      </Property.Button>
+                        style={{ marginRight: "20px" }}
+                        >
+                          Cancel
+                      </Property.AdminEditPhotoCardButton>
                     </Form.FormGroup>
 
                     <Form.FormGroup>
@@ -389,32 +377,23 @@ const Listing = () => {
                           <div>{formData && formData.address}</div>
                         </Modal.Body>
                         <Modal.Footer>
-                          <Property.Button
+                          <Property.AdminEditPhotoCardButton
                             variant="secondary"
                             onClick={handleDelete}
-                            style={{
+                            style={{ 
                               marginLeft: "100px",
                               marginTop: "20px",
                               marginRight: "20px",
-                              border: "1px solid var(--bs-blue)",
-                              borderRadius: "10px",
-                              width: "20%",
                             }}
-                          >
-                            Delete Property
-                          </Property.Button>
-                          <Property.Button
+                            >
+                              Delete Property
+                          </Property.AdminEditPhotoCardButton>
+                          <Property.AdminEditPhotoCardButton
                             variant="secondary"
                             onClick={handleCancelDeleteModal}
-                            style={{
-                              // marginRight: "20px",
-                              border: "1px solid var(--bs-blue)",
-                              borderRadius: "10px",
-                              width: "20%",
-                            }}
-                          >
-                            Cancel
-                          </Property.Button>
+                            >
+                              Cancel
+                          </Property.AdminEditPhotoCardButton>
                         </Modal.Footer>
                       </Modal>
                     </Form.FormGroup>

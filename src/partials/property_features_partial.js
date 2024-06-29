@@ -160,6 +160,65 @@ export const PropertyAddress = ({ address }) => {
     </Property.Info>
   );
 };
+
+export const PropertyAdditionalDetails = ({ address }) => {
+  const [addressShown, setContentShown] = useState(false);
+
+  const contentHandler = () => {
+    setContentShown((previousState) => !previousState);
+  };
+  return (
+    <Property.Info>
+      <Property.InfoHeader onClick={contentHandler}>
+        <Property.InfoTitle>Additional Details</Property.InfoTitle>
+        <Property.Icon
+          name={addressShown ? "fas fa-chevron-up" : "fas fa-chevron-down"}
+          info></Property.Icon>
+      </Property.InfoHeader>
+      <Property.InfoContent contentShown={addressShown}>
+        <Property.InfoItem>
+          <Property.Text>
+            <Property.Span>Price : </Property.Span>
+            {address.street}
+          </Property.Text>
+          <Property.Text>
+            <Property.Span>City : </Property.Span>
+            {address.city}
+          </Property.Text>
+        </Property.InfoItem>
+        <Property.InfoItem>
+          {/* <Property.Text>
+            <Property.Span>County/Sub-County : </Property.Span>
+            {address.county}
+          </Property.Text> */}
+          <Property.Text>
+            <Property.Span>State : </Property.Span>
+            {address.state}
+          </Property.Text>
+          {/* <Property.Text>
+            <Property.Span>Street : </Property.Span>
+            {address.street}
+          </Property.Text> */}
+          <Property.Text>
+            <Property.Span>Zip : </Property.Span>
+            {address.zip}
+          </Property.Text>
+        </Property.InfoItem>
+        {/* <Property.InfoItem>
+          <Property.Text>
+            <Property.Span>Area : </Property.Span>
+            {address.area}
+          </Property.Text>
+        </Property.InfoItem> */}
+      </Property.InfoContent>
+    </Property.Info>
+  );
+};
+
+
+
+
+
 export const PropertyDescription = ({ description }) => {
   const [descriptionShown, setContentShown] = useState(false);
 

@@ -40,6 +40,7 @@ import {
   FeaturedInfo,
   Button,
   PropertyDetailImage,
+  AdminEditPhotoCardButton,
 } from "./styles/property";
 
 const Property = ({ children, ...restProps }) => {
@@ -98,6 +99,14 @@ Property.Image = ({ children, source, ...restProps }) => {
   // return <Image src={`/images/houses/${source}`} {...restProps} />;
   return <Image src={source} {...restProps} />;
 };
+
+
+
+Property.AdminEditPhotoCardButton = ({ children, ...restProps }) => {
+  return <AdminEditPhotoCardButton {...restProps}>{children}</AdminEditPhotoCardButton>;
+};
+
+
 
 Property.Info = function PropertyInfo({ children, ...restProps }) {
   return <Info {...restProps}>{children}</Info>;

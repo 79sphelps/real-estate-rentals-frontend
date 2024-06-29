@@ -23,6 +23,26 @@ export const Button = styled.button`
   }
 `;
 
+export const AdminEditPhotoCardButton = styled.button`
+  border: 1px solid var(--bs-blue);
+  border-radius: 10px;
+  width: 20%;
+
+  box-sizing: border-box;
+  padding: 16px 8px;
+  color: white;
+  background-color: var(--bs-blue);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 4px 0px;
+  &:hover {
+    background-color: var(--bs-white);
+    color: var(--bs-blue);
+    border: 1px solid var(--bs-blue);
+  }
+`;
+
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
