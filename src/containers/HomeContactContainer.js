@@ -120,22 +120,13 @@ const HomeContactContainer = () => {
                   </Form.FormGroup>
                 </Form>
               ) : (
-                <Section.Flex>
-                  <Section.FlexItem width="50%">
-                    <Section.SubTitle>We Will Get In Touch</Section.SubTitle>
+                <Section.Flex style={{ background: "white", padding: "20px" }}>
+                  <Section.FlexItem width="100%">
+                    <Section.SubTitle>We Will Get In Touch!</Section.SubTitle>
                     <Section.Text>
                       Thank you for submitting your contact message.
                     </Section.Text>
                   </Section.FlexItem>
-                  {/* <Section.FlexItem width="50%">
-                  <Section.SubTitle>
-                    Get Instant Support From Us
-                  </Section.SubTitle>
-                  <Section.Text>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Non,
-                  </Section.Text>
-                </Section.FlexItem> */}
                 </Section.Flex>
               )}
             </Section.FlexItem>

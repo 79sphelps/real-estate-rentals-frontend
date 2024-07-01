@@ -5,7 +5,6 @@ import { createGeneralMessage } from "../redux/actions";
 
 const ContactAgentContainer = ({ property }) => {
   const dispatch = useDispatch();
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -62,29 +61,6 @@ const ContactAgentContainer = ({ property }) => {
       </Property.ContactHeader>
       <Property.ContactContent>
         <Property.ContactContainer>
-          {/* <Form>
-            <Form.FormGroup>
-              <Form.Input type="text" placeholder="Name" />
-            </Form.FormGroup>
-            <Form.FormGroup>
-              <Form.Input type="text" placeholder="Email" />
-            </Form.FormGroup>
-
-            <Form.FormGroup>
-              <Form.Input type="text" placeholder="Phone Number" />
-            </Form.FormGroup>
-            <Form.FormGroup>
-              <Form.TextArea
-                placeholder="I would love to know more about this property"
-                name=""
-                id=""
-                cols="24"
-                rows="8"></Form.TextArea>
-            </Form.FormGroup>
-            <Form.FormGroup>
-              <Form.SubmitInput type="submit" value="Send Message" />
-            </Form.FormGroup>
-          </Form> */}
           {!submitted ? (
             <Form>
               <Form.FormGroup>
@@ -132,21 +108,13 @@ const ContactAgentContainer = ({ property }) => {
             </Form>
           ) : (
             <Section.Flex>
-              <Section.FlexItem width="50%">
+              {/* <Section.FlexItem width="50%"> */}
+              <Section.FlexItem width="100%">
                 <Section.SubTitle>
                   Thank you for submitting your contact message.
                 </Section.SubTitle>
                 <Section.Text>I will get in touch shortly.</Section.Text>
               </Section.FlexItem>
-              {/* <Section.FlexItem width="50%">
-                  <Section.SubTitle>
-                    Get Instant Support From Us
-                  </Section.SubTitle>
-                  <Section.Text>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Non,
-                  </Section.Text>
-                </Section.FlexItem> */}
             </Section.Flex>
           )}
         </Property.ContactContainer>

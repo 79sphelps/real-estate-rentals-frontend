@@ -162,11 +162,6 @@ const Listing = () => {
     <>
       <HeaderContainer bg="false" />
 
-
-
-
-
-
       {property && property.address ? (
         !isAuthenticated ? (
           <Section bgColor="--bs-fade-info">
@@ -203,12 +198,7 @@ const Listing = () => {
                       zip: property.zip,
                     }}
                   />
-
-                  
                   <PropertyAdditionalDetails property={property} />
-
-
-
                   <PropertyDescription description={property.description} />
                 </Property.Left>
                 <Property.Right>
