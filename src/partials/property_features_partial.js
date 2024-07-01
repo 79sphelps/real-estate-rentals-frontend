@@ -175,6 +175,7 @@ export const PropertyAdditionalDetails = ({ property }) => {
           name={additionalDetailsShown ? "fas fa-chevron-up" : "fas fa-chevron-down"}
           info></Property.Icon>
       </Property.InfoHeader>
+
       <Property.InfoContent contentShown={additionalDetailsShown}>
         <Property.InfoItem>
           <Property.Text>
@@ -196,7 +197,36 @@ export const PropertyAdditionalDetails = ({ property }) => {
             {property.sqft}
           </Property.Text>
         </Property.InfoItem>
-
+        <Property.InfoItem>
+          <Property.Text>
+            <Property.Span>Type : </Property.Span>
+            {property.type}
+          </Property.Text>
+          <Property.Text>
+            <Property.Span>Year Built : </Property.Span>
+            {property.year}
+          </Property.Text>
+        </Property.InfoItem>
+        <Property.InfoItem>
+          <Property.Text>
+            <Property.Span>Heating : </Property.Span>
+            {property.heating}
+          </Property.Text>
+          <Property.Text>
+            <Property.Span>Cooling : </Property.Span>
+            {property.cooling}
+          </Property.Text>
+        </Property.InfoItem>
+        <Property.InfoItem>
+          <Property.Text>
+            <Property.Span>HOA : </Property.Span>
+            {property.hoa}
+          </Property.Text>
+          <Property.Text>
+            <Property.Span>Parcel Number : </Property.Span>
+            {property.parcelNumber}
+          </Property.Text>
+        </Property.InfoItem>
       </Property.InfoContent>
     </Property.Info>
   );
