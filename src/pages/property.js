@@ -9,6 +9,7 @@ import {
 } from "../containers";
 import {
   PropertGallery,
+  PropertyAdditionalDetails,
   PropertyAddress,
   PropertyDescription,
 } from "../partials/property_features_partial.js";
@@ -20,20 +21,20 @@ import {
 } from "../redux/actions";
 import { selectCurrentRental } from "../redux/selectors/index.js";
 import { useAuth0 } from "@auth0/auth0-react";
-import { AdminEditPhotoCard, Image } from "../components/property/styles/property.js";
-
+import { Image } from "../components/property/styles/property.js";
 import { Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import Loading from "../components/loading";
 
 const Listing = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const property = useSelector(selectCurrentRental);
-  // const [submitted, setSubmitted] = useState(false);
   const { isAuthenticated } = useAuth0();
   const { id } = useParams();
   const [btnText, setButtonText] = useState("Update Property");
+  const [show, setShowDeleteModal] = useState(false);
 
   const [formData, setFormData] = useState({
     address: "",
@@ -42,9 +43,20 @@ const Listing = () => {
     zip: "",
     description: "",
     images: [],
+    price: "",
+    beds: "",
+    baths: "",
+    sqft: "",
+    type: "",
+    year: "",
+    heating: "",
+    cooling: "",
+    hoa: "",
+    parcelNumber: "",
   });
 
   useEffect(() => {
+    dispatch(getRental(id));
     window.scrollTo(0, 0);
   }, []);
 
@@ -53,10 +65,6 @@ const Listing = () => {
       setFormData(property);
     }, 1000);
   }, [property]);
-
-  useEffect(() => {
-    dispatch(getRental(id));
-  }, []);
 
   const initializeFormData = () => {
     if (formData.address === "") {
@@ -74,8 +82,17 @@ const Listing = () => {
       zip: formData.zip,
       images: formData.images,
       description: formData.description,
+      price: formData.price,
+      beds: formData.beds,
+      baths: formData.baths,
+      sqft: formData.sqft,
+      type: formData.type,
+      year: formData.year,
+      heating: formData.heating,
+      cooling: formData.cooling,
+      hoa: formData.hoa,
+      parcelNumber: formData.parcelNumber,
     };
-
     dispatch(updateRental(data));
     setButtonText("Updating...");
     setTimeout(() => {
@@ -123,8 +140,6 @@ const Listing = () => {
     }
   };
 
-  const [show, setShowDeleteModal] = useState(false);
-
   const handleCloseDeleteModal = () => {
     setShowDeleteModal(false);
   };
@@ -139,9 +154,19 @@ const Listing = () => {
     setShowDeleteModal(false);
   };
 
+  if (!formData || formData.address === "") {
+    return <Loading />
+  }
+
   return (
     <>
       <HeaderContainer bg="false" />
+
+
+
+
+
+
       {property && property.address ? (
         !isAuthenticated ? (
           <Section bgColor="--bs-fade-info">
@@ -179,7 +204,8 @@ const Listing = () => {
                     }}
                   />
 
-
+                  
+                  <PropertyAdditionalDetails property={property} />
 
 
 
@@ -255,7 +281,7 @@ const Listing = () => {
 
                 {formData && (
                   <>
-                    <Form.FormGroup>
+                    {/* <Form.FormGroup>
                       <Form.Input
                         type="text"
                         placeholder={formData.address}
@@ -294,10 +320,237 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
+                    </Form.FormGroup> */}
+
+                  <Form.FormGroup>
+                    <Form.Input
+                      style={{
+                        border: "1px solid var(--bs-blue)",
+                        borderRadius: "15px",
+                      }}
+                      type="text"
+                      placeholder={formData.address}
+                      name="address"
+                      value={formData.address}
+                      onChange={handleChange}
+                      onClick={initializeFormData}
+                    />
+                  </Form.FormGroup>
+
+                  <Form.FormGroup>
+                    <Form.Input
+                      style={{
+                        width: "25%",
+                        display: "inline-block",
+                        marginRight: "20px",
+                        border: "1px solid var(--bs-blue)",
+                        borderRadius: "15px",
+                      }}
+                      type="text"
+                      placeholder={formData.city}
+                      name="city"
+                      value={formData.city}
+                      onChange={handleChange}
+                      onClick={initializeFormData}
+                    />
+
+                    <Form.Input
+                      style={{
+                        width: "10%",
+                        display: "inline-block",
+                        marginRight: "20px",
+                        border: "1px solid var(--bs-blue)",
+                        borderRadius: "15px",
+                      }}
+                      type="text"
+                      placeholder={formData.state}
+                      name="state"
+                      value={formData.state}
+                      onChange={handleChange}
+                      onClick={initializeFormData}
+                    />
+
+                    <Form.Input
+                      style={{
+                        width: "10%",
+                        display: "inline-block",
+                        marginRight: "20px",
+                        border: "1px solid var(--bs-blue)",
+                        borderRadius: "15px",
+                      }}
+                      type="text"
+                      placeholder={formData.zip}
+                      name="zip"
+                      value={formData.zip}
+                      onChange={handleChange}
+                      onClick={initializeFormData}
+                    />
+                  </Form.FormGroup>
+
+                    <Form.FormGroup>
+                      <Form.Input
+                        style={{
+                          width: "10%",
+                          display: "inline-block",
+                          marginRight: "20px",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
+                        type="text"
+                        placeholder="price"
+                        name="price"
+                        value={formData.price}
+                        onChange={handleChange}
+                        onClick={initializeFormData}
+                      />
+                      <Form.Input
+                        style={{
+                          width: "10%",
+                          display: "inline-block",
+                          marginRight: "20px",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
+                        type="text"
+                        placeholder="beds"
+                        name="beds"
+                        value={formData.beds}
+                        onChange={handleChange}
+                        onClick={initializeFormData}
+                      />
+                      <Form.Input
+                        style={{
+                          width: "10%",
+                          display: "inline-block",
+                          marginRight: "20px",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
+                        type="text"
+                        placeholder="baths"
+                        name="baths"
+                        value={formData.baths}
+                        onChange={handleChange}
+                        onClick={initializeFormData}
+                      />
+
+                      <Form.Input
+                        style={{
+                          width: "10%",
+                          display: "inline-block",
+                          marginRight: "20px",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
+                        type="text"
+                        placeholder="sqft"
+                        name="sqft"
+                        value={formData.sqft}
+                        onChange={handleChange}
+                        onClick={initializeFormData}
+                      />
+                      <Form.Input
+                        style={{
+                          width: "10%",
+                          display: "inline-block",
+                          marginRight: "20px",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
+                        type="text"
+                        placeholder="type"
+                        name="type"
+                        value={formData.type}
+                        onChange={handleChange}
+                        onClick={initializeFormData}
+                      />
+                      <Form.Input
+                        style={{
+                          width: "10%",
+                          display: "inline-block",
+                          marginRight: "20px",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
+                        type="text"
+                        placeholder="year"
+                        name="year"
+                        value={formData.year}
+                        onChange={handleChange}
+                        onClick={initializeFormData}
+                      />
+                    </Form.FormGroup>
+
+                    <Form.FormGroup>
+                      <Form.Input
+                        style={{
+                          width: "10%",
+                          display: "inline-block",
+                          marginRight: "20px",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
+                        type="text"
+                        placeholder="heating"
+                        name="heating"
+                        value={formData.heating}
+                        onChange={handleChange}
+                        onClick={initializeFormData}
+                      />
+                      <Form.Input
+                        style={{
+                          width: "10%",
+                          display: "inline-block",
+                          marginRight: "20px",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
+                        type="text"
+                        placeholder="cooling"
+                        name="cooling"
+                        value={formData.cooling}
+                        onChange={handleChange}
+                        onClick={initializeFormData}
+                      />
+
+                      <Form.Input
+                        style={{
+                          width: "10%",
+                          display: "inline-block",
+                          marginRight: "20px",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
+                        type="text"
+                        placeholder="hoa"
+                        name="hoa"
+                        value={formData.hoa}
+                        onChange={handleChange}
+                        onClick={initializeFormData}
+                      />
+                      <Form.Input
+                        style={{
+                          width: "10%",
+                          display: "inline-block",
+                          marginRight: "20px",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
+                        type="text"
+                        placeholder="parcelNumber"
+                        name="parcelNumber"
+                        value={formData.parcelNumber}
+                        onChange={handleChange}
+                        onClick={initializeFormData}
+                      />
                     </Form.FormGroup>
 
                     <Form.FormGroup>
                       <Form.TextArea
+                        style={{
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
                         placeholder={formData.description}
                         name="description"
                         id=""

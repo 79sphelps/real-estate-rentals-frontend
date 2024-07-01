@@ -4,6 +4,7 @@ import { Section } from "../components";
 import { ListingItemContainer } from "./index";
 import { getRentals } from "../redux/actions";
 import { selectRentals } from "../redux/selectors";
+import Loading from "../components/loading";
 
 const FeaturedListingContainer = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,10 @@ const FeaturedListingContainer = () => {
     };
     dispatch(getRentals());
   }, [dispatch]);
+
+  if (listProperties.length === 0) {
+    return <Loading />
+  }
 
   return (
     <Section bgColor="--bs-light">

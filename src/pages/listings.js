@@ -13,6 +13,7 @@ import {
 import {
   selectRentals,
 } from "../redux/selectors";
+import Loading from "../components/loading";
 
 const Listing = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,10 @@ const Listing = () => {
     };
     dispatch(getRentals());
   }, [dispatch]);
+
+  if (listProperties.length === 0) {
+    return <Loading />
+  }
 
   return (
     <>

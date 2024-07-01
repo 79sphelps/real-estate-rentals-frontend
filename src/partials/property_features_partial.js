@@ -161,8 +161,8 @@ export const PropertyAddress = ({ address }) => {
   );
 };
 
-export const PropertyAdditionalDetails = ({ address }) => {
-  const [addressShown, setContentShown] = useState(false);
+export const PropertyAdditionalDetails = ({ property }) => {
+  const [additionalDetailsShown, setContentShown] = useState(false);
 
   const contentHandler = () => {
     setContentShown((previousState) => !previousState);
@@ -172,44 +172,31 @@ export const PropertyAdditionalDetails = ({ address }) => {
       <Property.InfoHeader onClick={contentHandler}>
         <Property.InfoTitle>Additional Details</Property.InfoTitle>
         <Property.Icon
-          name={addressShown ? "fas fa-chevron-up" : "fas fa-chevron-down"}
+          name={additionalDetailsShown ? "fas fa-chevron-up" : "fas fa-chevron-down"}
           info></Property.Icon>
       </Property.InfoHeader>
-      <Property.InfoContent contentShown={addressShown}>
+      <Property.InfoContent contentShown={additionalDetailsShown}>
         <Property.InfoItem>
           <Property.Text>
             <Property.Span>Price : </Property.Span>
-            {address.street}
+            {property.price}
           </Property.Text>
           <Property.Text>
-            <Property.Span>City : </Property.Span>
-            {address.city}
+            <Property.Span>Beds : </Property.Span>
+            {property.beds}
           </Property.Text>
         </Property.InfoItem>
         <Property.InfoItem>
-          {/* <Property.Text>
-            <Property.Span>County/Sub-County : </Property.Span>
-            {address.county}
-          </Property.Text> */}
           <Property.Text>
-            <Property.Span>State : </Property.Span>
-            {address.state}
+            <Property.Span>Baths : </Property.Span>
+            {property.baths}
           </Property.Text>
-          {/* <Property.Text>
-            <Property.Span>Street : </Property.Span>
-            {address.street}
-          </Property.Text> */}
           <Property.Text>
-            <Property.Span>Zip : </Property.Span>
-            {address.zip}
+            <Property.Span>Square Feet : </Property.Span>
+            {property.sqft}
           </Property.Text>
         </Property.InfoItem>
-        {/* <Property.InfoItem>
-          <Property.Text>
-            <Property.Span>Area : </Property.Span>
-            {address.area}
-          </Property.Text>
-        </Property.InfoItem> */}
+
       </Property.InfoContent>
     </Property.Info>
   );

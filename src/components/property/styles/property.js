@@ -28,6 +28,8 @@ export const AdminEditPhotoCardButton = styled.button`
   border-radius: 10px;
   width: 20%;
 
+  // box-shadow: 0px 0px 5px 0px #274684;
+
   box-sizing: border-box;
   padding: 16px 8px;
   color: white;

@@ -22,7 +22,7 @@ const ListingItemContainer = ({ featured, width }) => {
               {featured && featured.address}
             </Listing.Anchor>
           </Listing.Title>
-          <Listing.Price>Price {featured.rent}</Listing.Price>
+          <Listing.Price>Price {featured.price}</Listing.Price>
           <Listing.Text description>
             {featured.description && featured.description.substring(0, 100)}
           </Listing.Text>
