@@ -8,7 +8,7 @@ const Loading = () => (
     position: "fixed",
     zIndex: "1031", 
     top: "50%",
-    right: "50%", /* or: left: 50%; */
+    right: "45%",
     marginTop: "-..px", /* half of the elements height */
     marginRight: "-..px", /* half of the elements width */
     }}>

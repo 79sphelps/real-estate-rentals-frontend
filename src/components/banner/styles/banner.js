@@ -8,6 +8,7 @@ export const Main = styled.div`
        background-image:url('${`${source}`}');
   `}
   background-size: cover;
+  // background-size: 100% 100%;
   background-position: center;
   background-repeat: none;
   background-attachment: fixed;
