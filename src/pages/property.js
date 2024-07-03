@@ -330,9 +330,9 @@ const Listing = () => {
                   <Form.FormGroup>
                     <Form.Input
                       style={{
-                        width: "25%",
+                        width: "50%",
                         display: "inline-block",
-                        marginRight: "20px",
+                        marginRight: "3%",
                         border: "1px solid var(--bs-blue)",
                         borderRadius: "15px",
                       }}
@@ -348,7 +348,7 @@ const Listing = () => {
                       style={{
                         width: "10%",
                         display: "inline-block",
-                        marginRight: "20px",
+                        marginRight: "3%",
                         border: "1px solid var(--bs-blue)",
                         borderRadius: "15px",
                       }}
@@ -362,9 +362,9 @@ const Listing = () => {
 
                     <Form.Input
                       style={{
-                        width: "10%",
+                        width: "20%",
                         display: "inline-block",
-                        marginRight: "20px",
+                        // marginRight: "20px",
                         border: "1px solid var(--bs-blue)",
                         borderRadius: "15px",
                       }}
@@ -380,9 +380,9 @@ const Listing = () => {
                     <Form.FormGroup>
                       <Form.Input
                         style={{
-                          width: "10%",
+                          width: "30%",
                           display: "inline-block",
-                          marginRight: "20px",
+                          marginRight: "3%",
                           border: "1px solid var(--bs-blue)",
                           borderRadius: "15px",
                         }}
@@ -412,7 +412,7 @@ const Listing = () => {
                         style={{
                           width: "10%",
                           display: "inline-block",
-                          marginRight: "20px",
+                          marginRight: "3%",
                           border: "1px solid var(--bs-blue)",
                           borderRadius: "15px",
                         }}
@@ -426,9 +426,9 @@ const Listing = () => {
 
                       <Form.Input
                         style={{
-                          width: "10%",
+                          width: "20%",
                           display: "inline-block",
-                          marginRight: "20px",
+                          // marginRight: "20px",
                           border: "1px solid var(--bs-blue)",
                           borderRadius: "15px",
                         }}
@@ -439,11 +439,15 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
+                      </Form.FormGroup>
+
+
+                      <Form.FormGroup>
                       <Form.Input
                         style={{
-                          width: "10%",
+                          width: "30%",
                           display: "inline-block",
-                          marginRight: "20px",
+                          marginRight: "3%",
                           border: "1px solid var(--bs-blue)",
                           borderRadius: "15px",
                         }}
@@ -456,9 +460,9 @@ const Listing = () => {
                       />
                       <Form.Input
                         style={{
-                          width: "10%",
+                          width: "20%",
                           display: "inline-block",
-                          marginRight: "20px",
+                          marginRight: "3%",
                           border: "1px solid var(--bs-blue)",
                           borderRadius: "15px",
                         }}
@@ -474,9 +478,9 @@ const Listing = () => {
                     <Form.FormGroup>
                       <Form.Input
                         style={{
-                          width: "10%",
+                          width: "35%",
                           display: "inline-block",
-                          marginRight: "20px",
+                          marginRight: "3%",
                           border: "1px solid var(--bs-blue)",
                           borderRadius: "15px",
                         }}
@@ -489,9 +493,9 @@ const Listing = () => {
                       />
                       <Form.Input
                         style={{
-                          width: "10%",
+                          width: "35%",
                           display: "inline-block",
-                          marginRight: "20px",
+                          marginRight: "3%",
                           border: "1px solid var(--bs-blue)",
                           borderRadius: "15px",
                         }}
@@ -502,12 +506,14 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-
+                    </Form.FormGroup>
+                    
+                    <Form.FormGroup>
                       <Form.Input
                         style={{
-                          width: "10%",
+                          width: "20%",
                           display: "inline-block",
-                          marginRight: "20px",
+                          marginRight: "3%",
                           border: "1px solid var(--bs-blue)",
                           borderRadius: "15px",
                         }}
@@ -520,9 +526,9 @@ const Listing = () => {
                       />
                       <Form.Input
                         style={{
-                          width: "10%",
+                          width: "60%",
                           display: "inline-block",
-                          marginRight: "20px",
+                          // marginRight: "20px",
                           border: "1px solid var(--bs-blue)",
                           borderRadius: "15px",
                         }}
