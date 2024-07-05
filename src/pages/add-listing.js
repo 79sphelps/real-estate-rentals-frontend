@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-// import {
-//   getProperty,
-//   getFeaturedList,
-// } from "../redux/actions/propertiesAction";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Section, Property, Form } from "../components";
 import {
   HeaderContainer,
-  ContactAgentContainer,
-  //   PropertyRelatedContainer,
   FooterContainer,
 } from "../containers";
-import {
-  PropertGallery,
-  PropertyAddress,
-  // PropertyAmenities,
-  // PropertyFeatures,
-  PropertyDescription,
-} from "../partials/property_features_partial.js";
-import { getRental, addRental } from "../redux/actions";
-import { selectCurrentRental } from "../redux/selectors/index.js";
-import { useAuth0 } from "@auth0/auth0-react";
+import { addRental } from "../redux/actions";
+// import { useAuth0 } from "@auth0/auth0-react";
 import { Image } from "../components/property/styles/property.js";
 import { Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -29,11 +14,7 @@ import { useNavigate } from "react-router-dom";
 const AddListing = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  //   const property = useSelector(selectCurrentRental);
-  // const [submitted, setSubmitted] = useState(false);
-  const { isAuthenticated } = useAuth0();
-  //   const { id } = useParams();
-
+  // const { isAuthenticated } = useAuth0();
   const [addPhotoFlag, setAddPhotoFlag] = useState(false);
   const [currentImageToAdd, setCurrentImageToAdd] = useState("");
   const [btnText, setButtonText] = useState("Add Listing");
@@ -151,13 +132,12 @@ const AddListing = () => {
                 onChange={handleChange}
               />
             </Form.FormGroup>
-
             <Form.FormGroup>
               <Form.Input
                 style={{
-                  width: "25%",
+                  width: "50%",
                   display: "inline-block",
-                  marginRight: "20px",
+                  marginRight: "3%",
                   border: "1px solid var(--bs-blue)",
                   borderRadius: "15px",
                 }}
@@ -167,12 +147,11 @@ const AddListing = () => {
                 value={formData.city}
                 onChange={handleChange}
               />
-
               <Form.Input
                 style={{
                   width: "10%",
                   display: "inline-block",
-                  marginRight: "20px",
+                  marginRight: "3%",
                   border: "1px solid var(--bs-blue)",
                   borderRadius: "15px",
                 }}
@@ -182,12 +161,11 @@ const AddListing = () => {
                 value={formData.state}
                 onChange={handleChange}
               />
-
               <Form.Input
                 style={{
-                  width: "10%",
+                  width: "20%",
                   display: "inline-block",
-                  marginRight: "20px",
+                  // marginRight: "20px",
                   border: "1px solid var(--bs-blue)",
                   borderRadius: "15px",
                 }}
@@ -198,13 +176,12 @@ const AddListing = () => {
                 onChange={handleChange}
               />
             </Form.FormGroup>
-
             <Form.FormGroup>
               <Form.Input
                 style={{
-                  width: "10%",
+                  width: "30%",
                   display: "inline-block",
-                  marginRight: "20px",
+                  marginRight: "3%",
                   border: "1px solid var(--bs-blue)",
                   borderRadius: "15px",
                 }}
@@ -218,7 +195,7 @@ const AddListing = () => {
                 style={{
                   width: "10%",
                   display: "inline-block",
-                  marginRight: "20px",
+                  marginRight: "3%",
                   border: "1px solid var(--bs-blue)",
                   borderRadius: "15px",
                 }}
@@ -232,7 +209,7 @@ const AddListing = () => {
                 style={{
                   width: "10%",
                   display: "inline-block",
-                  marginRight: "20px",
+                  marginRight: "3%",
                   border: "1px solid var(--bs-blue)",
                   borderRadius: "15px",
                 }}
@@ -242,10 +219,9 @@ const AddListing = () => {
                 value={formData.baths}
                 onChange={handleChange}
               />
-
               <Form.Input
                 style={{
-                  width: "10%",
+                  width: "20%",
                   display: "inline-block",
                   marginRight: "20px",
                   border: "1px solid var(--bs-blue)",
@@ -257,11 +233,13 @@ const AddListing = () => {
                 value={formData.sqft}
                 onChange={handleChange}
               />
+            </Form.FormGroup>
+            <Form.FormGroup>
               <Form.Input
                 style={{
-                  width: "10%",
+                  width: "30%",
                   display: "inline-block",
-                  marginRight: "20px",
+                  marginRight: "3%",
                   border: "1px solid var(--bs-blue)",
                   borderRadius: "15px",
                 }}
@@ -273,7 +251,7 @@ const AddListing = () => {
               />
               <Form.Input
                 style={{
-                  width: "10%",
+                  width: "20%",
                   display: "inline-block",
                   marginRight: "20px",
                   border: "1px solid var(--bs-blue)",
@@ -286,13 +264,12 @@ const AddListing = () => {
                 onChange={handleChange}
               />
             </Form.FormGroup>
-
             <Form.FormGroup>
               <Form.Input
                 style={{
-                  width: "10%",
+                  width: "35%",
                   display: "inline-block",
-                  marginRight: "20px",
+                  marginRight: "3%",
                   border: "1px solid var(--bs-blue)",
                   borderRadius: "15px",
                 }}
@@ -304,9 +281,9 @@ const AddListing = () => {
               />
               <Form.Input
                 style={{
-                  width: "10%",
+                  width: "35%",
                   display: "inline-block",
-                  marginRight: "20px",
+                  marginRight: "3%",
                   border: "1px solid var(--bs-blue)",
                   borderRadius: "15px",
                 }}
@@ -316,12 +293,13 @@ const AddListing = () => {
                 value={formData.cooling}
                 onChange={handleChange}
               />
-
+            </Form.FormGroup>
+            <Form.FormGroup>
               <Form.Input
                 style={{
-                  width: "10%",
+                  width: "20%",
                   display: "inline-block",
-                  marginRight: "20px",
+                  marginRight: "3%",
                   border: "1px solid var(--bs-blue)",
                   borderRadius: "15px",
                 }}
@@ -333,9 +311,9 @@ const AddListing = () => {
               />
               <Form.Input
                 style={{
-                  width: "10%",
+                  width: "60%",
                   display: "inline-block",
-                  marginRight: "20px",
+                  // marginRight: "20px",
                   border: "1px solid var(--bs-blue)",
                   borderRadius: "15px",
                 }}
@@ -346,7 +324,6 @@ const AddListing = () => {
                 onChange={handleChange}
               />
             </Form.FormGroup>
-
             <Form.FormGroup>
               <Form.TextArea
                 style={{
@@ -362,7 +339,6 @@ const AddListing = () => {
                 onChange={handleChange}
               ></Form.TextArea>
             </Form.FormGroup>
-
             {formData &&
               formData.images.map((image, idx) => {
                 return (
@@ -397,7 +373,6 @@ const AddListing = () => {
                   </Row>
                 );
               })}
-
             {addPhotoFlag && (
               <Row
                 style={{
@@ -425,7 +400,6 @@ const AddListing = () => {
                       }}
                     />
                   ) : null}
-
                   <Property.Button
                     style={{
                       marginRight: "20px",
@@ -451,49 +425,45 @@ const AddListing = () => {
                 </Form.FormGroup>
               </Row>
             )}
-
             {!addPhotoFlag ? (
               <>
                 <Form.FormGroup>
                   <Property.Button
                     onClick={(e) => handleAddPhoto(e)}
                     style={{
-                      marginRight: "20px",
+                      marginRight: "3%",
                       border: "1px solid var(--bs-blue)",
                       borderRadius: "10px",
-                      width: "10%",
+                      width: "25%",
                       display: "inline-block",
                     }}
                   >
                     Add Photo
                   </Property.Button>
-
                   <Property.Button
                     onClick={(e) => createProperty(e)}
                     style={{
-                      marginRight: "20px",
+                      marginRight: "3%",
                       border: "1px solid var(--bs-blue)",
                       borderRadius: "10px",
-                      width: "20%",
+                      width: "33%",
                       display: "inline-block",
                     }}
                   >
                     Create Listing
                   </Property.Button>
-
                   <Property.Button
                     onClick={(e) => handleCancel(e)}
                     style={{
-                      marginRight: "20px",
+                      marginRight: "3%",
                       border: "1px solid var(--bs-blue)",
                       borderRadius: "10px",
-                      width: "20%",
+                      width: "17%",
                       display: "inline-block",
                     }}
                   >
                     Cancel
                   </Property.Button>
-
                   {/* <Form.SubmitInput
                     type="submit"
                     value="Add Rental Property"

@@ -10,6 +10,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 const HeaderContainer = ({ bg, source }) => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const { logout } = useAuth0();
+  const [sideNavShown, setSideNavShown] = useState(false);
+  const [sideNavHidden, setSideNavHidden] = useState(true);
+  // const [fixed, setFixed] = useState(false);
+  let fixed = false;
 
   useEffect(() => {
     const onScroll = () => {
@@ -19,35 +25,24 @@ const HeaderContainer = ({ bg, source }) => {
         setScrolled(false);
       }
     };
-
     window.addEventListener("scroll", onScroll);
-
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // const onUpdateActiveLink = (value) => {
-  //   setActiveLink(value);
-  // };
-
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
-  const { logout } = useAuth0();
   const logoutWithRedirect = () =>
     logout({
       returnTo: window.location.origin,
     });
 
-  const [sideNavShown, setSideNavShown] = useState(false);
-  const [sideNavHidden, setSideNavHidden] = useState(true);
-  // const [fixed, setFixed] = useState(false);
-  let fixed = false;
+  // const onUpdateActiveLink = (value) => {
+  //   setActiveLink(value);
+  // };
 
   const changeBackgroundColorAndPosition = () => {
     if (window.pageYOffset > 100) {
-      // setFixed(true);
-      fixed = true;
+      fixed = true; // setFixed(true);
     } else {
-      // setFixed(false);
-      fixed = false;
+      fixed = false; // setFixed(false);
     }
   };
 

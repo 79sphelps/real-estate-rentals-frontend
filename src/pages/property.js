@@ -111,13 +111,13 @@ const Listing = () => {
     navigate("/");
   };
 
-  const handleDeletePhoto = (e, idx) => {
-    e.preventDefault();
-    let imgAry = formData.images;
-    imgAry.splice(idx, 1);
-    let newFormDetails = { ...formData, images: imgAry };
-    setFormData(newFormDetails);
-  };
+  // const handleDeletePhoto = (e, idx) => {
+  //   e.preventDefault();
+  //   let imgAry = formData.images;
+  //   imgAry.splice(idx, 1);
+  //   let newFormDetails = { ...formData, images: imgAry };
+  //   setFormData(newFormDetails);
+  // };
 
   const handleChange = (e, idx) => {
     e.preventDefault();
@@ -397,7 +397,7 @@ const Listing = () => {
                         style={{
                           width: "10%",
                           display: "inline-block",
-                          marginRight: "20px",
+                          marginRight: "3%",
                           border: "1px solid var(--bs-blue)",
                           borderRadius: "15px",
                         }}
