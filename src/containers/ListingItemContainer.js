@@ -12,7 +12,7 @@ const ListingItemContainer = ({ featured, width }) => {
               <Listing.TopItemContainer>
                 <Listing.TopItemInfo>
                   <Listing.Icon></Listing.Icon>
-                  <Listing.Text location>
+                  <Listing.Text location >
                     {featured && featured.address}
                   </Listing.Text>
                 </Listing.TopItemInfo>
@@ -22,7 +22,7 @@ const ListingItemContainer = ({ featured, width }) => {
           <Listing.Bottom>
             <Listing.BottomItem>
               <Listing.Title>
-                <Listing.Anchor to={`/rentals/${featured._id}`}>
+                <Listing.Anchor to={`/rentals/${featured._id}`} style={{textDecoration: 'none'}}>
                   {featured && featured.address}
                 </Listing.Anchor>
               </Listing.Title>
@@ -31,7 +31,7 @@ const ListingItemContainer = ({ featured, width }) => {
                 {featured.description && featured.description.substring(0, 100)}
               </Listing.Text>
               <Listing.Button>
-                <Listing.Anchor to={`/rentals/${featured._id}`}>
+                <Listing.Anchor to={`/rentals/${featured._id}`} style={{textDecoration: 'none'}}>
                   Details
                 </Listing.Anchor>
               </Listing.Button>
@@ -48,7 +48,7 @@ const ListingItemContainer = ({ featured, width }) => {
                   {/* <Listing.Anchor to={`/agents/${featured.agent.name}`}>
                 {featured.agent.name}
               </Listing.Anchor> */}
-                  <Listing.Anchor to={`/listings`}>Tessa Goldy</Listing.Anchor>
+                  <Listing.Anchor to={`/listings`} style={{textDecoration: 'none'}}>Tessa Goldy</Listing.Anchor>
                 </Listing.AgentName>
               </Listing.AgentContainer>
             </Listing.BottomItem>

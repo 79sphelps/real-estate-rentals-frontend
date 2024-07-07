@@ -8,7 +8,7 @@ import {
 import { useAuth0 } from "@auth0/auth0-react";
 
 const HeaderContainer = ({ bg, source }) => {
-  const [activeLink, setActiveLink] = useState("home");
+  // const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
@@ -59,6 +59,7 @@ const HeaderContainer = ({ bg, source }) => {
         <HeaderWrapper.Container>
           <HeaderWrapper.Title bg={bg}>
             <HeaderWrapper.Link
+            style={{textDecoration: 'none'}}
               className="animate__animated animate__bounce"
               bg={bg}
               fixed={fixed}
@@ -70,7 +71,8 @@ const HeaderContainer = ({ bg, source }) => {
           <HeaderWrapper.LinksContainer>
             <HeaderWrapper.List>
               <HeaderWrapper.Item>
-                <HeaderWrapper.Anchor to="/" special="true">
+                <HeaderWrapper.Anchor to="/" special="true" style={{textDecoration: 'none'}}>
+                <i class="fa fa-fw fa-home"></i>&nbsp;
                   Home
                 </HeaderWrapper.Anchor>
               </HeaderWrapper.Item>
@@ -78,7 +80,8 @@ const HeaderContainer = ({ bg, source }) => {
 
             <HeaderWrapper.List>
               <HeaderWrapper.Item>
-                <HeaderWrapper.Anchor to="/listings" special="true">
+                <HeaderWrapper.Anchor to="/listings" special="true" style={{textDecoration: 'none'}}>
+                <i class="fa fa-fw fa-search"></i>&nbsp;
                   Listings
                 </HeaderWrapper.Anchor>
               </HeaderWrapper.Item>
@@ -87,7 +90,8 @@ const HeaderContainer = ({ bg, source }) => {
             {isAuthenticated ? (
               <HeaderWrapper.List>
                 <HeaderWrapper.Item>
-                  <HeaderWrapper.Anchor to="/addlisting" special="true">
+                  <HeaderWrapper.Anchor to="/addlisting" special="true" style={{textDecoration: 'none'}}>
+                  <i class="fa fa-solid fa-plus"></i>&nbsp;
                     Add Listing
                   </HeaderWrapper.Anchor>
                 </HeaderWrapper.Item>
@@ -98,14 +102,17 @@ const HeaderContainer = ({ bg, source }) => {
               <HeaderWrapper.Item>
                 {!isAuthenticated && (
                   <HeaderWrapper.Button
+                  style={{textDecoration: 'none'}}
                     onClick={() => loginWithRedirect({})}
                     variant="default"
                   >
+                    <i class="fa fa-fw fa-user"></i>&nbsp;
                     Log in
                   </HeaderWrapper.Button>
                 )}
                 {isAuthenticated && (
                   <HeaderWrapper.Button
+                  style={{textDecoration: 'none'}}
                     onClick={() => logoutWithRedirect({})}
                     variant="default"
                   >

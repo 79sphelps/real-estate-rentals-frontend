@@ -27,6 +27,8 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Loading from "../components/loading";
 
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 const Listing = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -146,7 +148,8 @@ const Listing = () => {
 
   const handleDeleteModal = (e, idx) => {
     e.preventDefault();
-    setShowDeleteModal(true);
+    // setShowDeleteModal(true);
+    navigate("/rentals/delete/" + id)
   };
 
   const handleCancelDeleteModal = (e) => {
@@ -161,7 +164,6 @@ const Listing = () => {
   return (
     <>
       <HeaderContainer bg="false" />
-
       {property && property.address ? (
         !isAuthenticated ? (
           <Section bgColor="--bs-fade-info">

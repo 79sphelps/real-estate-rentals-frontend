@@ -438,6 +438,7 @@ const AddListing = () => {
                       display: "inline-block",
                     }}
                   >
+                    <i class="fa fa-solid fa-camera"></i>&nbsp;
                     Add Photo
                   </Property.Button>
                   <Property.Button
@@ -450,6 +451,7 @@ const AddListing = () => {
                       display: "inline-block",
                     }}
                   >
+                    <i class="fa fa-solid fa-plus"></i>&nbsp;
                     Create Listing
                   </Property.Button>
                   <Property.Button

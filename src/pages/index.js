@@ -7,6 +7,7 @@ export { default as Listings } from "./listings";
 // export { default as Forgot } from "./forgot";
 export { default as Listing } from "./property";
 export { default as AddListing } from "./add-listing";
+export { default as DeleteListing } from "./delete-listing";
 // export { default as Dashboard } from "./dashboard";
 // export { default as UserProfile } from "./profile";
 // export { default as Messages } from "./messages";
