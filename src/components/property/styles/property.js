@@ -57,7 +57,11 @@ export const Header = styled.div`
 `;
 export const Anchor = styled(Link)``;
 export const Container = styled.div``;
-export const Span = styled.span``;
+
+export const Span = styled.span`
+  font-weight: bold;
+  color: var(--bs-blue);
+`;
 export const HeaderLeft = styled.div``;
 export const Icon = styled.i`
   ${({ info }) =>
@@ -209,7 +213,8 @@ export const InfoContent = styled.div`
     contentShown === true &&
     `
       display:flex;
-      @media only screen and (max-width: 600px) {
+      // @media only screen and (max-width: 600px) {
+      @media only screen and (max-width: 1350px) {
         display:block;
       }
   `}
@@ -231,6 +236,7 @@ export const InfoTitle = styled.h2`
   font-size: 1rem;
   opacity: 0.9;
   font-weight: bold;
+  color: var(--bs-blue);
 `;
 
 export const Contact = styled.div`

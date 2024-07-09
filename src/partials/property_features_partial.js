@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Property } from "../components";
-
 import ModalImage from "react-modal-image";
-
 
 export const PropertGallery = ({ image }) => {
   return (
@@ -17,18 +15,6 @@ export const PropertGallery = ({ image }) => {
             {/* <Property.Image source={i} /> */}
         </Property.ImageContainer>
         ))}
-      {/* <Property.ImageContainer>
-        <Property.Image source={image[0]} />
-      </Property.ImageContainer>
-      <Property.ImageContainer>
-        <Property.Image source={image[1]} />
-      </Property.ImageContainer>
-      <Property.ImageContainer>
-        <Property.Image source={image[2]} />
-      </Property.ImageContainer>
-      <Property.ImageContainer>
-        <Property.Image source={image[3]} />
-      </Property.ImageContainer> */}
     </Property.Gallery>
   );
 };
@@ -175,7 +161,6 @@ export const PropertyAdditionalDetails = ({ property }) => {
           name={additionalDetailsShown ? "fas fa-chevron-up" : "fas fa-chevron-down"}
           info></Property.Icon>
       </Property.InfoHeader>
-
       <Property.InfoContent contentShown={additionalDetailsShown}>
         <Property.InfoItem>
           <Property.Text>
@@ -231,10 +216,6 @@ export const PropertyAdditionalDetails = ({ property }) => {
     </Property.Info>
   );
 };
-
-
-
-
 
 export const PropertyDescription = ({ description }) => {
   const [descriptionShown, setContentShown] = useState(false);
