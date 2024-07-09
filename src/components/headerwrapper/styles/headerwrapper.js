@@ -37,7 +37,9 @@ export const Header = styled.div`
     align-items: center;
   }
 `;
+
 export const Container = styled.div`
+
   width: 85%;
   margin: auto;
   display: flex;
@@ -50,6 +52,9 @@ export const Container = styled.div`
     width: 95%;
   }
 `;
+
+
+
 export const Icon = styled.i``;
 
 export const Button = styled.button`
@@ -87,11 +92,13 @@ export const TitleLink = styled(Link)`
     }
   }}
 `;
+
 export const HeaderLinks = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
+
 export const ListLinks = styled.ul`
   list-style-type: none;
   padding: 0;

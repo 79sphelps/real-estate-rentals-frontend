@@ -1,13 +1,15 @@
 import React from "react";
 import { Listing } from "../components";
+import { useNavigate } from "react-router-dom";
 
 const ListingItemContainer = ({ featured, width }) => {
+  const navigate = useNavigate();
   return (
     <>
       {featured && featured.images ? (
         <Listing width={width}>
           <Listing.Top>
-            <Listing.Image source={featured.images[0]} />
+            <Listing.Image source={featured.images[0]} onClick={() => navigate(`/rentals/${featured._id}`)}/>
             <Listing.TopItem>
               <Listing.TopItemContainer>
                 <Listing.TopItemInfo>
