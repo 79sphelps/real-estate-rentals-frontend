@@ -54,40 +54,37 @@ const HeaderContainer = ({ bg, source }) => {
   };
 
   const useWindowSize = () => {
-    // Initialize state with undefined width/height so server and client renders match
-    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
     const [windowSize, setWindowSize] = useState({
-        width: undefined,
-        height: undefined
+      width: undefined,
+      height: undefined,
     });
 
     useEffect(() => {
-        // only execute all the code below in client side
-        if (typeof window !== "undefined") {
-            // Handler to call on window resize
-            function handleResize() {
-                // Set window width/height to state
-                setWindowSize({
-                    width: window.innerWidth,
-                    height: window.innerHeight
-                });
-            }
-
-            // Add event listener
-            window.addEventListener("resize", handleResize);
-
-            // Call handler right away so state gets updated with initial window size
-            handleResize();
-
-            // Remove event listener on cleanup
-            return () => window.removeEventListener("resize", handleResize);
+      // only execute all the code below in client side
+      if (typeof window !== "undefined") {
+        // Handler to call on window resize
+        function handleResize() {
+          // Set window width/height to state
+          setWindowSize({
+            width: window.innerWidth,
+            height: window.innerHeight,
+          });
         }
+
+        // Add event listener
+        window.addEventListener("resize", handleResize);
+
+        // Call handler right away so state gets updated with initial window size
+        handleResize();
+
+        // Remove event listener on cleanup
+        return () => window.removeEventListener("resize", handleResize);
+      }
     }, []); // Empty array ensures that effect is only run on mount
     return windowSize;
-};
+  };
 
-const size = useWindowSize();    
-console.log('size: ', size)
+  const size = useWindowSize();
 
   return (
     <Banner bg={bg} source={source}>
@@ -95,7 +92,7 @@ console.log('size: ', size)
         <HeaderWrapper.Container>
           <HeaderWrapper.Title bg={bg}>
             <HeaderWrapper.Link
-            style={{textDecoration: 'none'}}
+              style={{ textDecoration: "none" }}
               className="animate__animated animate__bounce"
               bg={bg}
               fixed={fixed}
@@ -104,12 +101,18 @@ console.log('size: ', size)
               Tessa Goldy - Real Estate Broker
             </HeaderWrapper.Link>
           </HeaderWrapper.Title>
-          
+
           <HeaderWrapper.LinksContainer>
             <HeaderWrapper.List>
               <HeaderWrapper.Item>
-                <HeaderWrapper.Anchor to="/" special="true" style={{textDecoration: 'none'}}>
-                {size.width > 910 ? <i class="fa fa-fw fa-home">&nbsp;</i> : null }
+                <HeaderWrapper.Anchor
+                  to="/"
+                  special="true"
+                  style={{ textDecoration: "none" }}
+                >
+                  {size.width > 1064 ? (
+                    <i class="fa fa-fw fa-home">&nbsp;</i>
+                  ) : null}
                   Home
                 </HeaderWrapper.Anchor>
               </HeaderWrapper.Item>
@@ -117,8 +120,14 @@ console.log('size: ', size)
 
             <HeaderWrapper.List>
               <HeaderWrapper.Item>
-                <HeaderWrapper.Anchor to="/listings" special="true" style={{textDecoration: 'none'}}>
-                {size.width > 910 ? <i class="fa fa-fw fa-search">&nbsp;</i> : null }
+                <HeaderWrapper.Anchor
+                  to="/listings"
+                  special="true"
+                  style={{ textDecoration: "none" }}
+                >
+                  {size.width > 1064 ? (
+                    <i class="fa fa-fw fa-search">&nbsp;</i>
+                  ) : null}
                   Listings
                 </HeaderWrapper.Anchor>
               </HeaderWrapper.Item>
@@ -127,8 +136,14 @@ console.log('size: ', size)
             {isAuthenticated ? (
               <HeaderWrapper.List>
                 <HeaderWrapper.Item>
-                  <HeaderWrapper.Anchor to="/addlisting" special="true" style={{textDecoration: 'none'}}>
-                  {size.width > 910 ? <i class="fa fa-solid fa-plus">&nbsp;</i> : null }
+                  <HeaderWrapper.Anchor
+                    to="/addlisting"
+                    special="true"
+                    style={{ textDecoration: "none" }}
+                  >
+                    {size.width > 1064 ? (
+                      <i class="fa fa-solid fa-plus">&nbsp;</i>
+                    ) : null}
                     Add Listing
                   </HeaderWrapper.Anchor>
                 </HeaderWrapper.Item>
@@ -139,17 +154,19 @@ console.log('size: ', size)
               <HeaderWrapper.Item>
                 {!isAuthenticated && (
                   <HeaderWrapper.Button
-                  style={{textDecoration: 'none'}}
+                    style={{ textDecoration: "none" }}
                     onClick={() => loginWithRedirect({})}
                     variant="default"
                   >
-                    {size.width > 910 ? <i class="fa fa-fw fa-user">&nbsp;</i> : null }
+                    {size.width > 1064 ? (
+                      <i class="fa fa-fw fa-user">&nbsp;</i>
+                    ) : null}
                     Log in
                   </HeaderWrapper.Button>
                 )}
                 {isAuthenticated && (
                   <HeaderWrapper.Button
-                  style={{textDecoration: 'none'}}
+                    style={{ textDecoration: "none" }}
                     onClick={() => logoutWithRedirect({})}
                     variant="default"
                   >

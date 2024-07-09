@@ -13,10 +13,12 @@ const SideNavigationContainer = ({
     {
       name: "Home",
       to: "/",
+      class: "fa-fw fa-home"
     },
     {
       name: "Listings",
       to: "/listings",
+      class: "fa-fw fa-search"
     },
     // {
     //   name: "Agents",
@@ -57,6 +59,7 @@ const SideNavigationContainer = ({
             {links.map((link) => (
               <SideNavigation.ListItem key={link.to}>
                 <SideNavigation.Anchor to={link.to}>
+                <i class={`fa ${link.class}`}>&nbsp;</i>
                   {link.name}
                 </SideNavigation.Anchor>
               </SideNavigation.ListItem>
@@ -70,6 +73,7 @@ const SideNavigationContainer = ({
             {isAuthenticated ? (
               <SideNavigation.ListItem>
                 <SideNavigation.Anchor to="/addlisting" special="true">
+                <i class="fa fa-solid fa-plus">&nbsp;</i>
                   Add Listing
                 </SideNavigation.Anchor>
               </SideNavigation.ListItem>
@@ -81,6 +85,7 @@ const SideNavigationContainer = ({
                   onClick={() => loginWithRedirect({})}
                   variant="default"
                 >
+                  <i class="fa fa-fw fa-user">&nbsp;</i>
                   Log in
                 </SideNavigation.Anchor>
               )}
