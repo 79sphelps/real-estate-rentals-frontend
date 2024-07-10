@@ -7,10 +7,31 @@ import {
   FooterContainer,
 } from "../containers";
 
+import { useDispatch, useSelector } from "react-redux";
+import { selectRentals } from "../redux/selectors";
+import { getRentals } from "../redux/actions";
+import Loading from "../components/loading";
+
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const dispatch = useDispatch();
+  const listProperties = useSelector(selectRentals);
+
+  useEffect(() => {
+    window.onpageshow = function (event) {
+      if (event.persisted) {
+        window.location.reload();
+      }
+    };
+    dispatch(getRentals());
+  }, [dispatch]);
+
+  if (listProperties.length === 0) {
+    return <Loading />
+  }
 
   return (
     <>
