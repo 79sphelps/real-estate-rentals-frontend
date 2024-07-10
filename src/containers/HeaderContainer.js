@@ -111,7 +111,7 @@ const HeaderContainer = ({ bg, source }) => {
                   style={{ textDecoration: "none" }}
                 >
                   {size.width > 1064 ? (
-                    <i class="fa fa-fw fa-home">&nbsp;</i>
+                    <i className="fa fa-fw fa-home">&nbsp;</i>
                   ) : null}
                   Home
                 </HeaderWrapper.Anchor>
@@ -126,7 +126,7 @@ const HeaderContainer = ({ bg, source }) => {
                   style={{ textDecoration: "none" }}
                 >
                   {size.width > 1064 ? (
-                    <i class="fa fa-fw fa-search">&nbsp;</i>
+                    <i className="fa fa-fw fa-search">&nbsp;</i>
                   ) : null}
                   Listings
                 </HeaderWrapper.Anchor>
@@ -142,7 +142,7 @@ const HeaderContainer = ({ bg, source }) => {
                     style={{ textDecoration: "none" }}
                   >
                     {size.width > 1064 ? (
-                      <i class="fa fa-solid fa-plus">&nbsp;</i>
+                      <i className="fa fa-solid fa-plus">&nbsp;</i>
                     ) : null}
                     Add Listing
                   </HeaderWrapper.Anchor>
@@ -159,7 +159,7 @@ const HeaderContainer = ({ bg, source }) => {
                     variant="default"
                   >
                     {size.width > 1064 ? (
-                      <i class="fa fa-fw fa-user">&nbsp;</i>
+                      <i className="fa fa-fw fa-user">&nbsp;</i>
                     ) : null}
                     Log in
                   </HeaderWrapper.Button>

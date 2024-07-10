@@ -24,9 +24,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Image } from "../components/property/styles/property.js";
 import { Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import Modal from "react-bootstrap/Modal";
 import Loading from "../components/loading";
-
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Listing = () => {
@@ -36,7 +34,6 @@ const Listing = () => {
   const { isAuthenticated } = useAuth0();
   const { id } = useParams();
   const [btnText, setButtonText] = useState("Update Property");
-  const [show, setShowDeleteModal] = useState(false);
 
   const [formData, setFormData] = useState({
     address: "",
@@ -63,9 +60,7 @@ const Listing = () => {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {
-      setFormData(property);
-    }, 1000);
+    setFormData(property);
   }, [property]);
 
   const initializeFormData = () => {
@@ -106,13 +101,6 @@ const Listing = () => {
     navigate("/");
   };
 
-  const handleDelete = (e) => {
-    e.preventDefault();
-    dispatch(deleteRental(id));
-    dispatch(getRentals());
-    navigate("/");
-  };
-
   // const handleDeletePhoto = (e, idx) => {
   //   e.preventDefault();
   //   let imgAry = formData.images;
@@ -142,29 +130,21 @@ const Listing = () => {
     }
   };
 
-  const handleCloseDeleteModal = () => {
-    setShowDeleteModal(false);
-  };
-
   const handleDeleteModal = (e, idx) => {
     e.preventDefault();
-    // setShowDeleteModal(true);
-    navigate("/rentals/delete/" + id)
+    navigate("/rentals/delete/" + id);
   };
 
-  const handleCancelDeleteModal = (e) => {
-    e.preventDefault();
-    setShowDeleteModal(false);
-  };
-
-  if (!formData || formData.address === "") {
-    return <Loading />
+  if (
+    (!property || !('address' in property)) // (!formData || formData.address === "")
+  ) {
+    return <Loading />;
   }
 
   return (
     <>
       <HeaderContainer bg="false" />
-      {property && property.address ? (
+      {property && 'address' in property ? (
         !isAuthenticated ? (
           <Section bgColor="--bs-fade-info">
             <Section.InnerContainer>
@@ -273,111 +253,70 @@ const Listing = () => {
 
                 {formData && (
                   <>
-                    {/* <Form.FormGroup>
+                    <Form.FormGroup>
                       <Form.Input
+                        style={{
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
                         type="text"
-                        placeholder={formData.address}
+                        placeholder={formData.address || ''}
                         name="address"
-                        value={formData.address}
+                        value={formData.address || ''}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
                     </Form.FormGroup>
+
                     <Form.FormGroup>
                       <Form.Input
+                        style={{
+                          width: "50%",
+                          display: "inline-block",
+                          marginRight: "3%",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
                         type="text"
-                        placeholder={formData.city}
+                        placeholder={formData.city || ''}
                         name="city"
-                        value={formData.city}
+                        value={formData.city || ''}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                    </Form.FormGroup>
-                    <Form.FormGroup>
+
                       <Form.Input
+                        style={{
+                          width: "10%",
+                          display: "inline-block",
+                          marginRight: "3%",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
                         type="text"
-                        placeholder={formData.state}
+                        placeholder={formData.state || ''}
                         name="state"
-                        value={formData.state}
+                        value={formData.state || ''}
+                        onChange={handleChange}
+                        onClick={initializeFormData}
+                      />
+
+                      <Form.Input
+                        style={{
+                          width: "20%",
+                          display: "inline-block",
+                          // marginRight: "20px",
+                          border: "1px solid var(--bs-blue)",
+                          borderRadius: "15px",
+                        }}
+                        type="text"
+                        placeholder={formData.zip || ''}
+                        name="zip"
+                        value={formData.zip || ''}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
                     </Form.FormGroup>
-                    <Form.FormGroup>
-                      <Form.Input
-                        type="text"
-                        placeholder={formData.zip}
-                        name="zip"
-                        value={formData.zip}
-                        onChange={handleChange}
-                        onClick={initializeFormData}
-                      />
-                    </Form.FormGroup> */}
-
-                  <Form.FormGroup>
-                    <Form.Input
-                      style={{
-                        border: "1px solid var(--bs-blue)",
-                        borderRadius: "15px",
-                      }}
-                      type="text"
-                      placeholder={formData.address}
-                      name="address"
-                      value={formData.address}
-                      onChange={handleChange}
-                      onClick={initializeFormData}
-                    />
-                  </Form.FormGroup>
-
-                  <Form.FormGroup>
-                    <Form.Input
-                      style={{
-                        width: "50%",
-                        display: "inline-block",
-                        marginRight: "3%",
-                        border: "1px solid var(--bs-blue)",
-                        borderRadius: "15px",
-                      }}
-                      type="text"
-                      placeholder={formData.city}
-                      name="city"
-                      value={formData.city}
-                      onChange={handleChange}
-                      onClick={initializeFormData}
-                    />
-
-                    <Form.Input
-                      style={{
-                        width: "10%",
-                        display: "inline-block",
-                        marginRight: "3%",
-                        border: "1px solid var(--bs-blue)",
-                        borderRadius: "15px",
-                      }}
-                      type="text"
-                      placeholder={formData.state}
-                      name="state"
-                      value={formData.state}
-                      onChange={handleChange}
-                      onClick={initializeFormData}
-                    />
-
-                    <Form.Input
-                      style={{
-                        width: "20%",
-                        display: "inline-block",
-                        // marginRight: "20px",
-                        border: "1px solid var(--bs-blue)",
-                        borderRadius: "15px",
-                      }}
-                      type="text"
-                      placeholder={formData.zip}
-                      name="zip"
-                      value={formData.zip}
-                      onChange={handleChange}
-                      onClick={initializeFormData}
-                    />
-                  </Form.FormGroup>
 
                     <Form.FormGroup>
                       <Form.Input
@@ -391,7 +330,7 @@ const Listing = () => {
                         type="text"
                         placeholder="price"
                         name="price"
-                        value={formData.price}
+                        value={formData.price || ''}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -406,7 +345,7 @@ const Listing = () => {
                         type="text"
                         placeholder="beds"
                         name="beds"
-                        value={formData.beds}
+                        value={formData.beds || ''}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -421,7 +360,7 @@ const Listing = () => {
                         type="text"
                         placeholder="baths"
                         name="baths"
-                        value={formData.baths}
+                        value={formData.baths || ''}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -437,14 +376,13 @@ const Listing = () => {
                         type="text"
                         placeholder="sqft"
                         name="sqft"
-                        value={formData.sqft}
+                        value={formData.sqft || ''}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      </Form.FormGroup>
+                    </Form.FormGroup>
 
-
-                      <Form.FormGroup>
+                    <Form.FormGroup>
                       <Form.Input
                         style={{
                           width: "30%",
@@ -456,7 +394,7 @@ const Listing = () => {
                         type="text"
                         placeholder="type"
                         name="type"
-                        value={formData.type}
+                        value={formData.type || ''}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -471,7 +409,7 @@ const Listing = () => {
                         type="text"
                         placeholder="year"
                         name="year"
-                        value={formData.year}
+                        value={formData.year || ''}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -489,7 +427,7 @@ const Listing = () => {
                         type="text"
                         placeholder="heating"
                         name="heating"
-                        value={formData.heating}
+                        value={formData.heating || ''}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -504,12 +442,12 @@ const Listing = () => {
                         type="text"
                         placeholder="cooling"
                         name="cooling"
-                        value={formData.cooling}
+                        value={formData.cooling || ''}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
                     </Form.FormGroup>
-                    
+
                     <Form.FormGroup>
                       <Form.Input
                         style={{
@@ -522,7 +460,7 @@ const Listing = () => {
                         type="text"
                         placeholder="hoa"
                         name="hoa"
-                        value={formData.hoa}
+                        value={formData.hoa || ''}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -537,7 +475,7 @@ const Listing = () => {
                         type="text"
                         placeholder="parcelNumber"
                         name="parcelNumber"
-                        value={formData.parcelNumber}
+                        value={formData.parcelNumber || ''}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -549,12 +487,12 @@ const Listing = () => {
                           border: "1px solid var(--bs-blue)",
                           borderRadius: "15px",
                         }}
-                        placeholder={formData.description}
+                        placeholder={formData.description || ''}
                         name="description"
                         id=""
                         cols="30"
                         rows="5"
-                        value={formData.description}
+                        value={formData.description || ''}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       ></Form.TextArea>
@@ -572,81 +510,23 @@ const Listing = () => {
                         onClick={(e) => updateProperty(e)}
                         disabled={btnText === "Updating..."}
                         style={{ marginRight: "20px" }}
-                        >
-                          {btnText}
+                      >
+                        {btnText}
                       </Property.AdminEditPhotoCardButton>
 
                       <Property.AdminEditPhotoCardButton
                         onClick={(e) => handleDeleteModal(e)}
                         style={{ marginRight: "20px" }}
-                        >
-                          Delete Property
+                      >
+                        Delete Property
                       </Property.AdminEditPhotoCardButton>
 
                       <Property.AdminEditPhotoCardButton
                         onClick={handleCancel}
                         style={{ marginRight: "20px" }}
-                        >
-                          Cancel
-                      </Property.AdminEditPhotoCardButton>
-                    </Form.FormGroup>
-
-                    <Form.FormGroup>
-                      <Modal
-                        show={show}
-                        onHide={handleCloseDeleteModal}
-                        centered="true"
-                        scrollable={true}
-                        style={{
-                          margin: "100px",
-                          padding: "100px",
-                          height: "90%",
-                          width: "90%",
-                          // border: "1px solid var(--bs-blue)",
-                          border: "1px solid #1b69dfed",
-                          borderRadius: "10px",
-                        }}
                       >
-                        <Modal.Header closeButton>
-                          <Modal.Title
-                            style={{
-                              color: "black",
-                              fontSize: "1.5rem",
-                              marginLeft: "100px",
-                            }}
-                          >
-                            Do you really want to delete this property?
-                          </Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body
-                          style={{
-                            color: "black",
-                            fontSize: "1.3rem",
-                            marginLeft: "100px",
-                          }}
-                        >
-                          <div>{formData && formData.address}</div>
-                        </Modal.Body>
-                        <Modal.Footer>
-                          <Property.AdminEditPhotoCardButton
-                            variant="secondary"
-                            onClick={handleDelete}
-                            style={{ 
-                              marginLeft: "100px",
-                              marginTop: "20px",
-                              marginRight: "20px",
-                            }}
-                            >
-                              Delete Property
-                          </Property.AdminEditPhotoCardButton>
-                          <Property.AdminEditPhotoCardButton
-                            variant="secondary"
-                            onClick={handleCancelDeleteModal}
-                            >
-                              Cancel
-                          </Property.AdminEditPhotoCardButton>
-                        </Modal.Footer>
-                      </Modal>
+                        Cancel
+                      </Property.AdminEditPhotoCardButton>
                     </Form.FormGroup>
                   </>
                 )}

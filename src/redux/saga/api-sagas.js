@@ -65,7 +65,6 @@ export default function* watcherSaga() {
   yield takeEvery(UPDATE_RENTAL, updateRentalWorkerSaga);
   yield takeEvery(DELETE_RENTAL, deleteRentalWorkerSaga);
   yield takeEvery(ADD_RENTAL, addRentalWorkerSaga);
-
   yield takeEvery(CREATE_GENERAL_MESSAGE, createGeneralMessageWorkerSaga);
 }
 
@@ -84,7 +83,6 @@ export function* getRentalWorkerSaga(action) {
     yield put({ type: IS_FINDING });
     const payload = yield call(getRental, action.payload);
     yield put({ type: FIND_BY_TITLE_SUCCESSFUL, payload });
-
     // yield put({ type: SET_CURRENT_RENTAL, payload: null });
     yield put({ type: SET_CURRENT_RENTAL, payload: payload });
     yield put({ type: SET_CURRENT_INDEX, payload: -1 });
@@ -109,7 +107,6 @@ export function* findByTitleWorkerSaga(action) {
     yield put({ type: IS_FINDING });
     const payload = yield call(findByTitle, action.payload);
     yield put({ type: FIND_BY_TITLE_SUCCESSFUL, payload });
-
     yield put({ type: SET_CURRENT_RENTAL, payload: null });
     yield put({ type: SET_CURRENT_INDEX, payload: -1 });
   } catch (e) {
@@ -123,10 +120,6 @@ export function* updateRentalWorkerSaga(action) {
     yield call(updateRental, action.payload);
     const payload = action.payload;
     yield put({ type: UPDATE_RENTAL_SUCCESSFUL, payload });
-
-    // let todo = action.payload.todo;
-    // yield put({ type: SET_CURRENT_RENTAL, payload: todo });
-
     const message = "The property was updated successfully!";
     yield put({ type: SET_MESSAGE, payload: message });
   } catch (e) {
@@ -140,7 +133,6 @@ export function* deleteRentalWorkerSaga(action) {
     yield call(deleteRental, action.payload);
     const payload = action.payload;
     yield put({ type: DELETE_RENTAL_SUCCESSFUL, payload });
-
     const message = "The property was deleted successfully!";
     yield put({ type: SET_MESSAGE, payload: message });
     yield put({ type: SET_CURRENT_RENTAL, payload: null });
@@ -156,7 +148,6 @@ export function* addRentalWorkerSaga(action) {
     yield put({ type: IS_ADDING });
     const payload = yield call(addRental, action.payload);
     yield put({ type: ADD_RENTAL_SUCCESSFUL, payload });
-
     yield put({ type: SET_SUBMITTED, payload: true });
     yield put({ type: SET_RENTAL_TO_ADD, payload: null });
   } catch (e) {
@@ -170,7 +161,6 @@ export function* createGeneralMessageWorkerSaga(action) {
     // yield put({ type: IS_ADDING });
     const payload = yield call(createGeneralMessage, action.payload);
     yield put({ type: CREATE_GENERAL_MESSAGE_SUCCESSFUL, payload });
-
     // yield put({ type: SET_SUBMITTED, payload: true });
     // yield put({ type: SET_RENTAL_TO_ADD, payload: null });
   } catch (e) {
