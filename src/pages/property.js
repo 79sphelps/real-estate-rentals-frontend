@@ -27,6 +27,20 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../components/loading";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
+const FormError = (props) => {
+  return (
+    <div
+      style={{
+        color: "red",
+        paddingTop: "5px",
+        paddingBottom: "15px",
+      }}
+    >
+      {props.msg}
+    </div>
+  )
+}
+
 const Listing = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -35,7 +49,6 @@ const Listing = () => {
   const { id } = useParams();
   const [btnText, setButtonText] = useState("Update Property");
 
-  const [formHasErrors, setFormHasErrors] = useState(false);
   const [addressError, setAddressError] = useState(false);
   const [cityError, setCityError] = useState(false);
   const [stateError, setStateError] = useState(false);
@@ -322,17 +335,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {addressError ? (
-                        <div
-                          style={{
-                            color: "red",
-                            paddingTop: "5px",
-                            paddingBottom: "15px",
-                          }}
-                        >
-                          Address must be more than 15 characters to be valid.
-                        </div>
-                      ) : null}
+                      {addressError && <FormError msg="Address must be more than 15 characters to be valid." />}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
@@ -351,18 +354,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {cityError ? (
-                        <div
-                          style={{
-                            color: "red",
-                            paddingTop: "5px",
-                            paddingBottom: "5px",
-                          }}
-                        >
-                          City must be more than 1 character to be valid.
-                        </div>
-                      ) : null}
-
+                      {cityError && <FormError msg="City must be more than 1 character to be valid." />}
                       <Form.Input
                         style={{
                           width: "10%",
@@ -378,18 +370,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {stateError ? (
-                        <div
-                          style={{
-                            color: "red",
-                            paddingTop: "5px",
-                            paddingBottom: "5px",
-                          }}
-                        >
-                          State code must be 2 characters to be valid.
-                        </div>
-                      ) : null}
-
+                      {stateError && <FormError msg="State code must be 2 characters to be valid." />}
                       <Form.Input
                         style={{
                           width: "20%",
@@ -405,17 +386,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {zipError ? (
-                        <div
-                          style={{
-                            color: "red",
-                            paddingTop: "5px",
-                            paddingBottom: "5px",
-                          }}
-                        >
-                          Zip code not valid.
-                        </div>
-                      ) : null}
+                      {zipError && <FormError msg="Zip code not valid." />}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
@@ -434,17 +405,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {priceError ? (
-                        <div
-                          style={{
-                            color: "red",
-                            paddingTop: "5px",
-                            paddingBottom: "5px",
-                          }}
-                        >
-                          Price is not valid.
-                        </div>
-                      ) : null}
+                      {priceError && <FormError msg="Price is not valid." />}
                       <Form.Input
                         style={{
                           width: "10%",
@@ -460,17 +421,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {bedsError ? (
-                        <div
-                          style={{
-                            color: "red",
-                            paddingTop: "5px",
-                            paddingBottom: "5px",
-                          }}
-                        >
-                          Beds must be of form "4" or "4.1"
-                        </div>
-                      ) : null}
+                       {bedsError && <FormError msg="Beds must be of form '4' or '4.1'" />}
                       <Form.Input
                         style={{
                           width: "10%",
@@ -486,17 +437,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {bathsError ? (
-                        <div
-                          style={{
-                            color: "red",
-                            paddingTop: "5px",
-                            paddingBottom: "5px",
-                          }}
-                        >
-                          Baths must be of form "4" or "4.1"
-                        </div>
-                      ) : null}
+                      {bathsError && <FormError msg="Baths must be of form '4' or '4.1'" />}
                       <Form.Input
                         style={{
                           width: "20%",
@@ -512,17 +453,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {sqftError ? (
-                        <div
-                          style={{
-                            color: "red",
-                            paddingTop: "5px",
-                            paddingBottom: "5px",
-                          }}
-                        >
-                          Square footage must be of form '3000' or '3,450'
-                        </div>
-                      ) : null}
+                      {sqftError && <FormError msg="Square footage must be of form '3000' or '3,450'" />}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
@@ -639,17 +570,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       ></Form.TextArea>
-                      {descripError ? (
-                        <div
-                          style={{
-                            color: "red",
-                            paddingTop: "5px",
-                            paddingBottom: "5px",
-                          }}
-                        >
-                          Please enter a description of at least 25 characters in length.
-                        </div>
-                      ) : null}
+                      {descripError && <FormError msg="Please enter a description of at least 25 characters in length." />}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
