@@ -13,12 +13,7 @@ import {
   PropertyAddress,
   PropertyDescription,
 } from "../partials/property_features_partial.js";
-import {
-  getRentals,
-  getRental,
-  updateRental,
-  deleteRental,
-} from "../redux/actions";
+import { getRental, updateRental } from "../redux/actions";
 import { selectCurrentRental } from "../redux/selectors/index.js";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Image } from "../components/property/styles/property.js";
@@ -58,7 +53,6 @@ const Listing = () => {
   const [bathsError, setBathsError] = useState(false);
   const [sqftError, setSqftError] = useState(false);
   const [descripError, setDescripError] = useState(false);
-
 
   const [formData, setFormData] = useState({
     address: "",
