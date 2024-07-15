@@ -40,8 +40,10 @@ const Listing = () => {
   const [stateError, setStateError] = useState(false);
   const [zipError, setZipError] = useState(false);
   const [priceError, setPriceError] = useState(false);
-  const [bedsError, setBedsError ] = useState(false);
-  const [bathsError, setBathsError ] = useState(false);
+  const [bedsError, setBedsError] = useState(false);
+  const [bathsError, setBathsError] = useState(false);
+  const [sqftError, setSqftError] = useState(false);
+
 
   const [formData, setFormData] = useState({
     address: "",
@@ -137,13 +139,17 @@ const Listing = () => {
         !pricePattern.test(value) ? setPriceError(true) : setPriceError(false);
         break;
       case "beds":
-          let bedPattern = /^\d{1}(?:.\d{1})*$/;
-          !bedPattern.test(value) ? setBedsError(true) : setBedsError(false);
-          break;
+        let bedPattern = /^\d{1}(?:.\d{1})*$/;
+        !bedPattern.test(value) ? setBedsError(true) : setBedsError(false);
+        break;
       case "baths":
-          let bathPattern = /^\d{1}(?:.\d{1})*$/;
-          !bathPattern.test(value) ? setBathsError(true) : setBathsError(false);
-          break;
+        let bathPattern = /^\d{1}(?:.\d{1})*$/;
+        !bathPattern.test(value) ? setBathsError(true) : setBathsError(false);
+        break;
+      case "sqft":
+        let sqftPattern = /^\d{1,3}(,\d{3})*(\.\d+)?$/;
+        !sqftPattern.test(value) ? setSqftError(true) : setSqftError(false);
+        break;
       default:
         break;
     }
@@ -498,6 +504,17 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
+                      {sqftError ? (
+                        <div
+                          style={{
+                            color: "red",
+                            paddingTop: "5px",
+                            paddingBottom: "5px",
+                          }}
+                        >
+                          Square footage must be of form '3000' or '3,450'
+                        </div>
+                      ) : null}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
