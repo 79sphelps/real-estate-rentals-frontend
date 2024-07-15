@@ -40,6 +40,8 @@ const Listing = () => {
   const [stateError, setStateError] = useState(false);
   const [zipError, setZipError] = useState(false);
   const [priceError, setPriceError] = useState(false);
+  const [bedsError, setBedsError ] = useState(false);
+  const [bathsError, setBathsError ] = useState(false);
 
   const [formData, setFormData] = useState({
     address: "",
@@ -131,9 +133,17 @@ const Listing = () => {
         !pattern.test(value) ? setZipError(true) : setZipError(false);
         break;
       case "price":
-        let pricePattern = /^\d+(?:[.,]\d+)*$/;
+        let pricePattern = /^\$\d+(?:[.,]\d+)*$/;
         !pricePattern.test(value) ? setPriceError(true) : setPriceError(false);
         break;
+      case "beds":
+          let bedPattern = /^\d{1}(?:.\d{1})*$/;
+          !bedPattern.test(value) ? setBedsError(true) : setBedsError(false);
+          break;
+      case "baths":
+          let bathPattern = /^\d{1}(?:.\d{1})*$/;
+          !bathPattern.test(value) ? setBathsError(true) : setBathsError(false);
+          break;
       default:
         break;
     }
@@ -436,7 +446,17 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-
+                      {bedsError ? (
+                        <div
+                          style={{
+                            color: "red",
+                            paddingTop: "5px",
+                            paddingBottom: "5px",
+                          }}
+                        >
+                          Beds must be of form "4" or "4.1"
+                        </div>
+                      ) : null}
                       <Form.Input
                         style={{
                           width: "10%",
@@ -452,7 +472,17 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-
+                      {bathsError ? (
+                        <div
+                          style={{
+                            color: "red",
+                            paddingTop: "5px",
+                            paddingBottom: "5px",
+                          }}
+                        >
+                          Baths must be of form "4" or "4.1"
+                        </div>
+                      ) : null}
                       <Form.Input
                         style={{
                           width: "20%",
