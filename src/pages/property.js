@@ -178,7 +178,6 @@ const Listing = () => {
       setFormData(newFormDetails);
     } else {
       validateInput(name, value);
-
       setFormData({
         ...formData,
         [name]: value,
@@ -648,7 +647,7 @@ const Listing = () => {
                             paddingBottom: "5px",
                           }}
                         >
-                          Please enter a description of at least 25 characters.
+                          Please enter a description of at least 25 characters in length.
                         </div>
                       ) : null}
                     </Form.FormGroup>
