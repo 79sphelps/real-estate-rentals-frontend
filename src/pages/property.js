@@ -35,6 +35,7 @@ const Listing = () => {
   const { id } = useParams();
   const [btnText, setButtonText] = useState("Update Property");
 
+  const [formHasErrors, setFormHasErrors] = useState(false);
   const [addressError, setAddressError] = useState(false);
   const [cityError, setCityError] = useState(false);
   const [stateError, setStateError] = useState(false);
@@ -43,6 +44,7 @@ const Listing = () => {
   const [bedsError, setBedsError] = useState(false);
   const [bathsError, setBathsError] = useState(false);
   const [sqftError, setSqftError] = useState(false);
+  const [descripError, setDescripError] = useState(false);
 
 
   const [formData, setFormData] = useState({
@@ -78,6 +80,10 @@ const Listing = () => {
       setFormData(property);
     }
   };
+
+  const doesFormHaveErrors = () => {
+    return addressError || cityError || stateError || zipError || priceError || bedsError || bathsError || sqftError || descripError
+  }
 
   const updateProperty = (e) => {
     e.preventDefault();
@@ -150,6 +156,9 @@ const Listing = () => {
         let sqftPattern = /^\d{1,3}(,\d{3})*(\.\d+)?$/;
         !sqftPattern.test(value) ? setSqftError(true) : setSqftError(false);
         break;
+      case "description":
+        value.length < 25 ? setDescripError(true) : setDescripError(false);
+        break; 
       default:
         break;
     }
@@ -631,6 +640,17 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       ></Form.TextArea>
+                      {descripError ? (
+                        <div
+                          style={{
+                            color: "red",
+                            paddingTop: "5px",
+                            paddingBottom: "5px",
+                          }}
+                        >
+                          Please enter a description of at least 25 characters.
+                        </div>
+                      ) : null}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
@@ -643,8 +663,10 @@ const Listing = () => {
 
                       <Property.AdminEditPhotoCardButton
                         onClick={(e) => updateProperty(e)}
-                        disabled={btnText === "Updating..."}
-                        style={{ marginRight: "20px" }}
+                        disabled={
+                          btnText === "Updating..." || doesFormHaveErrors()
+                        }
+                        style={doesFormHaveErrors() ? { color: "lightgrey", marginRight: "20px" } : { marginRight: "20px" }}
                       >
                         {btnText}
                       </Property.AdminEditPhotoCardButton>
