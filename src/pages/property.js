@@ -35,6 +35,12 @@ const Listing = () => {
   const { id } = useParams();
   const [btnText, setButtonText] = useState("Update Property");
 
+  const [addressError, setAddressError] = useState(false);
+  const [cityError, setCityError] = useState(false);
+  const [stateError, setStateError] = useState(false);
+  const [zipError, setZipError] = useState(false);
+  const [priceError, setPriceError] = useState(false);
+
   const [formData, setFormData] = useState({
     address: "",
     city: "",
@@ -109,6 +115,30 @@ const Listing = () => {
   //   setFormData(newFormDetails);
   // };
 
+  const validateInput = (name, value) => {
+    switch (name) {
+      case "address":
+        value.length < 15 ? setAddressError(true) : setAddressError(false);
+        break;
+      case "city":
+        value.length < 1 ? setCityError(true) : setCityError(false);
+        break;
+      case "state":
+        value.length !== 2 ? setStateError(true) : setStateError(false);
+        break;
+      case "zip":
+        let pattern = /^\d{5}(?:[-\s]\d{4})?$/;
+        !pattern.test(value) ? setZipError(true) : setZipError(false);
+        break;
+      case "price":
+        let pricePattern = /^\d+(?:[.,]\d+)*$/;
+        !pricePattern.test(value) ? setPriceError(true) : setPriceError(false);
+        break;
+      default:
+        break;
+    }
+  };
+
   const handleChange = (e, idx) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -120,9 +150,10 @@ const Listing = () => {
         return item;
       });
       let newFormDetails = { ...formData, images: newAry };
-      console.log(newFormDetails);
       setFormData(newFormDetails);
     } else {
+      validateInput(name, value);
+
       setFormData({
         ...formData,
         [name]: value,
@@ -136,7 +167,8 @@ const Listing = () => {
   };
 
   if (
-    (!property || !('address' in property)) // (!formData || formData.address === "")
+    !property ||
+    !("address" in property) // (!formData || formData.address === "")
   ) {
     return <Loading />;
   }
@@ -144,7 +176,7 @@ const Listing = () => {
   return (
     <>
       <HeaderContainer bg="false" />
-      {property && 'address' in property ? (
+      {property && "address" in property ? (
         !isAuthenticated ? (
           <Section bgColor="--bs-fade-info">
             <Section.InnerContainer>
@@ -260,12 +292,23 @@ const Listing = () => {
                           borderRadius: "15px",
                         }}
                         type="text"
-                        placeholder={formData.address || ''}
+                        placeholder={formData.address || ""}
                         name="address"
-                        value={formData.address || ''}
+                        value={formData.address || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
+                      {addressError ? (
+                        <div
+                          style={{
+                            color: "red",
+                            paddingTop: "5px",
+                            paddingBottom: "15px",
+                          }}
+                        >
+                          Address must be more than 15 characters to be valid.
+                        </div>
+                      ) : null}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
@@ -278,12 +321,23 @@ const Listing = () => {
                           borderRadius: "15px",
                         }}
                         type="text"
-                        placeholder={formData.city || ''}
+                        placeholder={formData.city || ""}
                         name="city"
-                        value={formData.city || ''}
+                        value={formData.city || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
+                      {cityError ? (
+                        <div
+                          style={{
+                            color: "red",
+                            paddingTop: "5px",
+                            paddingBottom: "5px",
+                          }}
+                        >
+                          City must be more than 1 character to be valid.
+                        </div>
+                      ) : null}
 
                       <Form.Input
                         style={{
@@ -294,12 +348,23 @@ const Listing = () => {
                           borderRadius: "15px",
                         }}
                         type="text"
-                        placeholder={formData.state || ''}
+                        placeholder={formData.state || ""}
                         name="state"
-                        value={formData.state || ''}
+                        value={formData.state || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
+                      {stateError ? (
+                        <div
+                          style={{
+                            color: "red",
+                            paddingTop: "5px",
+                            paddingBottom: "5px",
+                          }}
+                        >
+                          State code must be 2 characters to be valid.
+                        </div>
+                      ) : null}
 
                       <Form.Input
                         style={{
@@ -310,12 +375,23 @@ const Listing = () => {
                           borderRadius: "15px",
                         }}
                         type="text"
-                        placeholder={formData.zip || ''}
+                        placeholder={formData.zip || ""}
                         name="zip"
-                        value={formData.zip || ''}
+                        value={formData.zip || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
+                      {zipError ? (
+                        <div
+                          style={{
+                            color: "red",
+                            paddingTop: "5px",
+                            paddingBottom: "5px",
+                          }}
+                        >
+                          Zip code not valid.
+                        </div>
+                      ) : null}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
@@ -330,10 +406,21 @@ const Listing = () => {
                         type="text"
                         placeholder="price"
                         name="price"
-                        value={formData.price || ''}
+                        value={formData.price || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
+                      {priceError ? (
+                        <div
+                          style={{
+                            color: "red",
+                            paddingTop: "5px",
+                            paddingBottom: "5px",
+                          }}
+                        >
+                          Price is not valid.
+                        </div>
+                      ) : null}
                       <Form.Input
                         style={{
                           width: "10%",
@@ -345,10 +432,11 @@ const Listing = () => {
                         type="text"
                         placeholder="beds"
                         name="beds"
-                        value={formData.beds || ''}
+                        value={formData.beds || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
+
                       <Form.Input
                         style={{
                           width: "10%",
@@ -360,7 +448,7 @@ const Listing = () => {
                         type="text"
                         placeholder="baths"
                         name="baths"
-                        value={formData.baths || ''}
+                        value={formData.baths || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -376,7 +464,7 @@ const Listing = () => {
                         type="text"
                         placeholder="sqft"
                         name="sqft"
-                        value={formData.sqft || ''}
+                        value={formData.sqft || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -394,7 +482,7 @@ const Listing = () => {
                         type="text"
                         placeholder="type"
                         name="type"
-                        value={formData.type || ''}
+                        value={formData.type || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -409,7 +497,7 @@ const Listing = () => {
                         type="text"
                         placeholder="year"
                         name="year"
-                        value={formData.year || ''}
+                        value={formData.year || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -427,7 +515,7 @@ const Listing = () => {
                         type="text"
                         placeholder="heating"
                         name="heating"
-                        value={formData.heating || ''}
+                        value={formData.heating || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -442,7 +530,7 @@ const Listing = () => {
                         type="text"
                         placeholder="cooling"
                         name="cooling"
-                        value={formData.cooling || ''}
+                        value={formData.cooling || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -460,7 +548,7 @@ const Listing = () => {
                         type="text"
                         placeholder="hoa"
                         name="hoa"
-                        value={formData.hoa || ''}
+                        value={formData.hoa || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -475,7 +563,7 @@ const Listing = () => {
                         type="text"
                         placeholder="parcelNumber"
                         name="parcelNumber"
-                        value={formData.parcelNumber || ''}
+                        value={formData.parcelNumber || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
@@ -487,12 +575,12 @@ const Listing = () => {
                           border: "1px solid var(--bs-blue)",
                           borderRadius: "15px",
                         }}
-                        placeholder={formData.description || ''}
+                        placeholder={formData.description || ""}
                         name="description"
                         id=""
                         cols="30"
                         rows="5"
-                        value={formData.description || ''}
+                        value={formData.description || ""}
                         onChange={handleChange}
                         onClick={initializeFormData}
                       ></Form.TextArea>
