@@ -21,20 +21,7 @@ import { Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Loading from "../components/loading";
 // import 'bootstrap/dist/css/bootstrap.min.css';
-
-const FormError = (props) => {
-  return (
-    <div
-      style={{
-        color: "red",
-        paddingTop: "5px",
-        paddingBottom: "15px",
-      }}
-    >
-      {props.msg}
-    </div>
-  )
-}
+import { getFormErrorObject, getErrorElement } from "../helpers/form_validation.js";
 
 const Listing = () => {
   const navigate = useNavigate();
@@ -44,15 +31,20 @@ const Listing = () => {
   const { id } = useParams();
   const [btnText, setButtonText] = useState("Update Property");
 
-  const [addressError, setAddressError] = useState(false);
-  const [cityError, setCityError] = useState(false);
-  const [stateError, setStateError] = useState(false);
-  const [zipError, setZipError] = useState(false);
-  const [priceError, setPriceError] = useState(false);
-  const [bedsError, setBedsError] = useState(false);
-  const [bathsError, setBathsError] = useState(false);
-  const [sqftError, setSqftError] = useState(false);
-  const [descripError, setDescripError] = useState(false);
+  let initialFormErrorObject = {
+    addressError: false,
+    cityError: false,
+    stateError: false,
+    zipError: false,
+    priceError: false,
+    bedsError: false,
+    bathsError: false,
+    sqftError: false,
+    descriptionError: false
+  }
+
+  const [formErrorObject, setFormErrorObject ] = useState(initialFormErrorObject);
+  const [ errorElement, setErrorElement ] = useState(null);
 
   const [formData, setFormData] = useState({
     address: "",
@@ -89,7 +81,7 @@ const Listing = () => {
   };
 
   const doesFormHaveErrors = () => {
-    return addressError || cityError || stateError || zipError || priceError || bedsError || bathsError || sqftError || descripError
+    return formErrorObject.addressError || formErrorObject.cityError || formErrorObject.stateError || formErrorObject.zipError || formErrorObject.priceError || formErrorObject.bedsError || formErrorObject.bathsError || formErrorObject.sqftError || formErrorObject.descriptionError
   }
 
   const updateProperty = (e) => {
@@ -132,45 +124,6 @@ const Listing = () => {
   //   setFormData(newFormDetails);
   // };
 
-  const validateInput = (name, value) => {
-    switch (name) {
-      case "address":
-        value.length < 15 ? setAddressError(true) : setAddressError(false);
-        break;
-      case "city":
-        value.length < 1 ? setCityError(true) : setCityError(false);
-        break;
-      case "state":
-        value.length !== 2 ? setStateError(true) : setStateError(false);
-        break;
-      case "zip":
-        let pattern = /^\d{5}(?:[-\s]\d{4})?$/;
-        !pattern.test(value) ? setZipError(true) : setZipError(false);
-        break;
-      case "price":
-        let pricePattern = /^\$\d+(?:[.,]\d+)*$/;
-        !pricePattern.test(value) ? setPriceError(true) : setPriceError(false);
-        break;
-      case "beds":
-        let bedPattern = /^\d{1}(?:.\d{1})*$/;
-        !bedPattern.test(value) ? setBedsError(true) : setBedsError(false);
-        break;
-      case "baths":
-        let bathPattern = /^\d{1}(?:.\d{1})*$/;
-        !bathPattern.test(value) ? setBathsError(true) : setBathsError(false);
-        break;
-      case "sqft":
-        let sqftPattern = /^\d{1,3}(,\d{3})*(\.\d+)?$/;
-        !sqftPattern.test(value) ? setSqftError(true) : setSqftError(false);
-        break;
-      case "description":
-        value.length < 25 ? setDescripError(true) : setDescripError(false);
-        break; 
-      default:
-        break;
-    }
-  };
-
   const handleChange = (e, idx) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -184,7 +137,10 @@ const Listing = () => {
       let newFormDetails = { ...formData, images: newAry };
       setFormData(newFormDetails);
     } else {
-      validateInput(name, value);
+      // validateInput(name, value);
+      let obj = getFormErrorObject(name, value, formErrorObject);
+      setFormErrorObject({ ...formErrorObject, ...obj })
+      setErrorElement(getErrorElement(name, value));
       setFormData({
         ...formData,
         [name]: value,
@@ -329,7 +285,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {addressError && <FormError msg="Address must be more than 15 characters to be valid." />}
+                      {formErrorObject.addressError && errorElement }
                     </Form.FormGroup>
 
                     <Form.FormGroup>
@@ -348,7 +304,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {cityError && <FormError msg="City must be more than 1 character to be valid." />}
+                      {formErrorObject.cityError  && errorElement}
                       <Form.Input
                         style={{
                           width: "10%",
@@ -364,7 +320,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {stateError && <FormError msg="State code must be 2 characters to be valid." />}
+                      {formErrorObject.stateError  && errorElement}
                       <Form.Input
                         style={{
                           width: "20%",
@@ -380,7 +336,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {zipError && <FormError msg="Zip code not valid." />}
+                      {formErrorObject.zipError  && errorElement}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
@@ -399,7 +355,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {priceError && <FormError msg="Price is not valid." />}
+                      {formErrorObject.priceError  && errorElement}
                       <Form.Input
                         style={{
                           width: "10%",
@@ -415,7 +371,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                       {bedsError && <FormError msg="Beds must be of form '4' or '4.1'" />}
+                       {formErrorObject.bedsError  && errorElement}
                       <Form.Input
                         style={{
                           width: "10%",
@@ -431,7 +387,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {bathsError && <FormError msg="Baths must be of form '4' or '4.1'" />}
+                      {formErrorObject.bathsError  && errorElement}
                       <Form.Input
                         style={{
                           width: "20%",
@@ -447,7 +403,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {sqftError && <FormError msg="Square footage must be of form '3000' or '3,450'" />}
+                      {formErrorObject.sqftError  && errorElement}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
@@ -564,7 +520,7 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       ></Form.TextArea>
-                      {descripError && <FormError msg="Please enter a description of at least 25 characters in length." />}
+                      {formErrorObject.descriptionError  && errorElement}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
