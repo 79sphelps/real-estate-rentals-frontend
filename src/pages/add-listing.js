@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Section, Property, Form } from "../components";
-import {
-  HeaderContainer,
-  FooterContainer,
-} from "../containers";
+import { HeaderContainer, FooterContainer } from "../containers";
 import { addRental } from "../redux/actions";
 // import { useAuth0 } from "@auth0/auth0-react";
 import { Image } from "../components/property/styles/property.js";
 import { Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import {
+  getFormErrorObject,
+  formErrors,
+  FormError,
+} from "../helpers/form_validation.js";
 
 const AddListing = () => {
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ const AddListing = () => {
   // const { isAuthenticated } = useAuth0();
   const [addPhotoFlag, setAddPhotoFlag] = useState(false);
   const [currentImageToAdd, setCurrentImageToAdd] = useState("");
-  const [btnText, setButtonText] = useState("Add Listing");
+  const [btnText, setButtonText] = useState("Create Listing");
 
   const [formData, setFormData] = useState({
     address: "",
@@ -38,9 +40,35 @@ const AddListing = () => {
     parcelNumber: "",
   });
 
-  //   useEffect(() => {
-  //     dispatch(getRental(id));
-  //   }, [dispatch, id]);
+  let initialFormErrorObject = {
+    addressError: false,
+    cityError: false,
+    stateError: false,
+    zipError: false,
+    priceError: false,
+    bedsError: false,
+    bathsError: false,
+    sqftError: false,
+    descriptionError: false,
+  };
+
+  const [formErrorObject, setFormErrorObject] = useState(
+    initialFormErrorObject
+  );
+
+  const doesFormHaveErrors = () => {
+    return (
+      formErrorObject.addressError ||
+      formErrorObject.cityError ||
+      formErrorObject.stateError ||
+      formErrorObject.zipError ||
+      formErrorObject.priceError ||
+      formErrorObject.bedsError ||
+      formErrorObject.bathsError ||
+      formErrorObject.sqftError ||
+      formErrorObject.descriptionError
+    );
+  };
 
   const createProperty = (e) => {
     e.preventDefault();
@@ -56,27 +84,34 @@ const AddListing = () => {
     // })
 
     var data = {
-      //   id: id,
       address: formData.address,
       city: formData.city,
       state: formData.state,
       zip: formData.zip,
-      // images: tImages,
       images: formData.images,
       description: formData.description,
     };
-
     setButtonText("Creating Listing...");
     dispatch(addRental(data));
-    // setSubmitted(true);
     setTimeout(() => {
-      setButtonText("Creating Listing...");
+      setButtonText("Create Listing");
       navigate("/");
     }, 2000);
   };
 
+  const checkEmptyFormFields = () => {
+    for (const v of Object.values(formData)) {
+      if (v === "") return true;
+    }
+    return false;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+    let obj = getFormErrorObject(name, value, formErrorObject);
+    let newObj = { ...formErrorObject, ...obj };
+    setFormErrorObject({ ...formErrorObject, ...newObj });
+    // setErrorElement(getErrorElement(name, value));
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -131,6 +166,9 @@ const AddListing = () => {
                 // onChange={(e) => setStreet(e.target.value)}
                 onChange={handleChange}
               />
+              {formErrorObject.addressError && (
+                <FormError msg={formErrors["address"].error} />
+              )}
             </Form.FormGroup>
             <Form.FormGroup>
               <Form.Input
@@ -147,6 +185,9 @@ const AddListing = () => {
                 value={formData.city}
                 onChange={handleChange}
               />
+              {formErrorObject.cityError && (
+                <FormError msg={formErrors["city"].error} />
+              )}
               <Form.Input
                 style={{
                   width: "10%",
@@ -161,6 +202,9 @@ const AddListing = () => {
                 value={formData.state}
                 onChange={handleChange}
               />
+              {formErrorObject.stateError && (
+                <FormError msg={formErrors["state"].error} />
+              )}
               <Form.Input
                 style={{
                   width: "20%",
@@ -175,6 +219,9 @@ const AddListing = () => {
                 value={formData.zip}
                 onChange={handleChange}
               />
+              {formErrorObject.zipError && (
+                <FormError msg={formErrors["zip"].error} />
+              )}
             </Form.FormGroup>
             <Form.FormGroup>
               <Form.Input
@@ -191,6 +238,9 @@ const AddListing = () => {
                 value={formData.price}
                 onChange={handleChange}
               />
+              {formErrorObject.priceError && (
+                <FormError msg={formErrors["price"].error} />
+              )}
               <Form.Input
                 style={{
                   width: "10%",
@@ -205,6 +255,9 @@ const AddListing = () => {
                 value={formData.beds}
                 onChange={handleChange}
               />
+              {formErrorObject.bedsError && (
+                <FormError msg={formErrors["beds"].error} />
+              )}
               <Form.Input
                 style={{
                   width: "10%",
@@ -219,6 +272,9 @@ const AddListing = () => {
                 value={formData.baths}
                 onChange={handleChange}
               />
+              {formErrorObject.bathsError && (
+                <FormError msg={formErrors["baths"].error} />
+              )}
               <Form.Input
                 style={{
                   width: "20%",
@@ -233,6 +289,9 @@ const AddListing = () => {
                 value={formData.sqft}
                 onChange={handleChange}
               />
+              {formErrorObject.sqftError && (
+                <FormError msg={formErrors["sqft"].error} />
+              )}
             </Form.FormGroup>
             <Form.FormGroup>
               <Form.Input
@@ -338,6 +397,9 @@ const AddListing = () => {
                 value={formData.description}
                 onChange={handleChange}
               ></Form.TextArea>
+              {formErrorObject.descriptionError && (
+                <FormError msg={formErrors["description"].error} />
+              )}
             </Form.FormGroup>
             {formData &&
               formData.images.map((image, idx) => {
@@ -438,8 +500,7 @@ const AddListing = () => {
                       display: "inline-block",
                     }}
                   >
-                    <i className="fa fa-solid fa-camera"></i>&nbsp;
-                    Add Photo
+                    <i className="fa fa-solid fa-camera"></i>&nbsp; Add Photo
                   </Property.Button>
                   <Property.Button
                     onClick={(e) => createProperty(e)}
@@ -449,10 +510,18 @@ const AddListing = () => {
                       borderRadius: "10px",
                       width: "33%",
                       display: "inline-block",
+                      color:
+                        checkEmptyFormFields() || doesFormHaveErrors()
+                          ? "lightgrey"
+                          : "white",
                     }}
+                    disabled={
+                      btnText == "Create Listing" ||
+                      checkEmptyFormFields() ||
+                      doesFormHaveErrors()
+                    }
                   >
-                    <i className="fa fa-solid fa-plus"></i>&nbsp;
-                    Create Listing
+                    <i className="fa fa-solid fa-plus"></i>&nbsp; {btnText}
                   </Property.Button>
                   <Property.Button
                     onClick={(e) => handleCancel(e)}

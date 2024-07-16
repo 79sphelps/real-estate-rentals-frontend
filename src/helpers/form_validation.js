@@ -1,4 +1,4 @@
-const FormError = (props) => {
+export const FormError = (props) => {
     return (
       <div
         style={{
@@ -12,7 +12,7 @@ const FormError = (props) => {
     )
   }
 
-const formErrors = {
+export const formErrors = {
     "address": {
         required: true,
         error: "Address must be more than 15 characters to be valid."

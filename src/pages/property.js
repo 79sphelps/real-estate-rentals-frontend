@@ -21,7 +21,11 @@ import { Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Loading from "../components/loading";
 // import 'bootstrap/dist/css/bootstrap.min.css';
-import { getFormErrorObject, getErrorElement } from "../helpers/form_validation.js";
+import {
+  getFormErrorObject,
+  formErrors,
+  FormError,
+} from "../helpers/form_validation.js";
 
 const Listing = () => {
   const navigate = useNavigate();
@@ -40,11 +44,12 @@ const Listing = () => {
     bedsError: false,
     bathsError: false,
     sqftError: false,
-    descriptionError: false
-  }
+    descriptionError: false,
+  };
 
-  const [formErrorObject, setFormErrorObject ] = useState(initialFormErrorObject);
-  const [ errorElement, setErrorElement ] = useState(null);
+  const [formErrorObject, setFormErrorObject] = useState(
+    initialFormErrorObject
+  );
 
   const [formData, setFormData] = useState({
     address: "",
@@ -81,8 +86,18 @@ const Listing = () => {
   };
 
   const doesFormHaveErrors = () => {
-    return formErrorObject.addressError || formErrorObject.cityError || formErrorObject.stateError || formErrorObject.zipError || formErrorObject.priceError || formErrorObject.bedsError || formErrorObject.bathsError || formErrorObject.sqftError || formErrorObject.descriptionError
-  }
+    return (
+      formErrorObject.addressError ||
+      formErrorObject.cityError ||
+      formErrorObject.stateError ||
+      formErrorObject.zipError ||
+      formErrorObject.priceError ||
+      formErrorObject.bedsError ||
+      formErrorObject.bathsError ||
+      formErrorObject.sqftError ||
+      formErrorObject.descriptionError
+    );
+  };
 
   const updateProperty = (e) => {
     e.preventDefault();
@@ -139,8 +154,9 @@ const Listing = () => {
     } else {
       // validateInput(name, value);
       let obj = getFormErrorObject(name, value, formErrorObject);
-      setFormErrorObject({ ...formErrorObject, ...obj })
-      setErrorElement(getErrorElement(name, value));
+      let newObj = { ...formErrorObject, ...obj };
+      setFormErrorObject({ ...formErrorObject, ...newObj });
+      // setErrorElement(getErrorElement(name, value));
       setFormData({
         ...formData,
         [name]: value,
@@ -285,7 +301,9 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {formErrorObject.addressError && errorElement }
+                      {formErrorObject.addressError && (
+                        <FormError msg={formErrors["address"].error} />
+                      )}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
@@ -304,7 +322,9 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {formErrorObject.cityError  && errorElement}
+                      {formErrorObject.cityError && (
+                        <FormError msg={formErrors["city"].error} />
+                      )}
                       <Form.Input
                         style={{
                           width: "10%",
@@ -320,7 +340,9 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {formErrorObject.stateError  && errorElement}
+                      {formErrorObject.stateError && (
+                        <FormError msg={formErrors["state"].error} />
+                      )}
                       <Form.Input
                         style={{
                           width: "20%",
@@ -336,7 +358,9 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {formErrorObject.zipError  && errorElement}
+                      {formErrorObject.zipError && (
+                        <FormError msg={formErrors["zip"].error} />
+                      )}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
@@ -355,7 +379,9 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {formErrorObject.priceError  && errorElement}
+                      {formErrorObject.priceError && (
+                        <FormError msg={formErrors["price"].error} />
+                      )}
                       <Form.Input
                         style={{
                           width: "10%",
@@ -371,7 +397,9 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                       {formErrorObject.bedsError  && errorElement}
+                      {formErrorObject.bedsError && (
+                        <FormError msg={formErrors["beds"].error} />
+                      )}
                       <Form.Input
                         style={{
                           width: "10%",
@@ -387,7 +415,9 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {formErrorObject.bathsError  && errorElement}
+                      {formErrorObject.bathsError && (
+                        <FormError msg={formErrors["baths"].error} />
+                      )}
                       <Form.Input
                         style={{
                           width: "20%",
@@ -403,7 +433,9 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       />
-                      {formErrorObject.sqftError  && errorElement}
+                      {formErrorObject.sqftError && (
+                        <FormError msg={formErrors["sqft"].error} />
+                      )}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
@@ -520,7 +552,9 @@ const Listing = () => {
                         onChange={handleChange}
                         onClick={initializeFormData}
                       ></Form.TextArea>
-                      {formErrorObject.descriptionError  && errorElement}
+                      {formErrorObject.descriptionError && (
+                        <FormError msg={formErrors["description"].error} />
+                      )}
                     </Form.FormGroup>
 
                     <Form.FormGroup>
@@ -536,7 +570,11 @@ const Listing = () => {
                         disabled={
                           btnText === "Updating..." || doesFormHaveErrors()
                         }
-                        style={doesFormHaveErrors() ? { color: "lightgrey", marginRight: "20px" } : { marginRight: "20px" }}
+                        style={
+                          doesFormHaveErrors()
+                            ? { color: "lightgrey", marginRight: "20px" }
+                            : { marginRight: "20px" }
+                        }
                       >
                         {btnText}
                       </Property.AdminEditPhotoCardButton>
