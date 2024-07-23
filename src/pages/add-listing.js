@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { Section, Property, Form } from "../components";
 import { HeaderContainer, FooterContainer } from "../containers";
 import { addRental } from "../redux/actions";
 // import { useAuth0 } from "@auth0/auth0-react";
 import { Image } from "../components/property/styles/property.js";
-import { Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import {
   getFormErrorObject,
   formErrors,

@@ -1,6 +1,6 @@
 import React from "react";
-import { Listing } from "../components";
 import { useNavigate } from "react-router-dom";
+import { Listing } from "../components";
 
 const ListingItemContainer = ({ featured, width }) => {
   const navigate = useNavigate();

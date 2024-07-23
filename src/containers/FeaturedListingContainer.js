@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Section } from "../components";
+import { Section, Loading } from "../components";
 import { ListingItemContainer } from "./index";
 import { getRentals } from "../redux/actions";
 import { selectRentals } from "../redux/selectors";
-import Loading from "../components/loading";
 
 const FeaturedListingContainer = () => {
   const dispatch = useDispatch();

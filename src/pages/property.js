@@ -1,31 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Section, Property, Form } from "../components";
+import { Row } from "react-bootstrap";
+import { useAuth0 } from "@auth0/auth0-react";
 import {
   HeaderContainer,
   ContactAgentContainer,
   FooterContainer,
 } from "../containers";
+import { Section, Property, Form, Loading } from "../components";
+import { Image } from "../components/property/styles/property.js";
+import { getRental, updateRental } from "../redux/actions";
+import { selectCurrentRental } from "../redux/selectors/index.js";
 import {
   PropertGallery,
   PropertyAdditionalDetails,
   PropertyAddress,
   PropertyDescription,
 } from "../partials/property_features_partial.js";
-import { getRental, updateRental } from "../redux/actions";
-import { selectCurrentRental } from "../redux/selectors/index.js";
-import { useAuth0 } from "@auth0/auth0-react";
-import { Image } from "../components/property/styles/property.js";
-import { Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import Loading from "../components/loading";
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   getFormErrorObject,
   formErrors,
   FormError,
 } from "../helpers/form_validation.js";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Listing = () => {
   const navigate = useNavigate();

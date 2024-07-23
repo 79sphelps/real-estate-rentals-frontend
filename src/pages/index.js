@@ -1,13 +1,13 @@
 export { default as Home } from "./home";
 export { default as Listings } from "./listings";
+export { default as Listing } from "./property";
+export { default as AddListing } from "./add-listing";
+export { default as DeleteListing } from "./delete-listing";
 // export { default as Agentt } from "./agent";
 // export { default as Agents } from "./agents";
 // export { default as Login } from "./login";
 // export { default as Signup } from "./signup";
 // export { default as Forgot } from "./forgot";
-export { default as Listing } from "./property";
-export { default as AddListing } from "./add-listing";
-export { default as DeleteListing } from "./delete-listing";
 // export { default as Dashboard } from "./dashboard";
 // export { default as UserProfile } from "./profile";
 // export { default as Messages } from "./messages";

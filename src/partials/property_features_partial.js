@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Property } from "../components";
 import ModalImage from "react-modal-image";
+import { Property } from "../components";
+
 
 export const PropertGallery = ({ image }) => {
   return (

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-// import links from "../constants/routes/nav-links";
+import { useAuth0 } from "@auth0/auth0-react";
 import { HeaderWrapper, Banner, Jumbotron } from "../components";
 import {
   // AdvancedSearchContainer,
   SideNavigationContainer,
 } from "./index";
-import { useAuth0 } from "@auth0/auth0-react";
+// import links from "../constants/routes/nav-links";
 
 const HeaderContainer = ({ bg, source }) => {
   // const [activeLink, setActiveLink] = useState("home");

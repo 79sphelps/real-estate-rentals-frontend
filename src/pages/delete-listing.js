@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Section, Property } from "../components";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Section, Property, Loading } from "../components";
 import { HeaderContainer, FooterContainer } from "../containers";
 import { getRentals, getRental, deleteRental } from "../redux/actions";
 import { selectCurrentRental } from "../redux/selectors/index.js";
-import { useAuth0 } from "@auth0/auth0-react";
 import { Image } from "../components/property/styles/property.js";
-import { useNavigate } from "react-router-dom";
-import Loading from "../components/loading";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const DeleteListing = () => {

@@ -6,14 +6,13 @@ import {
   // AdvancedSearchContainer,
   FooterContainer,
 } from "../containers";
-import { Section } from "../components";
+import { Section, Loading } from "../components";
 import {
   getRentals,
 } from "../redux/actions";
 import {
   selectRentals,
 } from "../redux/selectors";
-import Loading from "../components/loading";
 
 const Listing = () => {
   const dispatch = useDispatch();

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   HeaderContainer,
   FeaturedListingContainer,
@@ -6,8 +7,6 @@ import {
   HomeContactContainer,
   FooterContainer,
 } from "../containers";
-
-import { useDispatch, useSelector } from "react-redux";
 import { selectRentals } from "../redux/selectors";
 import { getRentals } from "../redux/actions";
 import Loading from "../components/loading";

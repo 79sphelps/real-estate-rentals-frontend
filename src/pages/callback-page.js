@@ -1,19 +1,16 @@
 import React from "react";
-// import { NavBar } from "../components/navigation/desktop/nav-bar";
-// import { MobileNavBar } from "../components/navigation/mobile/mobile-nav-bar";
 import { 
   useAuth0, 
   // withAuthenticationRequired 
 } from "@auth0/auth0-react";
-// import Loading from "../components/loading";
 import { Section } from "../components";
 import {
   HeaderContainer,
-  // FeaturedListingContainer,
-  // FeaturedAgentsContainer,
   // HomeContactContainer,
   FooterContainer,
 } from "../containers";
+// import { NavBar } from "../components/navigation/desktop/nav-bar";
+// import { MobileNavBar } from "../components/navigation/mobile/mobile-nav-bar";
 
 export const CallbackPage = () => {
   const { user } = useAuth0();
