@@ -36,6 +36,10 @@ class RentalService {
   getGeneralMessages() {
     return http.get(`/api/rentals/generalmessages`);
   }
+
+  deleteGeneralMessage(id) {
+    return http.delete(`/api/rentals/generalmessages/${id}`);
+  }
 }
 
 const RentalDataService = new RentalService()

@@ -22,6 +22,9 @@ import {
   FIND_BY_TITLE_SUCCESSFUL,
 
   CREATE_GENERAL_MESSAGE,
+  DELETE_MESSAGE,
+  DELETE_MESSAGE_SUCCESSFUL,
+  GET_MESSAGES_SUCCESSFUL,
 } from "../constants/action.types";
 import { deepCopy } from '../utils';
 
@@ -81,10 +84,18 @@ function rootReducer(state = initialState, action) {
       return { ...state, isLoading: false, rentals: action.payload };
 
 
-      
     case CREATE_GENERAL_MESSAGE:
       return { ...state, rentals: state.generalMessages.concat(action.payload) };
 
+    case GET_MESSAGES_SUCCESSFUL:
+      return { ...state, isFetching: false, generalMessages: action.payload };
+
+    case DELETE_MESSAGE:
+      mappings = state.generalMessages.filter((t) => t._id !== action.payload);
+      return { ...state, isDeleting: false, generalMessages: mappings };
+
+    case DELETE_MESSAGE_SUCCESSFUL:
+      return { ...state, isDeletingAll: false, generalMessages: action.payload };
 
 
     case ADD_RENTAL_SUCCESSFUL:

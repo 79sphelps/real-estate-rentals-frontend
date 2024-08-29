@@ -3,8 +3,12 @@ import { Bar } from "react-chartjs-2";
 
 const BarGraph = ({ properties }) => {
   const categoryArray = [
-    ...new Set(properties.map((property) => property.category)),
+    // ...new Set(properties.map((property) => property.category)),
+    ...new Set(properties.map((property) => 'Rental Units')),
   ];
+
+  // console.log(categoryArray);   // ['Apartments', 'Offices', 'Houses', 'Condos', 'Retails']
+
   const count = Object.values(
     properties
       .map((property) => property.category)

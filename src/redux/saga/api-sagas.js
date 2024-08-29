@@ -27,7 +27,11 @@ import {
   IS_DELETING,
   IS_ADDING,
   CREATE_GENERAL_MESSAGE,
-  CREATE_GENERAL_MESSAGE_SUCCESSFUL
+  CREATE_GENERAL_MESSAGE_SUCCESSFUL,
+  GET_MESSAGES,
+  GET_MESSAGES_SUCCESSFUL,
+  DELETE_MESSAGE,
+  DELETE_MESSAGE_SUCCESSFUL,
 } from "../constants/action.types.js";
 
 /*
@@ -66,6 +70,8 @@ export default function* watcherSaga() {
   yield takeEvery(DELETE_RENTAL, deleteRentalWorkerSaga);
   yield takeEvery(ADD_RENTAL, addRentalWorkerSaga);
   yield takeEvery(CREATE_GENERAL_MESSAGE, createGeneralMessageWorkerSaga);
+  yield takeEvery(GET_MESSAGES, getMessagesWorkerSaga);
+  yield takeEvery(DELETE_MESSAGE, deleteMessageWorkerSaga);
 }
 
 export function* getRentalsWorkerSaga() {
@@ -168,11 +174,53 @@ export function* createGeneralMessageWorkerSaga(action) {
   }
 }
 
+export function* getMessagesWorkerSaga() {
+  try {
+    yield put({ type: IS_FETCHING });
+    const payload = yield call(getMessages);
+    yield put({ type: GET_MESSAGES_SUCCESSFUL, payload });
+  } catch (e) {
+    yield put({ type: API_ERRORED, payload: e });
+  }
+}
+
+export function* deleteMessageWorkerSaga(action) {
+  try {
+    yield put({ type: IS_DELETING });
+    yield call(deleteMessage, action.payload);
+    const payload = action.payload;
+    yield put({ type: DELETE_MESSAGE_SUCCESSFUL, payload });
+    const message = "The message was deleted successfully!";
+    yield put({ type: SET_MESSAGE, payload: message });
+    // yield put({ type: SET_CURRENT_RENTAL, payload: null });
+    // yield put({ type: SET_CURRENT_INDEX, payload: -1 });
+    // yield put(push('/rentals'));
+  } catch (e) {
+    yield put({ type: API_ERRORED, payload: e });
+  }
+}
+
+
+
 const createGeneralMessage = (data) => {
   return RentalDataService.addGeneralMessage(data)
     .then((response) => response.data)
     .catch((e) => console.log(e));
 };
+
+const getMessages = () => {
+  return RentalDataService.getGeneralMessages()
+    .then((response) => response.data)
+    .catch((e) => console.log(e));
+};
+
+const deleteMessage = (id) => {
+  return RentalDataService.deleteGeneralMessage(id)
+  .then((response) => response.data)
+  .catch((e) => console.log(e));
+}
+
+
 
 const getRentals = () => {
   return RentalDataService.getRentals()

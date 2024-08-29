@@ -27,17 +27,39 @@ import {
   DELETE_RENTALS_SUCCESSFUL,
   API_ERRORED,
   CREATE_GENERAL_MESSAGE,
-  CREATE_GENERAL_MESSAGE_SUCCESSFUL
+  CREATE_GENERAL_MESSAGE_SUCCESSFUL,
+  GET_MESSAGES,
+  GET_MESSAGES_SUCCESSFUL,
+  DELETE_MESSAGE,
+  DELETE_MESSAGE_SUCCESSFUL
 } from "../constants/action.types";
 
 
 const createGeneralMessage = (payload) => {
   return { type: CREATE_GENERAL_MESSAGE, payload }
-}
+};
 
 const createGeneralMessageSuccessful = (payload) => {
-  return { type: CREATE_GENERAL_MESSAGE_SUCCESSFUL, payload }
-}
+  return { type: CREATE_GENERAL_MESSAGE_SUCCESSFUL, payload };
+};
+
+const getMessages = () => {
+  return { type: GET_MESSAGES };
+};
+
+const getMessagesSuccessful = (payload) => {
+  return { type: GET_MESSAGES_SUCCESSFUL, payload };
+};
+
+const deleteMessage = (payload) => {
+  return { type: DELETE_MESSAGE, payload };
+};
+
+const deleteMessageSuccessful = () => {
+  return { type: DELETE_MESSAGE_SUCCESSFUL };
+};
+
+
 
 const setCurrentRental = (payload) => {
   return { type: SET_CURRENT_RENTAL, payload };
@@ -150,6 +172,11 @@ const apiErrored = (payload) => {
 export {
   createGeneralMessage,
   createGeneralMessageSuccessful,
+  getMessages,
+  getMessagesSuccessful,
+  deleteMessage,
+  deleteMessageSuccessful,
+
   setCurrentRental,
   getCurrentRental,
   setRentalToAdd,
