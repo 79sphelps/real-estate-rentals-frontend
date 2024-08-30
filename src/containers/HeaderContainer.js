@@ -110,7 +110,7 @@ const HeaderContainer = ({ bg, source }) => {
                   special="true"
                   style={{ textDecoration: "none" }}
                 >
-                  {size.width > 1064 ? (
+                  {size.width > 1262 ? (
                     <i className="fa fa-fw fa-home">&nbsp;</i>
                   ) : null}
                   Home
@@ -118,6 +118,7 @@ const HeaderContainer = ({ bg, source }) => {
               </HeaderWrapper.Item>
             </HeaderWrapper.List>
 
+            {isAuthenticated && (
             <HeaderWrapper.List>
               <HeaderWrapper.Item>
                 <HeaderWrapper.Anchor
@@ -125,13 +126,14 @@ const HeaderContainer = ({ bg, source }) => {
                   special="true"
                   style={{ textDecoration: "none" }}
                 >
-                  {size.width > 1064 ? (
-                    <i className="fa fa-fw fa-search">&nbsp;</i>
+                  {size.width > 1262 ? (
+                    <i className="fas fa-chart-line">&nbsp;</i>
                   ) : null}
                   Dashboard
                 </HeaderWrapper.Anchor>
               </HeaderWrapper.Item>
             </HeaderWrapper.List>
+            )}
 
             <HeaderWrapper.List>
               <HeaderWrapper.Item>
@@ -140,7 +142,7 @@ const HeaderContainer = ({ bg, source }) => {
                   special="true"
                   style={{ textDecoration: "none" }}
                 >
-                  {size.width > 1064 ? (
+                  {size.width > 1262 ? (
                     <i className="fa fa-fw fa-search">&nbsp;</i>
                   ) : null}
                   Listings
@@ -156,7 +158,7 @@ const HeaderContainer = ({ bg, source }) => {
                     special="true"
                     style={{ textDecoration: "none" }}
                   >
-                    {size.width > 1064 ? (
+                    {size.width > 1262 ? (
                       <i className="fa fa-solid fa-plus">&nbsp;</i>
                     ) : null}
                     Add Listing
