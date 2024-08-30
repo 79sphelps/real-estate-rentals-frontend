@@ -121,6 +121,21 @@ const HeaderContainer = ({ bg, source }) => {
             <HeaderWrapper.List>
               <HeaderWrapper.Item>
                 <HeaderWrapper.Anchor
+                  to="/dashboard"
+                  special="true"
+                  style={{ textDecoration: "none" }}
+                >
+                  {size.width > 1064 ? (
+                    <i className="fa fa-fw fa-search">&nbsp;</i>
+                  ) : null}
+                  Dashboard
+                </HeaderWrapper.Anchor>
+              </HeaderWrapper.Item>
+            </HeaderWrapper.List>
+
+            <HeaderWrapper.List>
+              <HeaderWrapper.Item>
+                <HeaderWrapper.Anchor
                   to="/listings"
                   special="true"
                   style={{ textDecoration: "none" }}

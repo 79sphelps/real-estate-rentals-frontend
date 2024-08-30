@@ -39,6 +39,8 @@ const App = () => {
     <Routes>
       {/* <Route exact path="/" component={isAuthenticated ? CallbackPage : Home} /> */}
       <Route exact path="/" element={<Home />} />
+      <Route exact path="/dashboard" element={<Dashboard />} />
+      <Route exact path="/messages" element={<Messages />} />
       <Route exact path="/listings" element={<Listings />} />
       {/* <Route exact path="/listing" component={ isAuthenticated ? Listings : Home} />  */}
       <Route
@@ -56,10 +58,10 @@ const App = () => {
       {/* <Route exact path="/signup" component={Signup} /> */}
       {/* <Route exact path="/forgot-password" component={Forgot} /> */}
       {/* <Route exact path="/dashboard" component={Dashboard} /> */}
-      <Route path="/dashboard" element={<Dashboard />} />
+      
       {/* <Route exact path="/profile" component={UserProfile} /> */}
       {/* <Route exact path="/messages" component={Messages} /> */}
-      <Route path="/messages" element={<Messages />} />
+      
       {/* <Route exact path="/change-password" component={Password} /> */}
       {/* <Route path="/add-listing/:id?" component={AddLisiting} /> */}
       {/* <Route exact path="/all-listing" component={AdminListingList} /> */}
