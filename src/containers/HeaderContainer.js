@@ -90,6 +90,7 @@ const HeaderContainer = ({ bg, source }) => {
     <Banner bg={bg} source={source}>
       <HeaderWrapper bg={bg} fixed={fixed}>
         <HeaderWrapper.Container>
+          
           <HeaderWrapper.Title bg={bg}>
             <HeaderWrapper.Link
               style={{ textDecoration: "none" }}
@@ -98,10 +99,10 @@ const HeaderContainer = ({ bg, source }) => {
               fixed={fixed}
               to="/"
             >
-              Tessa Goldy - Real Estate Broker
+              Tessa Goldy - Broker
             </HeaderWrapper.Link>
           </HeaderWrapper.Title>
-
+      
           <HeaderWrapper.LinksContainer>
             <HeaderWrapper.List>
               <HeaderWrapper.Item>
