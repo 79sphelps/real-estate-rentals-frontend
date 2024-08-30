@@ -72,6 +72,15 @@ const SideNavigationContainer = ({
 
             {isAuthenticated ? (
               <SideNavigation.ListItem>
+                <SideNavigation.Anchor to="/dashboard" special="true">
+                <i className="fas fa-chart-line">&nbsp;</i>
+                  Dashboard
+                </SideNavigation.Anchor>
+              </SideNavigation.ListItem>
+            ) : null}
+
+            {isAuthenticated ? (
+              <SideNavigation.ListItem>
                 <SideNavigation.Anchor to="/addlisting" special="true">
                 <i className="fa fa-solid fa-plus">&nbsp;</i>
                   Add Listing
