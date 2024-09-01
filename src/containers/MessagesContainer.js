@@ -46,10 +46,11 @@ const InboxItem = ({ message }) => {
     <Inbox.Item>
       <Inbox.ItemHeader>
         {/* <Inbox.Text onClick={handleBodyShown}>{message.from}</Inbox.Text> */}
+        <div style={{ width: "100px" }}>
         <Inbox.Text onClick={handleBodyShown}>{message.name}</Inbox.Text>
-
+        </div>
         {/* <Inbox.Text onClick={handleBodyShown}>{message.title}</Inbox.Text> */}
-        <Inbox.Text onClick={handleBodyShown}>Message Title</Inbox.Text>
+        <Inbox.Text onClick={handleBodyShown}>New Message</Inbox.Text>
         <Inbox.HeaderAction>
           <Inbox.Icon
             onClick={() => handleMessageDelete(message._id)}
@@ -60,7 +61,8 @@ const InboxItem = ({ message }) => {
             name={bodyShown ? "fas fa-envelope" : "fas fa-envelope-open"}
             role="open-close"
           />
-          <Inbox.Span>Feb 19</Inbox.Span>
+          {/* <Inbox.Span>Feb 19</Inbox.Span> */}
+          <Inbox.Span>{ (new Date(message.createdAt)).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) }</Inbox.Span>
         </Inbox.HeaderAction>
       </Inbox.ItemHeader>
       {bodyShown && (

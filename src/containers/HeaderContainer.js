@@ -90,7 +90,7 @@ const HeaderContainer = ({ bg, source }) => {
     <Banner bg={bg} source={source}>
       <HeaderWrapper bg={bg} fixed={fixed}>
         <HeaderWrapper.Container>
-          
+          { size.width > 1014 ? ( 
           <HeaderWrapper.Title bg={bg}>
             <HeaderWrapper.Link
               style={{ textDecoration: "none" }}
@@ -102,7 +102,7 @@ const HeaderContainer = ({ bg, source }) => {
               Tessa Goldy - Broker
             </HeaderWrapper.Link>
           </HeaderWrapper.Title>
-      
+          ) : null }
           <HeaderWrapper.LinksContainer>
             <HeaderWrapper.List>
               <HeaderWrapper.Item>

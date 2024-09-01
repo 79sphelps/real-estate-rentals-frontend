@@ -6,7 +6,6 @@ import {
 } from "../containers";
 import { Section, Summary } from "../components";
 import BarGraph from "../helpers/graphs";
-// import { getPropertyList } from "../redux/actions/propertiesAction";
 import { getRentals } from "../redux/actions";
 // import { getAgentList } from "../redux/actions/agentsAction";
 import { selectRentals } from "../redux/selectors";
@@ -14,21 +13,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-
-  // const { properties } = useSelector((state) => state.propertyList);
   const listProperties = useSelector(selectRentals);
   const properties = listProperties;
-
-  console.log(properties);
   // const { agents } = useSelector((state) => state.agentList);
 
   useEffect(() => {
     // dispatch(getAgentList());
-    // dispatch(getPropertyList());
     dispatch(getRentals())
   }, [dispatch]);
-
-
 
   return (
     <>
@@ -36,7 +28,6 @@ const Dashboard = () => {
       <Section bgColor="--bs-fade-info">
         <Section.InnerContainer>
           <DashboardContainer title="Agency Summaries">
-
           {properties && Array.isArray(properties) ? (
             <>
             <Summary.Top>
@@ -59,7 +50,6 @@ const Dashboard = () => {
                 </Summary.AnchorDiv>
               </Summary.Anchor> */}
             </Summary.Top>
-
             <Summary.Bottom>
               <Summary.BottomHeader>
                 <Summary.Title>Properties By Category</Summary.Title>
