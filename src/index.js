@@ -34,13 +34,27 @@ const providerConfig = {
   onRedirectCallback,
 };
 
-ReactDOM.render(
-  <Auth0Provider {...providerConfig}>
-  <Provider store={store}>
-    <BrowserRouter>
-    <App />
-    </BrowserRouter>
-  </Provider>
-  </Auth0Provider>,
-  document.getElementById("root")
+// ReactDOM.render(
+//   <Auth0Provider {...providerConfig}>
+//   <Provider store={store}>
+//     <BrowserRouter>
+//     <App />
+//     </BrowserRouter>
+//   </Provider>
+//   </Auth0Provider>,
+//   document.getElementById("root")
+// );
+
+// ** React v.18 version **
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <Auth0Provider {...providerConfig}>
+     <Provider store={store}>
+       <BrowserRouter>
+        <App />
+       </BrowserRouter>
+     </Provider>
+   </Auth0Provider>
+  </React.StrictMode>
 );
