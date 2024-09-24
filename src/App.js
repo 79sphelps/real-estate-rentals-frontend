@@ -8,8 +8,8 @@ import {
   DeleteListing,
   Dashboard,
   Messages,
-  CallbackPage
 } from "./pages";
+import { CallbackPage } from "./pages/callback-page";
 import Loading from "./components/loading";
 
 const App = () => {

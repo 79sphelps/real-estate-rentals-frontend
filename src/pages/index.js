@@ -5,4 +5,3 @@ export { default as AddListing } from "./add-listing";
 export { default as DeleteListing } from "./delete-listing";
 export { default as Dashboard } from "./dashboard";
 export { default as Messages } from "./messages";
-export { default as CallbackPage } from "./callback-page";
