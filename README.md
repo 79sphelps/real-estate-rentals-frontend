@@ -1,3 +1,3 @@
-# React/Redux - Real Estate Website
+# Real Estate Broker Website - Tessa Goldy
 
-This is the front end of a real estate broker website built using React and Redux for state management. It uses the redux-saga library to make and handle asynchronous calls to the back end. It is still a bit of a WIP with lots of room to grow. I've tried to keep it simple and focus on functionality and design. It uses the compound component pattern. It uses the Styled Components library to style the components. It also leverages Bootstrap for additional styling. 
+This is the front end of a real estate broker website built using older style React and Redux for state management. It uses the redux-saga library to make and handle asynchronous calls to the back end. The app leverages the react-bootstrap library for UI. The app includes APIs for authorized CRUD operations, authentication and access management (via OAuth), and simple/complex forms with custom validation. It uses the compound component pattern and the Styled Components library to style the components.
