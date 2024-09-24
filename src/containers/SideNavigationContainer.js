@@ -20,14 +20,6 @@ const SideNavigationContainer = ({
       to: "/listings",
       class: "fa-fw fa-search"
     },
-    // {
-    //   name: "Agents",
-    //   to: "/agents",
-    // },
-    // {
-    //   name: "login",
-    //   to: "/login",
-    // },
   ];
 
   const { isAuthenticated, loginWithRedirect } = useAuth0();

@@ -17,7 +17,7 @@ export const messages = [
     read: true,
     emailFrom: "joram@gmail.com",
     phone: +254720843306,
-    title: "Interested in The House for Sell in Nairobi County",
+    title: "Interested in The House for Sell in Clackamas County",
   },
   {
     id: 3,
@@ -27,6 +27,6 @@ export const messages = [
     read: true,
     emailFrom: "priscilla@gmail.com",
     phone: +254720843306,
-    title: "Interested in The House for Sell in Nairobi County",
+    title: "Interested in The House for Sell in Washington County",
   },
 ];

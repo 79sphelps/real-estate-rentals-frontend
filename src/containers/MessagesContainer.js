@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Inbox, Form } from "../components";
 import { useSelector, useDispatch } from "react-redux";
-// import { getMessages, deleteMessage } from "../redux/actions/messagesAction";
 import { getMessages, deleteMessage } from "../redux/actions";
 import { selectGeneralMessages } from "../redux/selectors";
 
 const MessagesContainer = () => {
   const dispatch = useDispatch();
-
-  // const { messages } = useSelector((state) => state.messageList);
   const messages = useSelector(selectGeneralMessages);
 
   useEffect(() => {
