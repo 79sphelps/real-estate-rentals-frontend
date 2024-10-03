@@ -1,16 +1,25 @@
+import React, { Suspense, lazy } from 'react';
 import { Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import {
-  Home,
-  Listings,
-  Listing,
-  AddListing,
-  DeleteListing,
-  Dashboard,
-  Messages,
-} from "./pages";
+// import {
+//   Home,
+//   Listings,
+//   Listing,
+//   AddListing,
+//   DeleteListing,
+//   Dashboard,
+//   Messages,
+// } from "./pages";
 import { CallbackPage } from "./pages/callback-page";
 import Loading from "./components/loading";
+
+const Home = lazy(() => import("./pages/home"));
+const Listings = lazy(() => import("./pages/listings"));
+const Listing = lazy(() => import("./pages/property"));
+const AddListing = lazy(() => import("./pages/add-listing"));
+const DeleteListing = lazy(() => import("./pages/delete-listing"));
+const Dashboard = lazy(() => import("./pages/dashboard"));
+const Messages = lazy(() => import("./pages/messages"));
 
 const App = () => {
   const { isLoading, error, isAuthenticated } = useAuth0();
@@ -24,6 +33,7 @@ const App = () => {
   }
 
   return (
+    <Suspense fallback={<Loading />}>
     <Routes>
       <Route exact path="/" element={<Home />} />
       <Route exact path="/dashboard" element={<Dashboard />} />
@@ -42,6 +52,7 @@ const App = () => {
       />
       <Route path="/callback" element={<CallbackPage />} />
     </Routes>
+    </Suspense>
   );
 };
 
