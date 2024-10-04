@@ -7,9 +7,9 @@ import {
   HomeContactContainer,
   FooterContainer,
 } from "../containers";
-import { selectRentals } from "../redux/selectors";
+// import { selectRentals } from "../redux/selectors";
 import { getRentals } from "../redux/actions";
-import Loading from "../components/loading";
+// import Loading from "../components/loading";
 
 const Home = () => {
   useEffect(() => {
@@ -17,7 +17,7 @@ const Home = () => {
   }, []);
 
   const dispatch = useDispatch();
-  const listProperties = useSelector(selectRentals);
+  // const listProperties = useSelector(selectRentals);
 
   useEffect(() => {
     window.onpageshow = function (event) {
@@ -28,9 +28,9 @@ const Home = () => {
     dispatch(getRentals());
   }, [dispatch]);
 
-  if (listProperties.length === 0) {
-    return <Loading />
-  }
+  // if (listProperties.length === 0) {
+  //   return <Loading />
+  // }
 
   return (
     <>
