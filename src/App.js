@@ -1,15 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-// import {
-//   Home,
-//   Listings,
-//   Listing,
-//   AddListing,
-//   DeleteListing,
-//   Dashboard,
-//   Messages,
-// } from "./pages";
 import { CallbackPage } from "./pages/callback-page";
 import Loading from "./components/loading";
 

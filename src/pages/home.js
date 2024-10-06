@@ -7,8 +7,8 @@ import {
   HomeContactContainer,
   FooterContainer,
 } from "../containers";
-// import { selectRentals } from "../redux/selectors";
 import { getRentals } from "../redux/actions";
+// import { selectRentals } from "../redux/selectors";
 // import Loading from "../components/loading";
 
 const Home = () => {
