@@ -53,14 +53,15 @@ const FeaturedListingContainer = () => {
             <Section.Title>My Featured Listings</Section.Title>
           </Section.Header>
           <Section.Content>
-          {listProperties && Array.isArray(listProperties) ? (
+          {listProperties && Array.isArray(listProperties) && listProperties.length !== 0 ? (
             listProperties.map((featured, idx) => (
               <ListingItemContainer key={idx} featured={featured} />
-            ))) : (
-              tempPropertyList.map((featured, idx) => (
-                <ListingItemContainer key={idx} featured={featured} />
-              ))
-            )}
+            ))
+          ) : (
+            tempPropertyList.map((featured, idx) => (
+              <ListingItemContainer key={idx} featured={featured} />
+            ))
+          )}
           </Section.Content>
           <Section.Footer>
             <Section.Button>More Listings</Section.Button>
