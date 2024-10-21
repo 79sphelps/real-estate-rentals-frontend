@@ -18,27 +18,54 @@ const FeaturedListingContainer = () => {
     dispatch(getRentals());
   }, [dispatch]);
 
-  if (listProperties.length === 0) {
-    return <Loading />
-  }
+  // if (listProperties.length === 0) {
+  //   return <Loading />
+  // }
+
+  const tempPropertyList = [
+    {
+      "_id": 1,
+      "address": "Loading addresse...",
+      "price": "Acquiring price...",
+      "description": "Acquiring property description...",
+      "images": ["../assets/loading.svg"]
+    },
+    {
+      "_id": 2,
+      "address": "Loading addresse...",
+      "price": "Acquiring price...",
+      "description": "Acquiring property description...",
+      "images": ["../assets/loading.svg"]
+    },
+    {
+      "_id": 3,
+      "address": "Loading addresse...",
+      "price": "Acquiring price...",
+      "description": "Acquiring property description...",
+      "images": ["../assets/loading.svg"]
+    },
+  ]
 
   return (
     <Section bgColor="--bs-light">
-      {listProperties && Array.isArray(listProperties) ? (
         <Section.InnerContainer>
           <Section.Header>
             <Section.Title>My Featured Listings</Section.Title>
           </Section.Header>
           <Section.Content>
-            {listProperties.map((featured, idx) => (
+          {listProperties && Array.isArray(listProperties) ? (
+            listProperties.map((featured, idx) => (
               <ListingItemContainer key={idx} featured={featured} />
-            ))}
+            ))) : (
+              tempPropertyList.map((featured, idx) => (
+                <ListingItemContainer key={idx} featured={featured} />
+              ))
+            )}
           </Section.Content>
           <Section.Footer>
             <Section.Button>More Listings</Section.Button>
           </Section.Footer>
         </Section.InnerContainer>
-      ) : null}
     </Section>
   );
 };
