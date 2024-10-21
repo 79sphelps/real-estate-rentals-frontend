@@ -4,6 +4,7 @@ import { Section, Loading } from "../components";
 import { ListingItemContainer } from "./index";
 import { getRentals } from "../redux/actions";
 import { selectRentals } from "../redux/selectors";
+import loading from "../assets/loading.svg";
 
 const FeaturedListingContainer = () => {
   const dispatch = useDispatch();
@@ -28,21 +29,21 @@ const FeaturedListingContainer = () => {
       "address": "Loading addresse...",
       "price": "Acquiring price...",
       "description": "Acquiring property description...",
-      "images": ["../assets/loading.svg"]
+      "images": [loading]
     },
     {
       "_id": 2,
       "address": "Loading addresse...",
       "price": "Acquiring price...",
       "description": "Acquiring property description...",
-      "images": ["../assets/loading.svg"]
+      "images": [loading]
     },
     {
       "_id": 3,
       "address": "Loading addresse...",
       "price": "Acquiring price...",
       "description": "Acquiring property description...",
-      "images": ["../assets/loading.svg"]
+      "images": [loading]
     },
   ]
 
