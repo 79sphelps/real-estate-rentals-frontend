@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Listing, Loading } from "../components";
+import { Listing } from "../components";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import loading from "../assets/loading.svg";
 
 const ListingItemContainer = ({ featured, width }) => {
   const navigate = useNavigate();
-
   const [isHover, setIsHover] = useState(false);
 
   const handleMouseEnter = () => {
@@ -27,9 +25,6 @@ const ListingItemContainer = ({ featured, width }) => {
     border: isHover && "1px solid #1b69dfed",
     transform: isHover && "scale(1.1)"
   }
-
-  console.log(typeof featured.images[0]);
-  console.log(featured.images[0]);
 
   return (
     <>
@@ -77,7 +72,6 @@ const ListingItemContainer = ({ featured, width }) => {
                   Details
                 </Listing.Anchor>
               </Listing.Button>
-
               <Listing.AgentContainer>
                 <Listing.AgentImageContainer>
                   <Listing.Image
@@ -88,8 +82,8 @@ const ListingItemContainer = ({ featured, width }) => {
                 </Listing.AgentImageContainer>
                 <Listing.AgentName>
                   {/* <Listing.Anchor to={`/agents/${featured.agent.name}`}>
-                {featured.agent.name}
-              </Listing.Anchor> */}
+                    {featured.agent.name}
+                  </Listing.Anchor> */}
                   <Listing.Anchor to={`/listings`} style={{textDecoration: 'none'}}>Tessa Goldy</Listing.Anchor>
                 </Listing.AgentName>
               </Listing.AgentContainer>
