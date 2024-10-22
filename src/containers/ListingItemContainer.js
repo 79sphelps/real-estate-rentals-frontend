@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Listing, Loading } from "../components";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-
+import loading from "../assets/loading.svg";
 
 const ListingItemContainer = ({ featured, width }) => {
   const navigate = useNavigate();
@@ -28,30 +28,28 @@ const ListingItemContainer = ({ featured, width }) => {
     transform: isHover && "scale(1.1)"
   }
 
+  console.log(typeof featured.images[0]);
+  console.log(featured.images[0]);
+
   return (
     <>
       {featured && featured.images ? (
         <Listing width={width}>
           <Listing.Top>
-            
-            {/* <Listing.Image source={featured.images[0]} onClick={() => navigate(`/rentals/${featured._id}`)}/> */}
-            { featured.images && featured.images[0] ? (
-              <LazyLoadImage
+            <LazyLoadImage
                 alt="A beautiful landscape"
                 // height={400}
                 src={featured.images[0]} 
                 // width={600}
-                width="100%"
+                width={"100%"}
                 effect="blur"
                 onClick={() => navigate(`/rentals/${featured._id}`)}
-                style={imgStyle}
+                style={
+                  imgStyle
+                }
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               />
-            ) : (
-              <Loading />
-            )}
-
             <Listing.TopItem>
               <Listing.TopItemContainer>
                 <Listing.TopItemInfo>
