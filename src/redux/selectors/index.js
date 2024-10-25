@@ -46,6 +46,11 @@ const selectSubmitted = createSelector(
   (state) => state.submitted
 );
 
+const selectIsLoading = createSelector(
+  [getState],
+  (state) => state.isLoading
+);
+
 export {
   selectGeneralMessages,
   selectRentals,
@@ -55,4 +60,5 @@ export {
   selectSearchTitle,
   selectMessage,
   selectSubmitted,
+  selectIsLoading,
 };

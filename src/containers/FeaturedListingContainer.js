@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Section, Loading } from "../components";
 import { ListingItemContainer } from "./index";
 import { getRentals } from "../redux/actions";
-import { selectRentals } from "../redux/selectors";
+import { selectRentals, selectIsLoading } from "../redux/selectors";
 import loading from "../assets/loading.svg";
 
 const FeaturedListingContainer = () => {
   const dispatch = useDispatch();
   const listProperties = useSelector(selectRentals);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
     window.onpageshow = function (event) {
@@ -16,7 +17,10 @@ const FeaturedListingContainer = () => {
         window.location.reload();
       }
     };
-    dispatch(getRentals());
+
+    if (!isLoading) {
+      dispatch(getRentals());
+    }
   }, [dispatch]);
 
   // if (listProperties.length === 0) {

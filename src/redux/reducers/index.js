@@ -30,7 +30,6 @@ import { deepCopy } from '../utils';
 
 const initialState = {
   generalMessages: [],
-
   rentals: [],
   currentRental: null,
   todoToAdd: null,
