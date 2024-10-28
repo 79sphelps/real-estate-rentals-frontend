@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { CallbackPage } from "./pages/callback-page";
 import Loading from "./components/loading";
@@ -24,26 +24,28 @@ const App = () => {
   }
 
   return (
-    <Suspense fallback={<Loading />}>
-    <Routes>
-      <Route exact path="/" element={<Home />} />
-      <Route exact path="/dashboard" element={<Dashboard />} />
-      <Route exact path="/messages" element={<Messages />} />
-      <Route exact path="/listings" element={<Listings />} />
-      <Route
-        exact
-        path="/addlisting"
-        element={isAuthenticated ? <AddListing /> : <Home />}
-      />
-      <Route exact path="/rentals/:id" element={<Listing />} />
-      <Route
-        exact
-        path="/rentals/delete/:id"
-        element={isAuthenticated ? <DeleteListing /> : <Home />}
-      />
-      <Route path="/callback" element={<CallbackPage />} />
-    </Routes>
-    </Suspense>
+    <Router>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route exact path="/messages" element={<Messages />} />
+          <Route exact path="/listings" element={<Listings />} />
+          <Route
+            exact
+            path="/addlisting"
+            element={isAuthenticated ? <AddListing /> : <Home />}
+          />
+          <Route exact path="/rentals/:id" element={<Listing />} />
+          <Route
+            exact
+            path="/rentals/delete/:id"
+            element={isAuthenticated ? <DeleteListing /> : <Home />}
+          />
+          <Route path="/callback" element={<CallbackPage />} />
+        </Routes>
+      </Suspense>
+    </Router>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createBrowserHistory } from 'history';
 import { Auth0Provider } from "@auth0/auth0-react";
@@ -51,9 +51,9 @@ root.render(
   <React.StrictMode>
     <Auth0Provider {...providerConfig}>
      <Provider store={store}>
-       <BrowserRouter>
+       {/* <BrowserRouter> */}
         <App />
-       </BrowserRouter>
+       {/* </BrowserRouter> */}
      </Provider>
    </Auth0Provider>
   </React.StrictMode>

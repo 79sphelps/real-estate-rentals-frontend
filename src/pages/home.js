@@ -7,7 +7,7 @@ import {
   HomeContactContainer,
   FooterContainer,
 } from "../containers";
-import { getRentals } from "../redux/actions";
+// import { getRentals } from "../redux/actions";
 // import { selectRentals } from "../redux/selectors";
 // import Loading from "../components/loading";
 
@@ -25,7 +25,7 @@ const Home = () => {
         window.location.reload();
       }
     };
-    dispatch(getRentals());
+    // dispatch(getRentals());
   }, [dispatch]);
 
   // if (listProperties.length === 0) {
