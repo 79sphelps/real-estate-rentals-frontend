@@ -1,23 +1,7 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { HomeContactContainer } from "../containers";
-
-import { createStore } from "redux";
-import * as reactRedux from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
-import { MemoryRouter } from "react-router-dom";
-import reducers from "../redux/reducers";
-
-
-
-
-
-function makeTestStore(opts = {}) {
-  const store = createStore(opts);
-  const origDispatch = store.dispatch;
-  store.dispatch = jest.fn(origDispatch);
-  return store;
-}
+import userEvent from '@testing-library/user-event'
 
 jest.mock("react-redux", () => ({
   useDispatch: jest.fn(),
@@ -25,31 +9,7 @@ jest.mock("react-redux", () => ({
 }));
 
 
-// export const element = (selector) =>
-//     document.querySelector(selector);
-
-// export const elements = (selector) =>
-//     Array.from(document.querySelectorAll(selector));
-  
-//   export const typesOf = (elements) =>
-//     elements.map((element) => element.type);
-  
-//   export const textOf = (elements) =>
-//     elements.map((element) => element.textContent);
-  
-//   export const form = (id) => element("form");
-  
-//   export const field = (fieldName) =>
-//     form().elements[fieldName];
-
 describe("CustomerForm", () => {
-  const blankCustomer = {
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  };
-
   it("renders a form", () => {
     render(<HomeContactContainer />);
     expect(screen.getByTestId("contactForm")).not.toBeNull();
@@ -76,10 +36,43 @@ describe("CustomerForm", () => {
     expect(inputField.value).toBe('');
   });
 
-//   it("renders an input field for 'message'", async () => {
-//     render(<HomeContactContainer />);
-//     const inputField = await screen.findByTestId(`name`);
-//     expect(inputField.name).toBe('Your Name')
-//     expect(inputField.value).toBe('');
-//   });
+  it("renders an input field for 'message'", async () => {
+    render(<HomeContactContainer />);
+    const inputField = await screen.findByTestId(`message`);
+    // expect(inputField.name).toBe('Your Message')
+    expect(inputField.value).toBe('');
+  });
+
+  it("renders a button for 'submit'", async () => {
+    render(<HomeContactContainer />);
+    const button = await screen.findByTestId(`submit`);
+    expect(button.value).toBe('Send Message');
+  });
+
+  it("state updates as user enters input in field for 'name'", async () => {
+    render(<HomeContactContainer />);
+    const inputField = await screen.findByTestId(`name`);
+    const user = userEvent.setup()
+    await user.type(inputField, 'Rosyln Jones');
+    expect(inputField.value).not.toBe('');
+    expect(inputField.value).toBe('Rosyln Jones');
+  });
+
+  it("state updates as user enters input in field for 'email'", async () => {
+    render(<HomeContactContainer />);
+    const inputField = await screen.findByTestId(`email`);
+    const user = userEvent.setup()
+    await user.type(inputField, 'rose@gmail.com');
+    expect(inputField.value).not.toBe('');
+    expect(inputField.value).toBe('rose@gmail.com');
+  });
+
+  it("state updates as user enters input in field for 'phone'", async () => {
+    render(<HomeContactContainer />);
+    const inputField = await screen.findByTestId(`phone`);
+    const user = userEvent.setup()
+    await user.type(inputField, '503-234-4325');
+    expect(inputField.value).not.toBe('');
+    expect(inputField.value).toBe('503-234-4325');
+  });
 });

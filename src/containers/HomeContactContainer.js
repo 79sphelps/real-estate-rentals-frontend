@@ -6,11 +6,16 @@ import { createGeneralMessage } from "../redux/actions";
 const HomeContactContainer = () => {
   const dispatch = useDispatch();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [phone, setPhone] = useState("");
+  // const [message, setMessage] = useState("");
+  // const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [phone, setPhone] = React.useState("");
+  const [message, setMessage] = React.useState("");
+  const [submitted, setSubmitted] = React.useState(false);
 
   useEffect(() => {
     setSubmitted(false);
@@ -109,6 +114,7 @@ const HomeContactContainer = () => {
                   <Form.FormGroup>
                     <Form.TextArea
                       placeholder="Your Message"
+                      data-testid="message"
                       name=""
                       id=""
                       cols="30"
@@ -119,6 +125,7 @@ const HomeContactContainer = () => {
                   </Form.FormGroup>
                   <Form.FormGroup>
                     <Form.SubmitInput
+                      data-testid="submit"
                       type="submit"
                       value="Send Message"
                       onClick={(e) => saveGeneralMessage(e)}
