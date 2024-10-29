@@ -99,3 +99,47 @@ export const validateInput = (name, value) => {
         break;
     }
   };
+
+
+  export const contactFormErrors = {
+    "name": {
+        required: true,
+        error: "Please provide a valid name."
+    },
+    "email": {
+        required: true,
+        error: "The email entered is invalid."
+    },
+    "phone": {
+        required: true,
+        error: "Please provide a valid phone number."
+    },
+    "message": {
+        required: true,
+        error: "Please provide a message so we can understand the context of your request."
+    },
+  }
+  
+  export const getContactFormErrorObject = (name, value, formErrorObjectRef) => {
+    let formErrorObject = { ...formErrorObjectRef };
+    const status = validateContactFormInput(name, value);
+    return { ...formErrorObject, [name + 'Error']: status };
+  }
+  
+  export const validateContactFormInput = (name, value) => {
+    switch (name) {
+      case "name":
+        return value.length < 2 ? true : false;
+      case "email":
+        let emailPattern = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/;
+        return !emailPattern.test(value) ? true : false;
+      case "phone":
+        let pattern = /^\d{3}-\d{3}-\d{4}$/;
+        return !pattern.test(value) ? true : false;
+      case "message":
+        return value.length < 25 ? true : false;
+      default:
+        break;
+    }
+  };
+  

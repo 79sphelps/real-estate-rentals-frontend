@@ -84,7 +84,7 @@ function rootReducer(state = initialState, action) {
 
 
     case CREATE_GENERAL_MESSAGE:
-      return { ...state, rentals: state.generalMessages.concat(action.payload) };
+      return { ...state, generalMessages: state.generalMessages.concat(action.payload) };
 
     case GET_MESSAGES_SUCCESSFUL:
       return { ...state, isFetching: false, generalMessages: action.payload };

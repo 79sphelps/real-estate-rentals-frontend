@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import App from '../App.js';
 import { createStore } from "redux";
@@ -235,6 +235,7 @@ describe('MyComponent', () => {
     expect(el3.textContent).toEqual('Our Property List');
 
     // await waitFor(() => {
+    //   // const el4 = screen.getByText('Our Property List', { exact: false })
     //   const el4 = screen.getByText('Our Property List', { exact: false })
     //   expect(el4.textContent).toEqual('Our Property List');
     // });

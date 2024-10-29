@@ -49,7 +49,7 @@ const FeaturedListingContainer = () => {
       "description": "Acquiring property description...",
       "images": [loading]
     },
-  ]
+  ];
 
   return (
     <Section bgColor="--bs-light">
