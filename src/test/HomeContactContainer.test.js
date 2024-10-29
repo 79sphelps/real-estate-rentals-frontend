@@ -8,11 +8,40 @@ jest.mock("react-redux", () => ({
   useSelector: jest.fn(),
 }));
 
-
 describe("CustomerForm", () => {
   it("renders a form", () => {
     render(<HomeContactContainer />);
     expect(screen.getByTestId("contactForm")).not.toBeNull();
+  });
+
+  it("renders a button for 'submit'", async () => {
+    render(<HomeContactContainer />);
+    const button = await screen.findByTestId(`submit`);
+    expect(button.value).toBe('Send Message');
+  });
+
+  it("renders an input field for 'name' as a textbox", async () => {
+    render(<HomeContactContainer />);
+    const inputField = await screen.findByTestId(`name`);
+    expect(inputField.type).toBe('text');
+  });
+
+  it("renders an input field for 'email' as a textbox", async () => {
+    render(<HomeContactContainer />);
+    const inputField = await screen.findByTestId(`email`);
+    expect(inputField.type).toBe('text');
+  });
+
+  it("renders an input field for 'phone' as a textbox", async () => {
+    render(<HomeContactContainer />);
+    const inputField = await screen.findByTestId(`phone`);
+    expect(inputField.type).toBe('text');
+  });
+
+  it("renders an input field for 'message' as a textarea", async () => {
+    render(<HomeContactContainer />);
+    const inputField = await screen.findByTestId(`message`);
+    expect(inputField.type).toBe('textarea');
   });
 
   it("renders an input field for 'name'", async () => {
@@ -41,12 +70,6 @@ describe("CustomerForm", () => {
     const inputField = await screen.findByTestId(`message`);
     // expect(inputField.name).toBe('Your Message')
     expect(inputField.value).toBe('');
-  });
-
-  it("renders a button for 'submit'", async () => {
-    render(<HomeContactContainer />);
-    const button = await screen.findByTestId(`submit`);
-    expect(button.value).toBe('Send Message');
   });
 
   it("state updates as user enters input in field for 'name'", async () => {
