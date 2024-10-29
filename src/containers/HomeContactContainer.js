@@ -75,9 +75,11 @@ const HomeContactContainer = () => {
             </Section.FlexItem>
             <Section.FlexItem width="30%" bg="true">
               {!submitted ? (
-                <Form>
+                <Form data-testid="contactForm">
                   <Form.FormGroup>
                     <Form.Input
+                      name="Your Name"
+                      data-testid="name"
                       type="text"
                       placeholder="Your Name"
                       value={name}
@@ -86,6 +88,8 @@ const HomeContactContainer = () => {
                   </Form.FormGroup>
                   <Form.FormGroup>
                     <Form.Input
+                      name="Your Email"
+                      data-testid="email"
                       type="text"
                       placeholder="Your Email"
                       value={email}
@@ -94,6 +98,8 @@ const HomeContactContainer = () => {
                   </Form.FormGroup>
                   <Form.FormGroup>
                     <Form.Input
+                      name="Your Phone Number"
+                      data-testid="phone"
                       type="text"
                       placeholder="Your Phone Number"
                       value={phone}
