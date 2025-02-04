@@ -1,44 +1,139 @@
-import http from "../../http-common";
+import api from "./api";
+import { errorHandler, isAxiosError } from './errorHandler.ts';
+
+const GET_RENTALS_ENDPOINT = `/api/rentals`;
 
 class RentalService {
-  getRentals() {
-    return http.get(`/api/rentals`);
-  }
-
-  getRental(id) {
-    return http.get(`/api/rentals/${id}`);
-  }
-
-  addRental(data) {
-    return http.post(`/api/rentals`, data);
-  }
-
-  updateRental(data) {
-    return http.put(`/api/rentals/${data.id}`, data);
-  }
-
-  deleteRental(id) {
-    return http.delete(`/api/rentals/${id}`);
-  }
-
-  deleteRentals() {
-    return http.delete(`/api/rentals`);
-  }
-
-  findByTitle(title) {
-    return http.get(`/api/rentals?title=${title}`);
+  getGeneralMessages() {
+    try {
+      return api.get(`${GET_RENTALS_ENDPOINT}/generalmessages`);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        const { message } = errorHandler(error);
+          throw new Error(message);
+      } else {
+          // some other type of Error
+      }
+    }
   }
 
   addGeneralMessage(data) {
-    return http.post(`/api/rentals/generalmessages`, data);
-  }
-
-  getGeneralMessages() {
-    return http.get(`/api/rentals/generalmessages`);
+    try {
+      return api.post(`${GET_RENTALS_ENDPOINT}/generalmessages`, data);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        const { message } = errorHandler(error);
+          throw new Error(message);
+      } else {
+          // some other type of Error
+      }
+    }
   }
 
   deleteGeneralMessage(id) {
-    return http.delete(`/api/rentals/generalmessages/${id}`);
+    try {
+      return api.delete(`${GET_RENTALS_ENDPOINT}/generalmessages/${id}`);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        const { message } = errorHandler(error);
+          throw new Error(message);
+      } else {
+          // some other type of Error
+      }
+    }
+  }
+
+  //--------------------------------------------
+
+  getRentals() {
+    try {
+      return api.get(GET_RENTALS_ENDPOINT);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        const { message } = errorHandler(error);
+          throw new Error(message);
+      } else {
+          // some other type of Error
+      }
+    }
+  }
+
+  getRental(id) {
+    try {
+      return api.get(`${GET_RENTALS_ENDPOINT}/${id}`);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        const { message } = errorHandler(error);
+          throw new Error(message);
+      } else {
+          // some other type of Error
+      }
+    }
+  }
+
+  addRental(data) {
+    try {
+      return api.post(GET_RENTALS_ENDPOINT, data);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        const { message } = errorHandler(error);
+          throw new Error(message);
+      } else {
+          // some other type of Error
+      }
+    }
+  }
+
+  updateRental(id, data) {
+    try {
+      return api.put(`${GET_RENTALS_ENDPOINT}/${data.id}`, data);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        const { message } = errorHandler(error);
+          throw new Error(message);
+      } else {
+          // some other type of Error
+      }
+    }
+  }
+
+  deleteRental(id) {
+    try {
+      return api.delete(`${GET_RENTALS_ENDPOINT}/${id}`);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        const { message } = errorHandler(error);
+          throw new Error(message);
+      } else {
+          // some other type of Error
+      }
+    }
+  }
+
+  deleteRentals() {
+    try {
+      return api.delete(GET_RENTALS_ENDPOINT);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        const { message } = errorHandler(error);
+          throw new Error(message);
+      } else {
+          // some other type of Error
+      }
+    }
+  }
+
+  findByTitle(title) {
+    try {
+      return api.get(`${GET_RENTALS_ENDPOINT}?title=${title}`);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        const { message } = errorHandler(error);
+          throw new Error(message);
+      } else {
+          // some other type of Error
+      }
+    }
   }
 }
 

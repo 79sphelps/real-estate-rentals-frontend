@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Section, Loading } from "../components";
+import { Section } from "../components";
 import { ListingItemContainer } from "./index";
 import { getRentals } from "../redux/actions";
 import { selectRentals, selectIsLoading } from "../redux/selectors";
