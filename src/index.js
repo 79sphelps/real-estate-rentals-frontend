@@ -1,7 +1,5 @@
 import React from "react";
-// import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client"
-// import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createBrowserHistory } from 'history';
 import { Auth0Provider } from "@auth0/auth0-react";
@@ -27,35 +25,19 @@ const providerConfig = {
   domain: config.domain,
   clientId: config.clientId,
   ...(config.audience ? { audience: config.audience } : null),
-  // redirectUri: window.location.origin,
-  // redirectUri: window.location.origin + '/callback',
   authorizationParams: {
     redirect_uri: window.location.origin
   },
   onRedirectCallback,
 };
 
-// ReactDOM.render(
-//   <Auth0Provider {...providerConfig}>
-//   <Provider store={store}>
-//     <BrowserRouter>
-//     <App />
-//     </BrowserRouter>
-//   </Provider>
-//   </Auth0Provider>,
-//   document.getElementById("root")
-// );
-
 // ** React v.18 version **
-// const root = ReactDOM.createRoot(document.getElementById("root"));
 const root = createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Auth0Provider {...providerConfig}>
      <Provider store={store}>
-       {/* <BrowserRouter> */}
         <App />
-       {/* </BrowserRouter> */}
      </Provider>
    </Auth0Provider>
   </React.StrictMode>
