@@ -1,7 +1,7 @@
 import React from "react";
-import { 
-  useAuth0, 
-  // withAuthenticationRequired 
+import {
+  useAuth0,
+  // withAuthenticationRequired
 } from "@auth0/auth0-react";
 import { Section } from "../components";
 import {
@@ -33,7 +33,9 @@ export const CallbackPage = () => {
             <Section.Content>
               <Section.Flex>
                 <Section.FlexItem width="70%">
-                  <Section.SubTitle size="1">Signed in as {user.name}</Section.SubTitle>
+                  <Section.SubTitle size="1">
+                    Signed in as {user.name}
+                  </Section.SubTitle>
                   <Section.Text>Email: {user.email}</Section.Text>
                 </Section.FlexItem>
               </Section.Flex>

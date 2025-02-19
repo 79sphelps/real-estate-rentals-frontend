@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Property, Form, Section } from "../components";
 import { createGeneralMessage } from "../redux/actions";
-import { FormError, getContactFormErrorObject, contactFormErrors  } from "../helpers/form_validation";
-
+import {
+  FormError,
+  getContactFormErrorObject,
+  contactFormErrors,
+} from "../helpers/form_validation";
 
 const ContactAgentContainer = ({ property }) => {
   const dispatch = useDispatch();
@@ -68,8 +71,12 @@ const ContactAgentContainer = ({ property }) => {
 
   const doesFormHaveErrors = () => {
     return (
-      Object.values(formErrorObject).map((v) => { if (v) return true }).includes(true) || 
-      Object.values(formDetails).map((v) => { if (v === "") return true }).includes(true)
+      Object.values(formErrorObject)
+        .map((v) => (v ? true : false))
+        .includes(true) ||
+      Object.values(formDetails)
+        .map((v) => (!v ? true : false))
+        .includes(true)
     );
   };
 
@@ -175,11 +182,11 @@ const ContactAgentContainer = ({ property }) => {
                 <Form.SubmitInput
                   type="submit"
                   value="Send Message"
-                  disabled={buttonText === "Sending..."  || doesFormHaveErrors()}
+                  disabled={buttonText === "Sending..." || doesFormHaveErrors()}
                   style={{
                     color: doesFormHaveErrors() && "lightgrey",
                     cursor: doesFormHaveErrors() && "not-allowed",
-                    marginRight: "20px"
+                    marginRight: "20px",
                   }}
                   onClick={(e) => saveGeneralMessage(e)}
                 />

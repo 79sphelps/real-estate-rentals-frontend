@@ -177,6 +177,7 @@ export const FooterContent = styled.div`
     }
   }
 `;
+
 export const Flex = styled.div`
   ${FormGroup} {
     display: flex;

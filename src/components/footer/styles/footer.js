@@ -5,10 +5,12 @@ export const Container = styled.div`
   background-color: #1e224a;
   color: var(--bs-white);
 `;
+
 export const InnerContainer = styled.div`
   width: 85%;
   margin: 0px auto;
 `;
+
 export const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -22,6 +24,7 @@ export const Content = styled.div`
     flex-direction: column;
   }
 `;
+
 export const Item = styled.div`
   width: 25%;
   padding-right: 24px;
@@ -32,12 +35,14 @@ export const Item = styled.div`
     width: 100%;
   }
 `;
+
 export const Title = styled.h2`
   color: var(--bs-white);
   font-weight: bold;
   font-size: 2rem;
   padding: 24px 0px;
 `;
+
 export const Subtitle = styled.h2`
   color: var(--bs-white);
   font-weight: bold;
@@ -51,6 +56,7 @@ export const Subtitle = styled.h2`
   padding:0px;
   `}
 `;
+
 export const Text = styled.p`
   ${({ blur }) =>
     blur &&
@@ -59,12 +65,15 @@ export const Text = styled.p`
 `}
   margin: 8px 0px;
 `;
+
 export const List = styled.ul``;
+
 export const ListItem = styled.li`
   padding: 4px 0px;
   display: flex;
   align-items: center;
 `;
+
 export const Anchor = styled(Link)`
   ${({ app }) =>
     app === "true" &&
@@ -190,9 +199,11 @@ export const Bottom = styled.div`
 export const Google = styled.div`
   margin-left: 20px;
 `;
+
 export const Apple = styled.div`
   margin-left: 28px;
 `;
+
 export const AppDiv = styled.div``;
 
 export const ExternalAnchor = styled.a`

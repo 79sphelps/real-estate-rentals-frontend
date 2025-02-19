@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   HeaderContainer,
   FeaturedListingContainer,
@@ -7,8 +7,6 @@ import {
   HomeContactContainer,
   FooterContainer,
 } from "../containers";
-// import { getRentals } from "../redux/actions";
-// import { selectRentals } from "../redux/selectors";
 // import Loading from "../components/loading";
 
 const Home = () => {
@@ -17,7 +15,6 @@ const Home = () => {
   }, []);
 
   const dispatch = useDispatch();
-  // const listProperties = useSelector(selectRentals);
 
   useEffect(() => {
     window.onpageshow = function (event) {
@@ -25,7 +22,6 @@ const Home = () => {
         window.location.reload();
       }
     };
-    // dispatch(getRentals());
   }, [dispatch]);
 
   // if (listProperties.length === 0) {

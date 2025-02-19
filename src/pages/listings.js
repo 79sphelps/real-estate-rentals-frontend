@@ -44,7 +44,6 @@ const Listing = () => {
                   <AdvancedSearchContainer />
                 </Section.Shadow>
               </Section.FlexItem> */}
-
               {/* <Section.FlexItem width="65%"> */}
               <Section.FlexItem width="99%"> 
                 <Section.Title>Our Property List</Section.Title>

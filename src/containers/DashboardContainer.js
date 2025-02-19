@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { Dashboard } from "../components";
 import { adminurls } from "../constants/routes/adminurls";
 
@@ -64,7 +63,6 @@ const DashboardContainer = ({ title, children }) => {
 
 const LinksWithSubLinks = function ({ url }) {
   const [subLinksShown, setSublinksShown] = useState(false);
-
   const handleClick = () => setSublinksShown((prevState) => !prevState);
 
   return (

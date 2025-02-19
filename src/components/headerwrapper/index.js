@@ -37,6 +37,7 @@ HeaderWrapper.Title = function HeaderWrapperTitle({
     </HeaderTitle>
   );
 };
+
 HeaderWrapper.Link = function HeaderWrapperLink({
   children,
   bg,
@@ -49,9 +50,11 @@ HeaderWrapper.Link = function HeaderWrapperLink({
     </TitleLink>
   );
 };
+
 HeaderWrapper.LinksContainer = ({ children, ...restProps }) => {
   return <HeaderLinks {...restProps}>{children}</HeaderLinks>;
 };
+
 HeaderWrapper.List = ({ children, side, ...restProps }) => {
   return (
     <ListLinks side={side} {...restProps}>

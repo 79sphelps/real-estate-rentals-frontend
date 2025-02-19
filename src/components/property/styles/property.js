@@ -27,9 +27,7 @@ export const AdminEditPhotoCardButton = styled.button`
   border: 1px solid var(--bs-blue);
   border-radius: 10px;
   width: 20%;
-
   // box-shadow: 0px 0px 5px 0px #274684;
-
   box-sizing: border-box;
   padding: 16px 8px;
   color: white;
@@ -55,35 +53,41 @@ export const Header = styled.div`
     align-items: flex-start;
   }
 `;
+
 export const Anchor = styled(Link)``;
+
 export const Container = styled.div``;
 
 export const Span = styled.span`
   font-weight: bold;
   color: var(--bs-blue);
 `;
+
 export const HeaderLeft = styled.div``;
+
 export const Icon = styled.i`
   ${({ info }) =>
     info &&
     `
-  font-size: 0.9rem;
-  padding: 4px;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-content:center;
-  color: var(--bs-gray-dark);
-  cursor: pointer;
-  &:hover {
-    background-color: #ebe9e9f8;
-  }
+      font-size: 0.9rem;
+      padding: 4px;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-content:center;
+      color: var(--bs-gray-dark);
+      cursor: pointer;
+      &:hover {
+        background-color: #ebe9e9f8;
+      }
   `}
 `;
+
 export const Title = styled.h2``;
+
 export const HeaderRight = styled.div`
   ${Title} {
     font-size: 2rem;
@@ -100,6 +104,7 @@ export const HeaderRight = styled.div`
 `;
 
 export const Text = styled.p``;
+
 export const Location = styled.div`
   display: flex;
   align-items: center;
@@ -127,6 +132,7 @@ export const Content = styled.div`
     align-items: flex-start;
   }
 `;
+
 export const Left = styled.div`
   width: 68%;
   @media only screen and (max-width: 600px) {
@@ -136,6 +142,7 @@ export const Left = styled.div`
     width: 100%;
   }
 `;
+
 export const Right = styled.div`
   width: 30%;
   @media only screen and (max-width: 600px) {
@@ -145,6 +152,7 @@ export const Right = styled.div`
     width: 100%;
   }
 `;
+
 export const Gallery = styled.div`
   background-color: var(--bs-white);
   box-shadow: var(--primary-box-shadow);
@@ -158,6 +166,7 @@ export const Gallery = styled.div`
     flex-direction: column;
   }
 `;
+
 export const ImageContainer = styled.div`
   width: 49.5%;
   @media only screen and (max-width: 600px) {
@@ -177,6 +186,7 @@ export const Image = styled.img`
     opacity: 1;
   }
 `;
+
 export const Info = styled.div`
   margin: 20px 0px;
   background-color: var(--bs-white);
@@ -184,12 +194,14 @@ export const Info = styled.div`
   border-radius: 2px;
   position: relative;
 `;
+
 export const InfoHeader = styled.div`
   padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
+
 export const InfoContent = styled.div`
   display: none;
   justify-content: space-between;
@@ -219,6 +231,7 @@ export const InfoContent = styled.div`
       }
   `}
 `;
+
 export const InfoItem = styled.div`
   ${Text} {
     margin: 18px 0px;
@@ -232,6 +245,7 @@ export const InfoItem = styled.div`
     font-size: 0.9rem;
   }
 `;
+
 export const InfoTitle = styled.h2`
   font-size: 1rem;
   opacity: 0.9;
@@ -292,10 +306,13 @@ export const AgentImage = styled.img`
 export const Featured = styled.div`
   margin-top: 32px;
 `;
+
 export const FeaturedHeader = styled.div`
   margin: 16px 0px;
 `;
+
 export const FeaturedContent = styled.div``;
+
 export const FeaturedItem = styled.div`
   background-color: var(--bs-white);
   box-shadow: var(--primary-box-shadow);
@@ -307,6 +324,7 @@ export const FeaturedItem = styled.div`
     flex-direction: colunm;
   }
 `;
+
 export const ItemLeft = styled.div`
   width: 40%;
   display: flex;
@@ -316,6 +334,7 @@ export const ItemLeft = styled.div`
     border-radius: 4px;
   }
 `;
+
 export const FeaturedInfo = styled.div`
   display: flex;
   align-items: center;
@@ -336,6 +355,7 @@ export const FeaturedInfo = styled.div`
     flex-direction: colunm;
   }
 `;
+
 export const ItemRight = styled.div`
   margin-left: 16px;
   ${Subtitle} {

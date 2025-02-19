@@ -25,10 +25,12 @@ export const Content = styled.div`
     flex-direction: column;
   }
 `;
+
 export const SublinkIcon = styled.i`
   position: absolute;
   right: 8px;
 `;
+
 export const Left = styled.div`
   background-color: var(--bs-white);
   border-radius: 5px;
@@ -95,9 +97,7 @@ export const Right = styled.div`
 export const Title = styled.h2``;
 export const Text = styled.p``;
 export const Span = styled.span``;
-
 export const Anchor = styled(Link)``;
-
 export const Button = styled.div``;
 
 export const SideNav = styled.div`
@@ -116,6 +116,7 @@ export const SideNav = styled.div`
     }
   }
 `;
+
 export const Image = styled.img``;
 
 export const Close = styled.div`
@@ -160,7 +161,6 @@ export const LeftHeader = styled.div`
 `;
 
 export const LeftContent = styled.div``;
-
 export const List = styled.ul``;
 export const SubList = styled.ul``;
 

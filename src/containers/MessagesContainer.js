@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Inbox, Form } from "../components";
 import { useSelector, useDispatch } from "react-redux";
 import { getMessages, deleteMessage } from "../redux/actions";
 import { selectGeneralMessages } from "../redux/selectors";
+import { Inbox, Form } from "../components";
 
 const MessagesContainer = () => {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ const InboxItem = ({ message }) => {
       <Inbox.ItemHeader>
         {/* <Inbox.Text onClick={handleBodyShown}>{message.from}</Inbox.Text> */}
         <div style={{ width: "100px" }}>
-        <Inbox.Text onClick={handleBodyShown}>{message.name}</Inbox.Text>
+          <Inbox.Text onClick={handleBodyShown}>{message.name}</Inbox.Text>
         </div>
         {/* <Inbox.Text onClick={handleBodyShown}>{message.title}</Inbox.Text> */}
         <Inbox.Text onClick={handleBodyShown}>New Message</Inbox.Text>
@@ -59,7 +59,14 @@ const InboxItem = ({ message }) => {
             role="open-close"
           />
           {/* <Inbox.Span>Feb 19</Inbox.Span> */}
-          <Inbox.Span>{ (new Date(message.createdAt)).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) }</Inbox.Span>
+          <Inbox.Span>
+            {new Date(message.createdAt).toLocaleDateString("en-US", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </Inbox.Span>
         </Inbox.HeaderAction>
       </Inbox.ItemHeader>
       {bodyShown && (
@@ -77,7 +84,7 @@ const InboxItem = ({ message }) => {
                 {" ,"}
                 <Inbox.Span>
                   {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. */}
-                  { message.phone }
+                  {message.phone}
                 </Inbox.Span>
               </Inbox.Text>
             </Inbox.BodyTitle>
@@ -89,13 +96,15 @@ const InboxItem = ({ message }) => {
               <Inbox.FooterTitle>
                 <Inbox.Button
                   role="reply"
-                  onClick={() => handleReplyShown(message._id)}>
+                  onClick={() => handleReplyShown(message._id)}
+                >
                   <Inbox.Icon name="fas fa-reply " />
                   Reply
                 </Inbox.Button>
                 <Inbox.Button
                   role="delete"
-                  onClick={() => handleMessageDelete(message._id)}>
+                  onClick={() => handleMessageDelete(message._id)}
+                >
                   <Inbox.Icon name="fas fa-trash" />
                   Delete
                 </Inbox.Button>
@@ -116,7 +125,8 @@ const InboxItem = ({ message }) => {
                         name=""
                         id=""
                         cols="30"
-                        rows="10"></Form.TextArea>
+                        rows="10"
+                      ></Form.TextArea>
                     </Form.FormGroup>
                     <Inbox.Flex>
                       <Form.FormGroup>

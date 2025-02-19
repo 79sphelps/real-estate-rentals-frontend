@@ -85,17 +85,8 @@ const Listing = () => {
 
   const doesFormHaveErrors = () => {
     return (
-      // formErrorObject.addressError ||
-      // formErrorObject.cityError ||
-      // formErrorObject.stateError ||
-      // formErrorObject.zipError ||
-      // formErrorObject.priceError ||
-      // formErrorObject.bedsError ||
-      // formErrorObject.bathsError ||
-      // formErrorObject.sqftError ||
-      // formErrorObject.descriptionError ||
-      Object.values(formErrorObject).map((v) => { if (v) return true }).includes(true) || 
-      Object.values(formData).map((v) => { if (v === "") return true }).includes(true)
+      Object.values(formErrorObject).map((v) => v ? true : false).includes(true) || 
+      Object.values(formData).map((v) => !v ? true : false).includes(true)
     );
   };
 

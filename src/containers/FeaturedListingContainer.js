@@ -29,49 +29,49 @@ const FeaturedListingContainer = () => {
 
   const tempPropertyList = [
     {
-      "_id": 1,
-      "address": "Loading addresse...",
-      "price": "Acquiring price...",
-      "description": "Acquiring property description...",
-      "images": [loading]
+      _id: 1,
+      address: "Loading addresse...",
+      price: "Acquiring price...",
+      description: "Acquiring property description...",
+      images: [loading],
     },
     {
-      "_id": 2,
-      "address": "Loading addresse...",
-      "price": "Acquiring price...",
-      "description": "Acquiring property description...",
-      "images": [loading]
+      _id: 2,
+      address: "Loading addresse...",
+      price: "Acquiring price...",
+      description: "Acquiring property description...",
+      images: [loading],
     },
     {
-      "_id": 3,
-      "address": "Loading addresse...",
-      "price": "Acquiring price...",
-      "description": "Acquiring property description...",
-      "images": [loading]
+      _id: 3,
+      address: "Loading addresse...",
+      price: "Acquiring price...",
+      description: "Acquiring property description...",
+      images: [loading],
     },
   ];
 
   return (
     <Section bgColor="--bs-light">
-        <Section.InnerContainer>
-          <Section.Header>
-            <Section.Title>My Featured Listings</Section.Title>
-          </Section.Header>
-          <Section.Content>
-          {listProperties && Array.isArray(listProperties) && listProperties.length !== 0 ? (
-            listProperties.map((featured, idx) => (
-              <ListingItemContainer key={idx} featured={featured} />
-            ))
-          ) : (
-            tempPropertyList.map((featured, idx) => (
-              <ListingItemContainer key={idx} featured={featured} />
-            ))
-          )}
-          </Section.Content>
-          <Section.Footer>
-            <Section.Button>More Listings</Section.Button>
-          </Section.Footer>
-        </Section.InnerContainer>
+      <Section.InnerContainer>
+        <Section.Header>
+          <Section.Title>My Featured Listings</Section.Title>
+        </Section.Header>
+        <Section.Content>
+          {listProperties &&
+          Array.isArray(listProperties) &&
+          listProperties.length !== 0
+            ? listProperties.map((featured, idx) => (
+                <ListingItemContainer key={idx} featured={featured} />
+              ))
+            : tempPropertyList.map((featured, idx) => (
+                <ListingItemContainer key={idx} featured={featured} />
+              ))}
+        </Section.Content>
+        <Section.Footer>
+          <Section.Button>More Listings</Section.Button>
+        </Section.Footer>
+      </Section.InnerContainer>
     </Section>
   );
 };

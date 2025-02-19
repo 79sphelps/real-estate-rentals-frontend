@@ -19,21 +19,27 @@ const Summary = ({ children, ...restProps }) => {
 Summary.Top = ({ children, ...restProps }) => {
   return <Top {...restProps}>{children}</Top>;
 };
+
 Summary.BottomContent = ({ children, ...restProps }) => {
   return <BottomContent {...restProps}>{children}</BottomContent>;
 };
+
 Summary.BottomHeader = ({ children, ...restProps }) => {
   return <BottomHeader {...restProps}>{children}</BottomHeader>;
 };
+
 Summary.Bottom = ({ children, ...restProps }) => {
   return <Bottom {...restProps}>{children}</Bottom>;
 };
+
 Summary.Title = ({ children, ...restProps }) => {
   return <Title {...restProps}>{children}</Title>;
 };
+
 Summary.Text = ({ children, ...restProps }) => {
   return <Text {...restProps}>{children}</Text>;
 };
+
 Summary.Anchor = ({ children, to, bg, ...restProps }) => {
   return (
     <Anchor to={to} bg={bg} {...restProps}>
@@ -41,9 +47,11 @@ Summary.Anchor = ({ children, to, bg, ...restProps }) => {
     </Anchor>
   );
 };
+
 Summary.AnchorDiv = ({ children, ...restProps }) => {
   return <AnchorDiv {...restProps}>{children}</AnchorDiv>;
 };
+
 Summary.Icon = ({ name, ...restProps }) => {
   return <Icon className={name} {...restProps} />;
 };

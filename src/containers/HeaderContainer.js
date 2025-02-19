@@ -8,12 +8,12 @@ import {
 // import links from "../constants/routes/nav-links";
 
 const HeaderContainer = ({ bg, source }) => {
-  // const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
   const [sideNavShown, setSideNavShown] = useState(false);
   const [sideNavHidden, setSideNavHidden] = useState(true);
+  // const [activeLink, setActiveLink] = useState("home");
   // const [fixed, setFixed] = useState(false);
   let fixed = false;
 
@@ -90,19 +90,19 @@ const HeaderContainer = ({ bg, source }) => {
     <Banner bg={bg} source={source}>
       <HeaderWrapper bg={bg} fixed={fixed}>
         <HeaderWrapper.Container>
-          { size.width > 1014 ? ( 
-          <HeaderWrapper.Title bg={bg}>
-            <HeaderWrapper.Link
-              style={{ textDecoration: "none" }}
-              className="animate__animated animate__bounce"
-              bg={bg}
-              fixed={fixed}
-              to="/"
-            >
-              Tessa Goldy - Broker
-            </HeaderWrapper.Link>
-          </HeaderWrapper.Title>
-          ) : null }
+          {size.width > 1014 ? (
+            <HeaderWrapper.Title bg={bg}>
+              <HeaderWrapper.Link
+                style={{ textDecoration: "none" }}
+                className="animate__animated animate__bounce"
+                bg={bg}
+                fixed={fixed}
+                to="/"
+              >
+                Tessa Goldy - Broker
+              </HeaderWrapper.Link>
+            </HeaderWrapper.Title>
+          ) : null}
           <HeaderWrapper.LinksContainer>
             <HeaderWrapper.List>
               <HeaderWrapper.Item>
@@ -120,20 +120,20 @@ const HeaderContainer = ({ bg, source }) => {
             </HeaderWrapper.List>
 
             {isAuthenticated && (
-            <HeaderWrapper.List>
-              <HeaderWrapper.Item>
-                <HeaderWrapper.Anchor
-                  to="/dashboard"
-                  special="true"
-                  style={{ textDecoration: "none" }}
-                >
-                  {size.width > 1262 ? (
-                    <i className="fas fa-chart-line">&nbsp;</i>
-                  ) : null}
-                  Dashboard
-                </HeaderWrapper.Anchor>
-              </HeaderWrapper.Item>
-            </HeaderWrapper.List>
+              <HeaderWrapper.List>
+                <HeaderWrapper.Item>
+                  <HeaderWrapper.Anchor
+                    to="/dashboard"
+                    special="true"
+                    style={{ textDecoration: "none" }}
+                  >
+                    {size.width > 1262 ? (
+                      <i className="fas fa-chart-line">&nbsp;</i>
+                    ) : null}
+                    Dashboard
+                  </HeaderWrapper.Anchor>
+                </HeaderWrapper.Item>
+              </HeaderWrapper.List>
             )}
 
             <HeaderWrapper.List>

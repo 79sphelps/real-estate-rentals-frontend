@@ -16,18 +16,23 @@ import {
 const Form = ({ children, ...restProps }) => {
   return <Container {...restProps}>{children}</Container>;
 };
+
 Form.Select = ({ children, ...restProps }) => {
   return <Select {...restProps}>{children}</Select>;
 };
+
 Form.Option = ({ children, ...restProps }) => {
   return <Option {...restProps}>{children}</Option>;
 };
+
 Form.FormGroup = ({ children, ...restProps }) => {
   return <FormGroup {...restProps}>{children}</FormGroup>;
 };
+
 Form.TextArea = ({ children, ...restProps }) => {
   return <TextArea {...restProps}>{children}</TextArea>;
 };
+
 Form.Input = ({ children, ...restProps }) => {
   return <Input {...restProps} />;
 };

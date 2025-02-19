@@ -120,6 +120,7 @@ export const Flex = styled.div`
     align-items: center;
   }
 `;
+
 export const FlexItem = styled.div`
   height: 100%;
 
@@ -151,6 +152,7 @@ export const FlexItem = styled.div`
     `
       position:relative;
   `}
+  
   @media only screen and (max-width: 768px) {
     width: 90%;
     ${SubTitle} {

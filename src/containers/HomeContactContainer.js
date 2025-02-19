@@ -19,12 +19,6 @@ const HomeContactContainer = () => {
   };
 
   const [formDetails, setFormDetails] = useState(formInitialDetails);
-
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [phone, setPhone] = useState("");
-  // const [message, setMessage] = useState("");
-  // const [submitted, setSubmitted] = useState(false);
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [phone, setPhone] = React.useState("");
@@ -36,28 +30,14 @@ const HomeContactContainer = () => {
 
   useEffect(() => {
     setSubmitted(false);
-    // setName("");
-    // setEmail("");
-    // setPhone("");
-    // setMessage("");
   }, []);
 
   const saveGeneralMessage = (e) => {
     e.preventDefault();
-    // var data = {
-    //   name: name,
-    //   email: email,
-    //   phone: phone,
-    //   message: message,
-    // };
     setButtonText("Sending...");
     // dispatch(createGeneralMessage(data));
     dispatch(createGeneralMessage(formDetails));
     setSubmitted(true);
-    // setName("");
-    // setEmail("");
-    // setPhone("");
-    // setMessage("");
     setTimeout(() => {
       setButtonText("Send");
       setFormDetails(formInitialDetails);
@@ -244,11 +224,13 @@ const HomeContactContainer = () => {
                       data-testid="submit"
                       type="submit"
                       value="Send Message"
-                      disabled={buttonText === "Sending..."  || doesFormHaveErrors()}
+                      disabled={
+                        buttonText === "Sending..." || doesFormHaveErrors()
+                      }
                       style={{
                         color: doesFormHaveErrors() && "lightgrey",
                         cursor: doesFormHaveErrors() && "not-allowed",
-                        marginRight: "20px"
+                        marginRight: "20px",
                       }}
                       onClick={(e) => saveGeneralMessage(e)}
                     />

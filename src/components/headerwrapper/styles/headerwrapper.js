@@ -53,8 +53,6 @@ export const Container = styled.div`
   }
 `;
 
-
-
 export const Icon = styled.i``;
 
 export const Button = styled.button`
@@ -119,9 +117,11 @@ export const ListLinks = styled.ul`
     `}
   }
 `;
+
 export const ListItem = styled.li`
   padding: 20px 16px;
 `;
+
 export const ListAnchor = styled(Link)`
   padding: 12px 16px;
   border-radius: 2px;
@@ -131,7 +131,6 @@ export const ListAnchor = styled(Link)`
   text-transform: capitalize;
   transition: background-color var(--primary-transition-time);
 
-
   &:hover {
     background-color: var(--bs-blue);
     color: var(--bs-white);
@@ -139,7 +138,6 @@ export const ListAnchor = styled(Link)`
     transition: 0.3s ease-in-out;
   }
 
-  
   ${({ bg }) =>
     bg !== "true" &&
     `

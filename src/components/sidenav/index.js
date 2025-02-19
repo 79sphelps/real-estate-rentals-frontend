@@ -24,30 +24,39 @@ const SideNavigation = ({ children, shown, hidden, ...restProps }) => {
 SideNavigation.Container = ({ children, ...restProps }) => {
   return <Container {...restProps}>{children}</Container>;
 };
+
 SideNavigation.Cross = ({ children, ...restProps }) => {
   return <Cross {...restProps}>{children}</Cross>;
 };
+
 SideNavigation.Icon = ({ children, name, ...restProps }) => {
   return <Icon className={name} {...restProps} />;
 };
+
 SideNavigation.Header = ({ children, ...restProps }) => {
   return <Header {...restProps}>{children}</Header>;
 };
+
 SideNavigation.Title = ({ children, ...restProps }) => {
   return <Title {...restProps}>{children}</Title>;
 };
+
 SideNavigation.Text = ({ children, ...restProps }) => {
   return <Text {...restProps}>{children}</Text>;
 };
+
 SideNavigation.Links = ({ children, ...restProps }) => {
   return <Links {...restProps}>{children}</Links>;
 };
+
 SideNavigation.List = ({ children, ...restProps }) => {
   return <List {...restProps}>{children}</List>;
 };
+
 SideNavigation.ListItem = ({ children, ...restProps }) => {
   return <ListItem {...restProps}>{children}</ListItem>;
 };
+
 SideNavigation.Anchor = ({ children, ...restProps }) => {
   return <Anchor {...restProps}>{children}</Anchor>;
 };

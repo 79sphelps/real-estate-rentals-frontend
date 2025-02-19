@@ -6,7 +6,6 @@ export const Container = styled.div`
   background-color: var(--bs-white);
   box-shadow: var(--primary-box-shadow);
   margin-top: 20px;
-
   margin-bottom: 30px;
 
   @media only screen and (max-width: 768px) {
@@ -16,13 +15,13 @@ export const Container = styled.div`
     width: 100%;
   }
 `;
-export const Top = styled.div``;
-export const Bottom = styled.div``;
 
+export const Top = styled.div``;
+
+export const Bottom = styled.div``;
 
 export const Image = styled.img`
   width: 100%;
-
   display: inline-block;
 	transition: transform 0.3s ease-in-out;
 
@@ -43,7 +42,6 @@ export const Image = styled.img`
   `}
 `;
 
-
 export const ImageContainer = styled.div``;
 
 export const TopItem = styled.div`
@@ -58,6 +56,7 @@ export const TopItemContainer = styled.div`
   /* background-color: rgba(0, 0, 0, 0.1); */
   height: 100%;
 `;
+
 export const TopItemInfo = styled.div`
   position: inherit;
   bottom: 10px;
@@ -65,24 +64,27 @@ export const TopItemInfo = styled.div`
   margin-left: 18px;
   align-items: center;
 `;
+
 export const BottomItem = styled.div`
   width: 90%;
   margin: 0px auto;
 `;
+
 export const PriceText = styled.h3`
   color: var(--bs-blue);
   margin-bottom: 2px;
   padding: 2px 0px;
 `;
+
 export const Text = styled.p`
   ${({ location }) =>
     location &&
     `
-color: var(--bs-white);
-margin-left: 10px;
-font-weight: bold;
-text-transform: capitalize;
-`}
+    color: var(--bs-white);
+    margin-left: 10px;
+    font-weight: bold;
+    text-transform: capitalize;
+  `}
   ${({ description }) =>
     description &&
     `
@@ -98,6 +100,7 @@ export const Anchor = styled(Link)`
   color: var(--bs-gray-dark);
   transition: color var(--primary-transition-time);
 `;
+
 export const Title = styled.h2`
   margin-bottom: 2px;
   padding: 2px 0px;
@@ -121,7 +124,9 @@ export const ListingAgent = styled.div`
   border-top: 1px solid var(--bs-light);
   position: relative;
 `;
+
 export const ListingAgentImage = styled.div``;
+
 export const ListingAgentName = styled.h2`
   font-size: 1rem;
   margin-left: 16px;
@@ -129,6 +134,7 @@ export const ListingAgentName = styled.h2`
     color: var(--bs-blue);
   }
 `;
+
 export const LisitngButton = styled.button`
   background-color: var(--bs-blue);
   outline: none;

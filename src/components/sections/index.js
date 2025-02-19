@@ -24,9 +24,11 @@ const Section = ({ children, bgColor, ...restProps }) => {
     </Container>
   );
 };
+
 Section.Header = ({ children, ...restProps }) => {
   return <Header {...restProps}>{children}</Header>;
 };
+
 Section.Title = ({ children, ...restProps }) => {
   return <Title className="animate__animated animate__backInLeft" {...restProps}>{children}</Title>;
 };
@@ -38,27 +40,35 @@ Section.SubTitle = ({ children, size, ...restProps }) => {
     </SubTitle>
   );
 };
+
 Section.Text = ({ children, ...restProps }) => {
   return <Text {...restProps}>{children}</Text>;
 };
+
 Section.Content = ({ children, ...restProps }) => {
   return <Content {...restProps}>{children}</Content>;
 };
+
 Section.Center = ({ children, ...restProps }) => {
   return <Center {...restProps}>{children}</Center>;
 };
+
 Section.Footer = ({ children, ...restProps }) => {
   return <Footer {...restProps}>{children}</Footer>;
 };
+
 Section.Button = ({ children, ...restProps }) => {
   return <Button {...restProps}>{children}</Button>;
 };
+
 Section.InnerContainer = ({ children, ...restProps }) => {
   return <InnerContainer {...restProps}>{children}</InnerContainer>;
 };
+
 Section.Flex = ({ children, ...restProps }) => {
   return <Flex {...restProps}>{children}</Flex>;
 };
+
 Section.FlexItem = ({ children, bg, relative, flexStart, ...restProps }) => {
   return (
     <FlexItem bg={bg} relative={relative} flexStart={flexStart} {...restProps}>
@@ -66,6 +76,7 @@ Section.FlexItem = ({ children, bg, relative, flexStart, ...restProps }) => {
     </FlexItem>
   );
 };
+
 Section.Shadow = ({ children, bg, relative, flexStart, ...restProps }) => {
   return <Shadow {...restProps}>{children}</Shadow>;
 };
