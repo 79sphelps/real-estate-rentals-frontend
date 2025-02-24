@@ -19,13 +19,7 @@ const HomeContactContainer = () => {
   };
 
   const [formDetails, setFormDetails] = useState(formInitialDetails);
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [phone, setPhone] = React.useState("");
-  const [message, setMessage] = React.useState("");
   const [submitted, setSubmitted] = React.useState(false);
-
-  // const [submitted, setSubmitted] = useState(false);
   const [buttonText, setButtonText] = useState("Send");
 
   useEffect(() => {
@@ -35,7 +29,6 @@ const HomeContactContainer = () => {
   const saveGeneralMessage = (e) => {
     e.preventDefault();
     setButtonText("Sending...");
-    // dispatch(createGeneralMessage(data));
     dispatch(createGeneralMessage(formDetails));
     setSubmitted(true);
     setTimeout(() => {
@@ -59,14 +52,10 @@ const HomeContactContainer = () => {
   const doesFormHaveErrors = () => {
     return (
       Object.values(formErrorObject)
-        .map((v) => {
-          if (v) return true;
-        })
+        .map((v) => v ? true : false)
         .includes(true) ||
       Object.values(formDetails)
-        .map((v) => {
-          if (v === "") return true;
-        })
+        .map((v) => !v ? true : false)
         .includes(true)
     );
   };
