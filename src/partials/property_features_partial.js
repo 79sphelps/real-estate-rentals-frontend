@@ -8,11 +8,7 @@ export const PropertGallery = ({ image }) => {
     <Property.Gallery>
         {image.map((i, idx) => (
             <Property.ImageContainer key={idx}>
-              <ModalImage
-                small={i}
-                large={i}
-                alt="image"
-              />
+            <ModalImage loading="lazy" small={i.replace(/384/, '768')} large={i.replace(/384/, '1152')} alt="image" />
             {/* <Property.Image source={i} /> */}
         </Property.ImageContainer>
         ))}
