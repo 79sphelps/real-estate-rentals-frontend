@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Section } from "../components";
 import { ListingItemContainer } from "./index";
@@ -30,21 +30,21 @@ const FeaturedListingContainer = () => {
   const tempPropertyList = [
     {
       _id: 1,
-      address: "Loading addresse...",
+      address: "Loading address...",
       price: "Acquiring price...",
       description: "Acquiring property description...",
       images: [loading],
     },
     {
       _id: 2,
-      address: "Loading addresse...",
+      address: "Loading address...",
       price: "Acquiring price...",
       description: "Acquiring property description...",
       images: [loading],
     },
     {
       _id: 3,
-      address: "Loading addresse...",
+      address: "Loading address...",
       price: "Acquiring price...",
       description: "Acquiring property description...",
       images: [loading],

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getMessages, deleteMessage } from "../redux/actions";
 import { selectGeneralMessages } from "../redux/selectors";

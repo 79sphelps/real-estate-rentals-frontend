@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Section, Form } from "../components";
 import { createGeneralMessage } from "../redux/actions";
@@ -19,7 +19,7 @@ const HomeContactContainer = () => {
   };
 
   const [formDetails, setFormDetails] = useState(formInitialDetails);
-  const [submitted, setSubmitted] = React.useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [buttonText, setButtonText] = useState("Send");
 
   useEffect(() => {

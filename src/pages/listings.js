@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   HeaderContainer,
@@ -7,12 +7,8 @@ import {
   FooterContainer,
 } from "../containers";
 import { Section, Loading } from "../components";
-import {
-  getRentals,
-} from "../redux/actions";
-import {
-  selectRentals,
-} from "../redux/selectors";
+import { getRentals } from "../redux/actions";
+import { selectRentals } from "../redux/selectors";
 
 const Listing = () => {
   const dispatch = useDispatch();
@@ -29,7 +25,7 @@ const Listing = () => {
   }, [dispatch]);
 
   if (listProperties.length === 0) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
@@ -45,7 +41,7 @@ const Listing = () => {
                 </Section.Shadow>
               </Section.FlexItem> */}
               {/* <Section.FlexItem width="65%"> */}
-              <Section.FlexItem width="99%"> 
+              <Section.FlexItem width="99%">
                 <Section.Title>Our Property List</Section.Title>
                 <Section.Content>
                   {properties &&

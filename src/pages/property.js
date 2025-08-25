@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row } from "react-bootstrap";
@@ -32,6 +32,16 @@ const Listing = () => {
   const { isAuthenticated } = useAuth0();
   const { id } = useParams();
   const [btnText, setButtonText] = useState("Update Property");
+
+
+  const basicInputStyle = {
+    // width: "10%",
+    display: "inline-block",
+    // marginRight: "3%",
+    border: "1px solid var(--bs-blue)",
+    borderRadius: "15px",
+  };
+
 
   let initialFormErrorObject = {
     addressError: false,
@@ -299,13 +309,7 @@ const Listing = () => {
 
                     <Form.FormGroup>
                       <Form.Input
-                        style={{
-                          width: "50%",
-                          display: "inline-block",
-                          marginRight: "3%",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "15px",
-                        }}
+                        style={{ width: "50%", marginRight: "3%", ...basicInputStyle }}
                         type="text"
                         placeholder={formData.city || ""}
                         name="city"
@@ -317,13 +321,7 @@ const Listing = () => {
                         <FormError msg={formErrors["city"].error} />
                       )}
                       <Form.Input
-                        style={{
-                          width: "10%",
-                          display: "inline-block",
-                          marginRight: "3%",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "15px",
-                        }}
+                        style={{ width: "10%", marginRight: "3%", ...basicInputStyle }}
                         type="text"
                         placeholder={formData.state || ""}
                         name="state"
@@ -335,13 +333,7 @@ const Listing = () => {
                         <FormError msg={formErrors["state"].error} />
                       )}
                       <Form.Input
-                        style={{
-                          width: "20%",
-                          display: "inline-block",
-                          // marginRight: "20px",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "15px",
-                        }}
+                        style={{ width: "20%", ...basicInputStyle }}
                         type="text"
                         placeholder={formData.zip || ""}
                         name="zip"
@@ -356,13 +348,7 @@ const Listing = () => {
 
                     <Form.FormGroup>
                       <Form.Input
-                        style={{
-                          width: "30%",
-                          display: "inline-block",
-                          marginRight: "3%",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "15px",
-                        }}
+                        style={{ width: "30%", marginRight: "3%", ...basicInputStyle }}
                         type="text"
                         placeholder="price"
                         name="price"
@@ -374,13 +360,7 @@ const Listing = () => {
                         <FormError msg={formErrors["price"].error} />
                       )}
                       <Form.Input
-                        style={{
-                          width: "10%",
-                          display: "inline-block",
-                          marginRight: "3%",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "15px",
-                        }}
+                        style={{ width: "10%", marginRight: "3%", ...basicInputStyle }}
                         type="text"
                         placeholder="beds"
                         name="beds"
@@ -392,13 +372,7 @@ const Listing = () => {
                         <FormError msg={formErrors["beds"].error} />
                       )}
                       <Form.Input
-                        style={{
-                          width: "10%",
-                          display: "inline-block",
-                          marginRight: "3%",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "15px",
-                        }}
+                        style={{ width: "10%", marginRight: "3%", ...basicInputStyle }}
                         type="text"
                         placeholder="baths"
                         name="baths"
@@ -410,13 +384,7 @@ const Listing = () => {
                         <FormError msg={formErrors["baths"].error} />
                       )}
                       <Form.Input
-                        style={{
-                          width: "20%",
-                          display: "inline-block",
-                          // marginRight: "20px",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "15px",
-                        }}
+                        style={{ width: "20%", ...basicInputStyle }}
                         type="text"
                         placeholder="sqft"
                         name="sqft"
@@ -431,13 +399,7 @@ const Listing = () => {
 
                     <Form.FormGroup>
                       <Form.Input
-                        style={{
-                          width: "30%",
-                          display: "inline-block",
-                          marginRight: "3%",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "15px",
-                        }}
+                        style={{ width: "30%", marginRight: "3%", ...basicInputStyle }}
                         type="text"
                         placeholder="type"
                         name="type"
@@ -446,13 +408,7 @@ const Listing = () => {
                         onClick={initializeFormData}
                       />
                       <Form.Input
-                        style={{
-                          width: "20%",
-                          display: "inline-block",
-                          marginRight: "3%",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "15px",
-                        }}
+                        style={{ width: "20%", marginRight: "3%", ...basicInputStyle }}
                         type="text"
                         placeholder="year"
                         name="year"
@@ -464,13 +420,7 @@ const Listing = () => {
 
                     <Form.FormGroup>
                       <Form.Input
-                        style={{
-                          width: "35%",
-                          display: "inline-block",
-                          marginRight: "3%",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "15px",
-                        }}
+                        style={{ width: "35%", marginRight: "3%", ...basicInputStyle }}
                         type="text"
                         placeholder="heating"
                         name="heating"
@@ -479,13 +429,7 @@ const Listing = () => {
                         onClick={initializeFormData}
                       />
                       <Form.Input
-                        style={{
-                          width: "35%",
-                          display: "inline-block",
-                          marginRight: "3%",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "15px",
-                        }}
+                        style={{ width: "35%", marginRight: "3%", ...basicInputStyle }}
                         type="text"
                         placeholder="cooling"
                         name="cooling"
@@ -497,13 +441,7 @@ const Listing = () => {
 
                     <Form.FormGroup>
                       <Form.Input
-                        style={{
-                          width: "20%",
-                          display: "inline-block",
-                          marginRight: "3%",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "15px",
-                        }}
+                        style={{ width: "20%", marginRight: "3%", ...basicInputStyle }}
                         type="text"
                         placeholder="hoa"
                         name="hoa"
@@ -512,13 +450,7 @@ const Listing = () => {
                         onClick={initializeFormData}
                       />
                       <Form.Input
-                        style={{
-                          width: "60%",
-                          display: "inline-block",
-                          // marginRight: "20px",
-                          border: "1px solid var(--bs-blue)",
-                          borderRadius: "15px",
-                        }}
+                        style={{ width: "60%", ...basicInputStyle }}
                         type="text"
                         placeholder="parcelNumber"
                         name="parcelNumber"
