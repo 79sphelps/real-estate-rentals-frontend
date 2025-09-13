@@ -516,7 +516,7 @@ const AddListing = () => {
                           : "white",
                     }}
                     disabled={
-                      btnText == "Create Listing" ||
+                      btnText === "Create Listing" ||
                       checkEmptyFormFields() ||
                       doesFormHaveErrors()
                     }

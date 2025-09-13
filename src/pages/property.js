@@ -81,6 +81,7 @@ const Listing = () => {
   useEffect(() => {
     dispatch(getRental(id));
     window.scrollTo(0, 0);
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

@@ -21,7 +21,7 @@ const FeaturedListingContainer = () => {
     if (!isLoading) {
       dispatch(getRentals());
     }
-  }, [dispatch]);
+  }, [dispatch, isLoading]);
 
   // if (listProperties.length === 0) {
   //   return <Loading />
