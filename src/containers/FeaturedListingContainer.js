@@ -18,10 +18,10 @@ const FeaturedListingContainer = () => {
       }
     };
 
-    if (!isLoading) {
+    if (!isLoading && (!listProperties || listProperties.length === 0)) {
       dispatch(getRentals());
     }
-  }, [dispatch, isLoading]);
+  }, [listProperties, dispatch, isLoading]);
 
   // if (listProperties.length === 0) {
   //   return <Loading />
