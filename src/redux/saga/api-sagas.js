@@ -50,12 +50,12 @@ Basic Flow:
   workerSaga.
 - takeLatest is a helper function provided by redux-saga that will trigger a new workerSaga when
   it sees an GET_RENTALS, while cancelling any previously triggered workerSaga still in process.
-- getRentals simply uses axios to request the todo list from the rentals API and returns a Promise
+- getRentals simply uses axios to request the property list from the rentals API and returns a Promise
   for the response.
 - workerSaga attempts to getRentals, using another redux-saga helper function call, and stores the
   result (a resolved or failed Promise) in a response variable.
-- If getRentals was a success, we extract the todo list from the response and dispatch an
-  GET_RENTALS_SUCCESS action with todo list in the payload to the Store, using ANOTHER redux-saga
+- If getRentals was a success, we extract the property list from the response and dispatch an
+  GET_RENTALS_SUCCESS action with property list in the payload to the Store, using ANOTHER redux-saga
   helper function put.
 - If there was an error with getRentals, we let the Store know about it by dispatching an
   API_ERRORED action with the error.

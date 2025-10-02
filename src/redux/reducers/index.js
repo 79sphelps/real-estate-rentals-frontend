@@ -32,7 +32,7 @@ const initialState = {
   generalMessages: [],
   rentals: [],
   currentRental: null,
-  todoToAdd: null,
+  rentalToAdd: null,
   searchTitle: "",
   currentIndex: -1,
   message: "",
@@ -58,8 +58,8 @@ function rootReducer(state = initialState, action) {
       };
 
     case SET_RENTAL_TO_ADD:
-      if (!action.payload) return { ...state, todoToAdd: null };
-      return { ...state, todoToAdd: action.payload };
+      if (!action.payload) return { ...state, rentalToAdd: null };
+      return { ...state, rentalToAdd: action.payload };
 
     case SET_SEARCH_TITLE:
       return { ...state, searchTitle: action.payload };
@@ -105,10 +105,10 @@ function rootReducer(state = initialState, action) {
       const idx = mappings.findIndex((t) => t._id === action.payload.id);
 
       if (mappings && mappings[idx]) {
-        let todo = action.payload.todo;
-        todo.dueDate = todo.dueDate.toISOString();
-        delete todo.id;
-        mappings[idx] = { ...mappings[idx], ...todo };
+        let rentalToAdd = action.payload.rentalToAdd;
+        rentalToAdd.dueDate = rentalToAdd.dueDate.toISOString();
+        delete rentalToAdd.id;
+        mappings[idx] = { ...mappings[idx], ...rentalToAdd };
       }
 
       return { ...state, isUpdating: false, rentals: mappings };
